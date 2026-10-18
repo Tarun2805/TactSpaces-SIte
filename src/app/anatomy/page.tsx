@@ -27,43 +27,43 @@ export default function AnatomyPage() {
 <section style={{"padding": "4rem 0 2rem"}}>
   <div className="case-grid reveal" id="caseGrid">
     <a className="case-card" href="#dd-hoofers" data-cat="commercial" style={cardStyle('commercial')}>
-      <div className="thumb"><div className="blk" style={{"left": "0", "top": "0", "width": "60%", "height": "65%"}}></div><div className="blk" style={{"left": "64%", "top": "10%", "width": "32%", "height": "40%", "background": "var(--terracotta)"}}></div></div>
+      <div className="thumb"><div className="blk" style={{"left": "0", "top": "0", "width": "60%", "height": "65%"}}></div><div className="blk" style={{"left": "64%", "top": "10%", "width": "32%", "height": "40%", "background": "var(--accent)"}}></div></div>
       <div className="meta-row"><span>Horamavu, Bengaluru</span><span>45 days</span></div>
       <h3>D Hoofers Dance Studio</h3>
       <span className="stat">4,000 sq. ft. · Design &amp; Execution</span>
     </a>
     <a className="case-card" href="#dd-pinaki" data-cat="residential" style={cardStyle('residential')}>
-      <div className="thumb"><div className="blk" style={{"left": "10%", "top": "15%", "width": "35%", "height": "70%"}}></div><div className="blk" style={{"left": "52%", "top": "30%", "width": "38%", "height": "26%", "background": "var(--terracotta)"}}></div></div>
+      <div className="thumb"><div className="blk" style={{"left": "10%", "top": "15%", "width": "35%", "height": "70%"}}></div><div className="blk" style={{"left": "52%", "top": "30%", "width": "38%", "height": "26%", "background": "var(--accent)"}}></div></div>
       <div className="meta-row"><span>Shettyhalli, Bengaluru</span><span>3 months</span></div>
       <h3>Pinaki Residence</h3>
       <span className="stat">1,430 sq. ft. · Turnkey Execution</span>
     </a>
     <a className="case-card" href="#dd-hakuna" data-cat="hospitality" style={cardStyle('hospitality')}>
-      <div className="thumb"><div className="blk" style={{"left": "0", "top": "20%", "width": "55%", "height": "55%"}}></div><div className="blk" style={{"left": "60%", "top": "0", "width": "35%", "height": "45%", "background": "var(--terracotta)"}}></div></div>
+      <div className="thumb"><div className="blk" style={{"left": "0", "top": "20%", "width": "55%", "height": "55%"}}></div><div className="blk" style={{"left": "60%", "top": "0", "width": "35%", "height": "45%", "background": "var(--accent)"}}></div></div>
       <div className="meta-row"><span>Arambol, Goa</span><span>15 days</span></div>
       <h3>Hakuna Matata Hotel</h3>
       <span className="stat">1,200 sq. ft. · Budget Renovation</span>
     </a>
     <a className="case-card" href="#" data-cat="residential" style={cardStyle('residential')}>
-      <div className="thumb"><div className="blk" style={{"left": "15%", "top": "8%", "width": "34%", "height": "80%"}}></div><div className="blk" style={{"left": "56%", "top": "22%", "width": "34%", "height": "56%", "background": "var(--terracotta)"}}></div></div>
+      <div className="thumb"><div className="blk" style={{"left": "15%", "top": "8%", "width": "34%", "height": "80%"}}></div><div className="blk" style={{"left": "56%", "top": "22%", "width": "34%", "height": "56%", "background": "var(--accent)"}}></div></div>
       <div className="meta-row"><span>Hennur, Bengaluru</span><span>20 days</span></div>
       <h3>Vimal Residence</h3>
       <span className="stat">1,200 sq. ft. · Interior Design</span>
     </a>
     <a className="case-card" href="#" data-cat="residential" style={cardStyle('residential')}>
-      <div className="thumb"><div className="blk" style={{"left": "0", "top": "10%", "width": "50%", "height": "80%"}}></div><div className="blk" style={{"left": "56%", "top": "0", "width": "40%", "height": "38%", "background": "var(--terracotta)"}}></div></div>
+      <div className="thumb"><div className="blk" style={{"left": "0", "top": "10%", "width": "50%", "height": "80%"}}></div><div className="blk" style={{"left": "56%", "top": "0", "width": "40%", "height": "38%", "background": "var(--accent)"}}></div></div>
       <div className="meta-row"><span>Kanakapura, Bengaluru</span><span>1 month</span></div>
       <h3>Manjunath Residence</h3>
       <span className="stat">2,400 sq. ft. · Interior Design</span>
     </a>
     <a className="case-card" href="#" data-cat="residential" style={cardStyle('residential')}>
-      <div className="thumb"><div className="blk" style={{"left": "8%", "top": "20%", "width": "38%", "height": "60%"}}></div><div className="blk" style={{"left": "52%", "top": "5%", "width": "40%", "height": "50%", "background": "var(--terracotta)"}}></div></div>
+      <div className="thumb"><div className="blk" style={{"left": "8%", "top": "20%", "width": "38%", "height": "60%"}}></div><div className="blk" style={{"left": "52%", "top": "5%", "width": "40%", "height": "50%", "background": "var(--accent)"}}></div></div>
       <div className="meta-row"><span>Ullal, Bengaluru</span><span>1 month</span></div>
       <h3>Arun Residence</h3>
       <span className="stat">1,200 sq. ft. · Interior Design</span>
     </a>
     <a className="case-card" href="#" data-cat="residential" style={cardStyle('residential')}>
-      <div className="thumb"><div className="blk" style={{"left": "0", "top": "0", "width": "55%", "height": "70%"}}></div><div className="blk" style={{"left": "60%", "top": "30%", "width": "36%", "height": "50%", "background": "var(--terracotta)"}}></div></div>
+      <div className="thumb"><div className="blk" style={{"left": "0", "top": "0", "width": "55%", "height": "70%"}}></div><div className="blk" style={{"left": "60%", "top": "30%", "width": "36%", "height": "50%", "background": "var(--accent)"}}></div></div>
       <div className="meta-row"><span>Hebbal, Bengaluru</span><span><span className="status-badge">Ongoing</span></span></div>
       <h3>Manikantan Residence</h3>
       <span className="stat">2,400 sq. ft. · Interiors, Design &amp; Execution</span>
@@ -93,7 +93,7 @@ export default function AnatomyPage() {
 
   <div className="dd-hero reveal">
     <div className="blk" style={{"left": "0", "top": "0", "width": "58%", "height": "100%"}}></div>
-    <div className="blk" style={{"left": "60%", "top": "8%", "width": "38%", "height": "40%", "background": "var(--terracotta)"}}></div>
+    <div className="blk" style={{"left": "60%", "top": "8%", "width": "38%", "height": "40%", "background": "var(--accent)"}}></div>
     <div className="blk" style={{"left": "60%", "top": "52%", "width": "38%", "height": "40%", "opacity": "0.55"}}></div>
     <MaterialCallout top="18%" left="20%">Charcoal fluted panel · reception facade</MaterialCallout>
     <MaterialCallout top="60%" left="78%">Suspended linear LED · studio ceiling</MaterialCallout>
@@ -103,7 +103,7 @@ export default function AnatomyPage() {
   <HorizontalTimeline trackId="track1" fillId="fill1">
         <div className="h-panel"><div className="frame"><div className="blk" style={{"left": "0", "top": "0", "width": "100%", "height": "100%", "opacity": "0.35"}}></div></div><span className="day">Day 1</span><h3>Raw Shell</h3><p>A bare 4,000 sq. ft. commercial floorplate, structurally surveyed for MEP before a single wall goes up.</p></div>
         <div className="h-panel"><div className="frame"><div className="blk" style={{"left": "0", "top": "30%", "width": "100%", "height": "70%", "opacity": "0.6"}}></div></div><span className="day">Day 15</span><h3>Structure &amp; MEP</h3><p>Electrical, HVAC, and acoustic backing routed alongside framing, the phase most turnkey firms let slip.</p></div>
-        <div className="h-panel"><div className="frame"><div className="blk" style={{"left": "0", "top": "0", "width": "60%", "height": "100%"}}></div><div className="blk" style={{"left": "64%", "top": "20%", "width": "32%", "height": "60%", "background": "var(--terracotta)"}}></div></div><span className="day">Day 30</span><h3>Finishes</h3><p>Fluted panelling, sprung flooring, and the linear LED grid land, and the studio starts reading as designed space.</p></div>
+        <div className="h-panel"><div className="frame"><div className="blk" style={{"left": "0", "top": "0", "width": "60%", "height": "100%"}}></div><div className="blk" style={{"left": "64%", "top": "20%", "width": "32%", "height": "60%", "background": "var(--accent)"}}></div></div><span className="day">Day 30</span><h3>Finishes</h3><p>Fluted panelling, sprung flooring, and the linear LED grid land, and the studio starts reading as designed space.</p></div>
         <div className="h-panel"><div className="frame"><div className="blk" style={{"left": "0", "top": "0", "width": "100%", "height": "100%"}}></div></div><span className="day">Day 45</span><h3>Handover</h3><p>Final quality pass against the approved drawing set. Keys handed over on the date signed in the Master Contract.</p></div>
   </HorizontalTimeline>
 </section>
@@ -123,7 +123,7 @@ export default function AnatomyPage() {
   <HorizontalTimeline trackId="track2" fillId="fill2">
         <div className="h-panel"><div className="frame"><div className="blk" style={{"left": "0", "top": "0", "width": "100%", "height": "100%", "opacity": "0.3"}}></div></div><span className="day">Stage 1</span><h3>Raw Site</h3><p>Existing 1,430 sq. ft. flat, stripped back to shell ahead of the renovation scope.</p></div>
         <div className="h-panel"><div className="frame-placeholder"><span className="ph-icon">▦</span><span className="ph-label">Site photo pending</span></div><span className="day">Stage 2</span><h3>MEP Routing</h3><p>Plumbing and electrical re-routed to support the new kitchen and bathroom layouts.</p></div>
-        <div className="h-panel"><div className="frame"><div className="blk" style={{"left": "0", "top": "0", "width": "60%", "height": "100%"}}></div><div className="blk" style={{"left": "64%", "top": "15%", "width": "32%", "height": "70%", "background": "var(--terracotta)"}}></div></div><span className="day">Stage 3</span><h3>Finish Carpentry</h3><p>Custom wardrobes and kitchen cabinetry installed to the approved material specification.</p></div>
+        <div className="h-panel"><div className="frame"><div className="blk" style={{"left": "0", "top": "0", "width": "60%", "height": "100%"}}></div><div className="blk" style={{"left": "64%", "top": "15%", "width": "32%", "height": "70%", "background": "var(--accent)"}}></div></div><span className="day">Stage 3</span><h3>Finish Carpentry</h3><p>Custom wardrobes and kitchen cabinetry installed to the approved material specification.</p></div>
         <div className="h-panel"><div className="frame"><div className="blk" style={{"left": "0", "top": "0", "width": "100%", "height": "100%"}}></div></div><span className="day">Stage 4</span><h3>Final Handover</h3><p>Sign-off against the original drawing set, three months from Discovery to keys-in-hand.</p></div>
   </HorizontalTimeline>
 

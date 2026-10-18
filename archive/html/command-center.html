@@ -8,7 +8,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
   :root{
     --forest:#1F2D28; --forest-hover:#16211D; --alabaster:#F9F9F7; --alabaster-deep:#F1EFEA;
-    --ink:#22282A; --line:#DAD7CE; --terracotta:#A85C36;
+    --ink:#22282A; --line:#DAD7CE; --accent:#273939;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{background:var(--alabaster); color:var(--ink); font-family:'Inter','Helvetica Neue',sans-serif; -webkit-font-smoothing:antialiased;}
@@ -70,7 +70,7 @@
   .planner-progress .dot{flex:1; height:3px; background:var(--line); position:relative; overflow:hidden;}
   .planner-progress .dot .fill{position:absolute; inset:0; background:var(--forest); transform:scaleX(0); transform-origin:left; transition:transform 0.4s ease;}
   .planner-progress .dot.done .fill{transform:scaleX(1);}
-  .step-label{font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--terracotta); font-weight:700; margin-bottom:0.6rem;}
+  .step-label{font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:0.6rem;}
   .step-title{font-size:1.6rem; margin-bottom:2rem;}
 
   .step-panel{display:none;}
@@ -92,7 +92,7 @@
   .toggle-card.selected{border-color:var(--forest); background:var(--forest); color:var(--alabaster);}
   .toggle-card h4{font-size:1.05rem; margin-bottom:0.5rem;}
   .toggle-card p{font-size:0.85rem; opacity:0.85; line-height:1.5;}
-  .badge-rec{position:absolute; top:-10px; right:1.2rem; background:var(--terracotta); color:var(--alabaster); font-size:0.65rem; letter-spacing:0.06em; text-transform:uppercase; padding:0.25rem 0.6rem; font-weight:700;}
+  .badge-rec{position:absolute; top:-10px; right:1.2rem; background:var(--accent); color:var(--alabaster); font-size:0.65rem; letter-spacing:0.06em; text-transform:uppercase; padding:0.25rem 0.6rem; font-weight:700;}
 
   .segmented{display:flex; border:1px solid var(--line); overflow:hidden; margin-bottom:2.4rem;}
   .segmented button{flex:1; background:var(--alabaster); border:none; padding:0.9rem 0.5rem; font-size:0.82rem; font-weight:600; cursor:pointer; border-right:1px solid var(--line); font-family:inherit; color:var(--ink);}

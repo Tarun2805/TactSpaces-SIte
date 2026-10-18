@@ -8,7 +8,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
   :root{
     --forest:#1F2D28; --forest-hover:#16211D; --alabaster:#F9F9F7; --alabaster-deep:#F1EFEA;
-    --ink:#22282A; --line:#DAD7CE; --terracotta:#A85C36; --terracotta-soft:#C98A67;
+    --ink:#22282A; --line:#DAD7CE; --accent:#273939; --accent-soft:#273939;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -83,7 +83,7 @@
   .process-step.active .num{background:var(--forest); border-color:var(--forest); color:var(--alabaster);}
   .process-step h3{font-size:1.4rem; margin-bottom:0.5rem; transition:color 0.3s ease;}
   .process-step p{color:#4B534F; line-height:1.6; max-width:520px;}
-  .process-step .stage-label{font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--terracotta); font-weight:700; margin-bottom:0.4rem; display:block;}
+  .process-step .stage-label{font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:0.4rem; display:block;}
 
   /* ---- Document Viewer ---- */
   .doc-section{padding:3rem 5vw 6rem; background:var(--alabaster-deep); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
@@ -171,7 +171,7 @@ a,button,.tile,.toggle-card,.doc-card,.case-card,.filter-pill{-webkit-tap-highli
 }
 @media (hover:none){
   .doc-name{display:flex; justify-content:space-between; align-items:center; gap:.75rem;}
-  .doc-name::after{content:'Tap to reveal'; font-size:.66rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--terracotta);}
+  .doc-name::after{content:'Tap to reveal'; font-size:.66rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--accent);}
   .doc-card.open .doc-name::after{content:'Tap to hide';}
   .doc-card:hover .doc-lockup{opacity:0; background:rgba(31,45,40,0);}
   .doc-card.open .doc-lockup{opacity:1; background:rgba(31,45,40,.78);}

@@ -68,7 +68,7 @@ export default function HomePage() {
       <div className="work-image">
         <div className="blocks">
           <div className="left-0 top-0 w-[55%] h-[60%] opacity-85" />
-          <div className="left-[58%] top-[8%] w-[40%] h-[35%] bg-terracotta" />
+          <div className="left-[58%] top-[8%] w-[40%] h-[35%] bg-accent" />
           <div className="left-[15%] top-[64%] w-[70%] h-[32%] opacity-70" />
         </div>
         <div className="callout">Charcoal fluted panel · reception facade</div>
@@ -81,7 +81,7 @@ export default function HomePage() {
       <div className="work-image">
         <div className="blocks">
           <div className="left-[10%] top-[10%] w-[35%] h-[80%] opacity-80" />
-          <div className="left-[50%] top-[30%] w-[42%] h-[24%] bg-terracotta" />
+          <div className="left-[50%] top-[30%] w-[42%] h-[24%] bg-accent" />
           <div className="left-[50%] top-[60%] w-[42%] h-[30%] opacity-65" />
         </div>
         <div className="callout">Seamless ACP cladding · kitchen run</div>
@@ -94,7 +94,7 @@ export default function HomePage() {
       <div className="work-image">
         <div className="blocks">
           <div className="left-0 top-[20%] w-[60%] h-[60%] opacity-80" />
-          <div className="left-[64%] top-0 w-[34%] h-[44%] bg-terracotta" />
+          <div className="left-[64%] top-0 w-[34%] h-[44%] bg-accent" />
           <div className="left-[64%] top-[48%] w-[34%] h-[40%] opacity-60" />
         </div>
         <div className="callout">L-shaped glazing profile · living wall</div>

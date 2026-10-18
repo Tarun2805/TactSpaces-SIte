@@ -6,7 +6,7 @@
     --alabaster-deep:#F1EFEA;
     --ink:#22282A;
     --line:#DAD7CE;
-    --terracotta:#A85C36;
+    --accent:#273939;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -211,7 +211,7 @@
   .work-card:hover .callout{opacity:1; transform:translateY(0);}
   .work-meta{display:flex; justify-content:space-between; align-items:baseline; font-size:0.78rem; color:#5C645F; margin-bottom:0.3rem;}
   .work-card h3{font-size:1.2rem; font-weight:600; margin-bottom:0.2rem;}
-  .work-card .stat{font-size:0.78rem; color:var(--terracotta); font-weight:600;}
+  .work-card .stat{font-size:0.78rem; color:var(--accent); font-weight:600;}
 
   /* ---------- FOUNDERS ---------- */
   .founders{
