@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+/* Keep the original reset: Tailwind Preflight would change the existing design. */
+@layer theme, base, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@source '../';
+
+@layer base {
+  /* Selection cards were divs; retain their typography now they are keyboard-accessible buttons. */
+  button.tile, button.toggle-card { font: inherit; color: inherit; border-radius: 0; }
+}
+
+@theme {
+  --color-forest: #1f2d28;
+  --color-forest-hover: #16211d;
+  --color-alabaster: #f9f9f7;
+  --color-alabaster-deep: #f1efea;
+  --color-ink: #22282a;
+  --color-line: #dad7ce;
+  --color-terracotta: #a85c36;
+  --font-sans: 'Inter', 'Helvetica Neue', sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+}
