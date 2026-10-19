@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen, within } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { StrictMode } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import AnatomyPage from '../app/anatomy/page';
@@ -161,9 +161,10 @@ describe('project planner', () => {
     expect(screen.getByLabelText<HTMLInputElement>("Tell us what you're building").value).toBe('Clinic');
     fireEvent.click(next()); fireEvent.click(next()); fireEvent.click(next());
     expect(screen.getByLabelText<HTMLInputElement>('Full Name').value).toBe('Test Client');
-    fireEvent.click(screen.getByRole('button', { name: 'Submit to Discovery Team →' }));
-    expect(within(screen.getByRole('status')).getByText('Received.')).toBeTruthy();
-    expect(container.querySelector<HTMLElement>('.planner')?.style.display).toBe('none');
+    // The old demo confirmation is intentionally gone: navigation alone must
+    // never imply that a real lead was delivered.
+    expect(screen.queryByRole('status')).toBeNull();
+    expect(container.querySelector<HTMLElement>('.planner')?.style.display).not.toBe('none');
   });
 
   it('scrolls back to the planner on mobile, including a return to step one', () => {
