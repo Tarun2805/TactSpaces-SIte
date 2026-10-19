@@ -17,7 +17,7 @@ data and the deployment. Do not create a publicly shared spreadsheet.
    [`scripts/google-sheets-leads.gs`](../scripts/google-sheets-leads.gs).
 4. At the top, set `LEAD_CONFIG.allowedOrigins` to the actual website origins.
    The supplied values are `https://tactspaces.in` and `https://www.tactspaces.in`;
-   confirm these match the deployed site. Use origins only—no path or trailing `/`.
+   confirm these match the deployed site. Use origins only, with no path or trailing `/`.
    If testing locally, temporarily add the exact Vite origin, for example
    `http://localhost:5173`. For `npm run preview`, typically add
    `http://localhost:4173`. Remove test origins before the final deployment.

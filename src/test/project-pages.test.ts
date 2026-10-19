@@ -59,7 +59,7 @@ describe('project page generation', () => {
     const project = { ...loadProjects(ROOT)[0], name: 'A & B "$&" <Studio>' };
     const template = readFileSync(join(ROOT, 'project.html'), 'utf8');
     const html = projectDocument(template, project, '<h1>$&</h1>');
-    expect(html).toContain('<title>A &amp; B &quot;$&amp;&quot; &lt;Studio&gt; — TactSpaces</title>');
+    expect(html).toContain('<title>A &amp; B &quot;$&amp;&quot; &lt;Studio&gt; | TactSpaces</title>');
     expect(html).toContain('<div id="root"><h1>$&</h1></div>');
     const { details: _details, ...listing } = project;
     expect(() => projectDocument(template, listing, '')).toThrow('listing-only');

@@ -52,7 +52,7 @@ export function projectDocument(template: string, project: Project, markup: stri
   if (!project.details) throw new Error(`Cannot generate a page for listing-only project ${project.slug}.`);
   return template
     .replace('<html lang="en">', `<html lang="en" data-project-slug="${escapeHtml(project.slug)}">`)
-    .replace('<title>Project — TactSpaces</title>', () => `<title>${escapeHtml(project.name)} — TactSpaces</title>\n    <meta name="description" content="${escapeHtml(project.details!.summary)}" />\n    <link rel="canonical" href="/projects/${escapeHtml(project.slug)}/" />`)
+    .replace('<title>Project | TactSpaces</title>', () => `<title>${escapeHtml(project.name)} | TactSpaces</title>\n    <meta name="description" content="${escapeHtml(project.details!.summary)}" />\n    <link rel="canonical" href="/projects/${escapeHtml(project.slug)}/" />`)
     .replace('<div id="root"></div>', () => `<div id="root">${markup}</div>`);
 }
 
@@ -79,7 +79,7 @@ export function projectPages(): Plugin {
           if (!project) {
             response.statusCode = 404;
             response.setHeader('Content-Type', 'text/html; charset=utf-8');
-            response.end('<!doctype html><html lang="en"><title>Project not found — TactSpaces</title><h1>Project not found</h1><a href="/anatomy.html">View all projects</a></html>');
+            response.end('<!doctype html><html lang="en"><title>Project not found | TactSpaces</title><h1>Project not found</h1><a href="/anatomy.html">View all projects</a></html>');
             return;
           }
           if (url.pathname === `/projects/${project.slug}`) {

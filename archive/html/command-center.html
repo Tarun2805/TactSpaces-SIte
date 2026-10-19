@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Client Command Center — TactSpaces</title>
+<title>Client Command Center | TactSpaces</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
   :root{
@@ -325,7 +325,7 @@ a,button,.tile,.toggle-card,.doc-card,.case-card,.filter-pill{-webkit-tap-highli
     document.querySelectorAll('.planner-progress .dot').forEach(d => d.classList.toggle('done', Number(d.dataset.dot) <= step));
   }
 
-  // Step 1 — typology tiles
+  // Step 1: typology tiles
   document.querySelectorAll('[data-group="typology"] .tile').forEach(tile => {
     tile.addEventListener('click', () => {
       document.querySelectorAll('[data-group="typology"] .tile').forEach(t => t.classList.remove('selected'));
@@ -337,7 +337,7 @@ a,button,.tile,.toggle-card,.doc-card,.case-card,.filter-pill{-webkit-tap-highli
   });
   document.getElementById('next1').addEventListener('click', () => goTo(2));
 
-  // Step 2 — scope toggle
+  // Step 2: scope toggle
   document.querySelectorAll('[data-group="scope"] .toggle-card').forEach(card => {
     card.addEventListener('click', () => {
       document.querySelectorAll('[data-group="scope"] .toggle-card').forEach(c => c.classList.remove('selected'));
@@ -348,7 +348,7 @@ a,button,.tile,.toggle-card,.doc-card,.case-card,.filter-pill{-webkit-tap-highli
   });
   document.getElementById('next2').addEventListener('click', () => goTo(3));
 
-  // Step 3 — timeline segmented + budget range
+  // Step 3: timeline segmented + budget range
   document.querySelectorAll('[data-group="timeline"] button').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('[data-group="timeline"] button').forEach(b => b.classList.remove('selected'));
