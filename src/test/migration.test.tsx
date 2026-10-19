@@ -39,12 +39,17 @@ describe('migration preservation', () => {
       expect(anchors(after)).toEqual(anchors(before));
     });
 
-    it(`retains ${source}'s original CSS declarations`, () => {
+    it(`retains ${source}'s original CSS outside intentional layout changes`, () => {
       const originalStyles = original.match(/<style>([\s\S]*?)<\/style>/)?.[1]
         .replace(/\s*@import url\([^\n]*\);/, '').trim();
       const extracted = readFileSync(`src/app/${page}/${page}.css`, 'utf8')
         .replace(/^@layer components \{\n/, '').replace(/\n\}\n$/, '').trim();
-      expect(extracted).toBe(originalStyles);
+      const preservedStyles = (styles: string) => page === 'anatomy'
+        ? styles
+          .replace(/\/\* ---------- CASE GRID \(teasers\) ---------- \*\/[\s\S]*?(?=\/\* ---------- DEEP DIVE SECTIONS)/, '')
+          .replace(/\.case-grid\{[^}]*\}/g, '')
+        : styles;
+      expect(preservedStyles(extracted)).toBe(preservedStyles(originalStyles!));
     });
   }
 
@@ -53,5 +58,25 @@ describe('migration preservation', () => {
     const encoded = original.match(/data:image\/png;base64,([A-Za-z0-9+/=]+)/)?.[1];
     expect(encoded).toBeTruthy();
     expect(readFileSync('src/assets/tactspaces-logo.png')).toEqual(Buffer.from(encoded!, 'base64'));
+  });
+});
+
+describe('portfolio grid layout', () => {
+  const styles = readFileSync('src/app/anatomy/anatomy.css', 'utf8');
+
+  it('keeps column counts fixed at desktop, tablet, and mobile breakpoints', () => {
+    expect(styles).not.toContain('repeat(auto-fit, minmax(320px,1fr))');
+    expect(styles).toMatch(/\.case-grid\{display:grid; grid-template-columns:repeat\(3, minmax\(0,1fr\)\)/);
+    expect(styles).toMatch(/@media \(max-width:1099px\)\{\s*\.case-grid\{grid-template-columns:repeat\(2, minmax\(0,1fr\)\)/);
+    expect(styles).toMatch(/@media \(max-width:640px\)\{[^}]*\}[\s\S]*?\.case-grid\{grid-template-columns:minmax\(0,1fr\)/);
+  });
+
+  it('borders populated cards without filling unused grid cells', () => {
+    const grid = styles.match(/\.case-grid\{([^}]*)\}/)?.[1];
+    const card = styles.match(/\.case-card\{([^}]*)\}/)?.[1];
+    expect(grid).toContain('background:var(--alabaster)');
+    expect(grid).not.toContain('border:');
+    expect(card).toContain('outline:1px solid var(--line)');
+    expect(styles).toContain('.case-card:focus-visible{outline:2px solid var(--forest)');
   });
 });

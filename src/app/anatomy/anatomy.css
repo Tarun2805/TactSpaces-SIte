@@ -73,15 +73,20 @@
   .filter-pill:not(.active):hover{border-color:var(--forest);}
 
   /* ---------- CASE GRID (teasers) ---------- */
-  .case-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin:0 5vw; width:calc(100% - 10vw);}
-  .case-card{background:var(--alabaster); padding:2.4rem; cursor:pointer; transition:background 0.4s ease;}
+  .case-grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:1px; padding:1px; background:var(--alabaster); margin:0 5vw; width:calc(100% - 10vw);}
+  /* Outline only populated cells so filtered results leave clean empty space. */
+  .case-card{background:var(--alabaster); outline:1px solid var(--line); padding:2.4rem; cursor:pointer; transition:background 0.4s ease;}
   .case-card:hover{background:var(--alabaster-deep);}
+  .case-card:focus-visible{outline:2px solid var(--forest); outline-offset:-2px;}
   .case-card .thumb{aspect-ratio:16/10; margin-bottom:1.4rem; position:relative; overflow:hidden; background:linear-gradient(160deg,#E7E4DA,#D7D2C4);}
   .case-card .thumb .blk{position:absolute; background:var(--forest); opacity:0.9;}
   .case-card .meta-row{display:flex; justify-content:space-between; font-size:0.76rem; color:#6B726D; margin-bottom:0.4rem;}
   .case-card h3{font-size:1.25rem; margin-bottom:0.5rem;}
   .case-card .stat{font-size:0.78rem; color:var(--accent); font-weight:600;}
   .status-badge{display:inline-block; font-size:0.68rem; letter-spacing:0.06em; text-transform:uppercase; font-weight:700; padding:0.25rem 0.6rem; border-radius:10px; background:var(--accent-soft); color:var(--alabaster);}
+  @media (max-width:1099px){
+    .case-grid{grid-template-columns:repeat(2, minmax(0,1fr));}
+  }
 
   /* ---------- DEEP DIVE SECTIONS ---------- */
   .deep-dive{padding:8rem 0 6rem; border-top:1px solid var(--line);}
@@ -181,7 +186,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 8px);}
   .filter-bar::-webkit-scrollbar{display:none;}
   .filter-pill{flex:none; white-space:nowrap; min-height:40px; padding:.55rem 1.1rem;}
   .portfolio-index > section{padding:1.5rem 0 1rem !important;}
-  .case-grid{grid-template-columns:1fr; margin:0 20px; width:calc(100% - 40px);}
+  .case-grid{grid-template-columns:minmax(0,1fr); margin:0 20px; width:calc(100% - 40px);}
   .case-card{padding:1.25rem;}
   .case-card .thumb{margin-bottom:1rem;}
   .deep-dive{padding:4rem 0 2.5rem;}
