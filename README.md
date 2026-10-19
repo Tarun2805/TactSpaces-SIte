@@ -64,7 +64,7 @@ src/styles/           Tailwind integration and matching theme tokens
 src/test/             DOM-based interaction and content/style regression tests
 ```
 
-The original CSS declarations, fonts, responsive breakpoints, layout, hover effects, and animation timings are retained in each page's stylesheet. They are in Tailwind's `components` layer so utilities can override them predictably. Tailwind Preflight is intentionally omitted to avoid changing the original reset. Google Fonts remains an external dependency, as before.
+The original CSS declarations, fonts, responsive breakpoints, layout, hover effects, and animation timings are retained in each page's stylesheet. They are in Tailwind's `components` layer. Shared typography and spacing refinements live in `src/styles/typography-spacing.css`, in a `refinements` layer above page styles and below utilities. Tailwind Preflight is intentionally omitted to avoid changing the original reset. Google Fonts remains an external dependency, as before.
 
 The archive is source-only and is not bundled into production. Do not edit archived HTML when changing the React application.
 

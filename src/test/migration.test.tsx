@@ -34,7 +34,7 @@ describe('migration preservation', () => {
       }
       const text = (doc: Document) => Array.from(doc.querySelectorAll(
         'h1,h2,h3,h4,p,blockquote,dt,dd,.stat,.idx,.name,.title,.role,.stage-label,.step-label,.tile-label,.day,.doc-name,.num,.lbl,footer a[href^="tel:"],footer a[href^="mailto:"],footer a[href^="https://www.google.com/maps/"]',
-      )).map((element) => element.textContent?.replace(/\s+/g, ''));
+      )).map((element) => element.textContent?.replace(/[“”]/g, '"').replace(/\s+/g, ''));
       expect(text(after)).toEqual(text(before));
 
       // Footer contact links intentionally replace the original plain text.

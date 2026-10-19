@@ -38,7 +38,7 @@ function ProjectSectionContent({ section, projectName, id }: ProjectSectionConte
         </HorizontalTimeline>
       );
     case 'testimonial':
-      return <blockquote className="pull reveal">"{section.quote}"<cite>{section.author}</cite></blockquote>;
+      return <blockquote className="pull reveal">“{section.quote}”<cite>{section.author}</cite></blockquote>;
     case 'comparison':
       return <BeforeAfterSlider id={id} project={projectName} before={section.before} after={section.after} />;
   }

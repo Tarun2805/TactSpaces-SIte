@@ -23,10 +23,10 @@ export function ProjectCard({ project, variant = 'portfolio', hidden = false }: 
       </div>
       <div className={isPortfolio ? 'meta-row' : 'work-meta'}>
         <span>{project.location}</span>
-        <span>{project.status ? <span className="status-badge">{project.status}</span> : project.duration}</span>
+        <span>{project.status ? <span className="status-badge">{project.status}</span> : project.duration.replaceAll(' ', '\u00a0')}</span>
       </div>
       <h3>{project.name}</h3>
-      <span className="stat">{project.area} · {project.scope}</span>
+      <span className="stat">{project.area.replaceAll(' ', '\u00a0')} · {project.scope}</span>
     </Tag>
   );
 }

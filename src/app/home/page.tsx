@@ -55,7 +55,7 @@ export default function HomePage() {
     <div className="trust-card">
       <span className="idx">03</span>
       <h3>Contractual Timely Delivery</h3>
-      <p>Timelines are binding, not aspirational. D Hoofers Dance Studio: 4,000 sq. ft. in 45 days, exactly as signed for.</p>
+      <p>Timelines are binding, not aspirational. D Hoofers Dance Studio: 4,000&nbsp;sq.&nbsp;ft. in 45&nbsp;days, exactly as signed for.</p>
     </div>
   </div>
 </section>
@@ -73,7 +73,7 @@ export default function HomePage() {
 </section>
 
 <div className="founders reveal">
-  <blockquote>"Founded in 2025, on a shared belief that creativity and precision aren't a trade-off."</blockquote>
+  <blockquote>“Founded in 2025, on a shared belief that creativity and precision aren't a trade-off.”</blockquote>
   <div className="founder-names">
     <div><span className="name">Sarthak Mittal</span><span className="title">Architect · Co-Founder</span></div>
     <div><span className="name">Tarun Sai</span><span className="title">Architect · Co-Founder</span></div>

@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 /* Keep the original reset: Tailwind Preflight would change the existing design. */
-@layer theme, base, components, utilities;
+@layer theme, base, components, refinements, utilities;
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities.css' layer(utilities);
+@import './typography-spacing.css' layer(refinements);
 @source '../';
 
 @layer base {

@@ -93,7 +93,7 @@ export default function StandardPage() {
 <section className="commit-section">
   <div className="commit-head reveal">
     <p className="eyebrow">Our Commitments</p>
-    <h2 style={{"fontSize": "clamp(1.9rem,3vw,2.6rem)", "marginTop": "1rem"}}>The fine print, up front.</h2>
+    <h2>The fine print, up front.</h2>
   </div>
   <div className="commit-grid reveal">
     <div className="commit-card"><h4>Client-Centric Approach</h4><p>Every project begins with understanding your vision, lifestyle, and functional needs.</p></div>
