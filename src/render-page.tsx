@@ -1,6 +1,7 @@
 import { StrictMode, type ComponentType } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 import { SiteLayout } from './components/shared/site-layout';
+import { initializeGoogleAnalytics } from './lib/google-analytics';
 import type { PageName } from './types/site';
 
 export function renderPage(Page: ComponentType, page: PageName, options: { hydrate?: boolean; siteRoot?: string } = {}) {
@@ -16,4 +17,5 @@ export function renderPage(Page: ComponentType, page: PageName, options: { hydra
   );
   if (options.hydrate) hydrateRoot(container, content);
   else createRoot(container).render(content);
+  initializeGoogleAnalytics();
 }
