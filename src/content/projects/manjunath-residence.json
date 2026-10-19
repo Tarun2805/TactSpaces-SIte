@@ -1,0 +1,12 @@
+{
+  "slug": "manjunath-residence",
+  "order": 5,
+  "name": "Manjunath Residence",
+  "category": "residential",
+  "location": "Kanakapura, Bengaluru",
+  "duration": "1 month",
+  "area": "2,400 sq. ft.",
+  "scope": "Interior Design",
+  "cover": { "kind": "placeholder", "preset": "manjunath" },
+  "featured": true
+}

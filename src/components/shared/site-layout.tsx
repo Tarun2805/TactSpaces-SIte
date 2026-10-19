@@ -7,9 +7,10 @@ import { SiteNavigation } from './site-navigation';
 interface SiteLayoutProps {
   page: PageName;
   children: ReactNode;
+  siteRoot?: string;
 }
 
-export function SiteLayout({ page, children }: SiteLayoutProps) {
+export function SiteLayout({ page, children, siteRoot = '' }: SiteLayoutProps) {
   const contentRef = useRef<HTMLElement>(null);
   useReveal(contentRef, page === 'home' ? 0.15 : 0.12);
 
@@ -22,9 +23,9 @@ export function SiteLayout({ page, children }: SiteLayoutProps) {
 
   return (
     <>
-      <SiteNavigation page={page} />
+      <SiteNavigation page={page} siteRoot={siteRoot} />
       <main ref={contentRef}>{children}</main>
-      <SiteFooter />
+      <SiteFooter siteRoot={siteRoot} />
     </>
   );
 }

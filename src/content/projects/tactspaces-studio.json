@@ -1,0 +1,11 @@
+{
+  "slug": "tactspaces-studio",
+  "order": 8,
+  "name": "TactSpaces Studio (HQ)",
+  "category": "commercial",
+  "location": "Kereguddadahalli, Bengaluru",
+  "duration": "1 month",
+  "area": "200 sq. ft.",
+  "scope": "Complete Office Setup",
+  "cover": { "kind": "placeholder", "preset": "office" }
+}

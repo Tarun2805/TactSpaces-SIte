@@ -1,17 +1,19 @@
 import { StrictMode, type ComponentType } from 'react';
-import { createRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { SiteLayout } from './components/shared/site-layout';
 import type { PageName } from './types/site';
 
-export function renderPage(Page: ComponentType, page: PageName) {
+export function renderPage(Page: ComponentType, page: PageName, options: { hydrate?: boolean; siteRoot?: string } = {}) {
   const container = document.getElementById('root');
   if (!container) throw new Error('The application root is missing.');
 
-  createRoot(container).render(
+  const content = (
     <StrictMode>
-      <SiteLayout page={page}>
+      <SiteLayout page={page} siteRoot={options.siteRoot}>
         <Page />
       </SiteLayout>
-    </StrictMode>,
+    </StrictMode>
   );
+  if (options.hydrate) hydrateRoot(container, content);
+  else createRoot(container).render(content);
 }

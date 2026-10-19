@@ -1,0 +1,53 @@
+{
+  "slug": "pinaki-residence",
+  "order": 2,
+  "name": "Pinaki Residence",
+  "category": "residential",
+  "location": "Shettyhalli, Bengaluru",
+  "duration": "3 months",
+  "area": "1,430 sq. ft.",
+  "scope": "Turnkey Execution",
+  "cover": { "kind": "placeholder", "preset": "residence" },
+  "featured": true,
+  "legacyAnchor": "dd-pinaki",
+  "details": {
+    "summary": "A comprehensive turnkey transformation demanding meticulous spatial planning. Through single-point responsibility, we navigated complex site modifications to deliver a seamless, stress-free interior defined by an exacting attention to detail.",
+    "stats": [
+      { "value": "1,430", "label": "Sq. Ft. · 3 BHK Renovation" },
+      { "value": "3", "label": "Months, Design to Handover" }
+    ],
+    "sections": [
+      {
+        "type": "timeline",
+        "stages": [
+          {
+            "label": "Stage 1", "title": "Raw Site",
+            "description": "Existing 1,430 sq. ft. flat, stripped back to shell ahead of the renovation scope.",
+            "media": { "kind": "placeholder", "preset": "raw-residential" }
+          },
+          {
+            "label": "Stage 2", "title": "MEP Routing",
+            "description": "Plumbing and electrical re-routed to support the new kitchen and bathroom layouts.",
+            "media": { "kind": "placeholder", "preset": "pending" }
+          },
+          {
+            "label": "Stage 3", "title": "Finish Carpentry",
+            "description": "Custom wardrobes and kitchen cabinetry installed to the approved material specification.",
+            "media": { "kind": "placeholder", "preset": "finishes-residential" }
+          },
+          {
+            "label": "Stage 4", "title": "Final Handover",
+            "description": "Sign-off against the original drawing set, three months from Discovery to keys-in-hand.",
+            "media": { "kind": "placeholder", "preset": "handover" }
+          }
+        ]
+      },
+      {
+        "type": "testimonial",
+        "quote": "TactSpaces understood exactly what we wanted and transformed our home beautifully. Their attention to detail, transparency, and commitment throughout the execution made the entire experience smooth and stress-free.",
+        "author": "Mr. Pinaki"
+      },
+      { "type": "comparison" }
+    ]
+  }
+}

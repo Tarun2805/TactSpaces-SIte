@@ -1,0 +1,27 @@
+{
+  "slug": "hakuna-matata",
+  "order": 3,
+  "name": "Hakuna Matata Hotel",
+  "category": "hospitality",
+  "location": "Arambol, Goa",
+  "duration": "15 days",
+  "area": "1,200 sq. ft.",
+  "scope": "Budget Renovation",
+  "cover": { "kind": "placeholder", "preset": "hotel" },
+  "legacyAnchor": "dd-hakuna",
+  "details": {
+    "summary": "A highly strategic, rapid-deployment renovation designed to maximize return on investment. By utilizing smart design interventions within a tight timeline, we completely refreshed the hospitality experience to immediately elevate the property's market value.",
+    "stats": [
+      { "value": "1,200", "label": "Sq. Ft. · 3 Rooms" },
+      { "value": "15", "label": "Days, Budget Renovation" }
+    ],
+    "sections": [
+      { "type": "comparison" },
+      {
+        "type": "testimonial",
+        "quote": "With a limited budget and tight timeline, TactSpaces completely refreshed our rooms with great creativity and effort. The transformation exceeded our expectations.",
+        "author": "Arpit, Hakuna Matata Hotel"
+      }
+    ]
+  }
+}

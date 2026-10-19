@@ -1,6 +1,10 @@
 import logo from '../../assets/tactspaces-logo.png';
 
-export function SiteFooter() {
+interface SiteFooterProps {
+  siteRoot?: string;
+}
+
+export function SiteFooter({ siteRoot = '' }: SiteFooterProps) {
   return (
     <footer>
       <div className="footer-grid">
@@ -10,15 +14,15 @@ export function SiteFooter() {
     </div>
     <div>
       <h4>Explore</h4>
-      <a href="anatomy.html">Anatomy of Execution</a>
-      <a href="standard.html">The Standard</a>
-      <a href="command-center.html">Command Center</a>
+      <a href={`${siteRoot}anatomy.html`}>Anatomy of Execution</a>
+      <a href={`${siteRoot}standard.html`}>The Standard</a>
+      <a href={`${siteRoot}command-center.html`}>Command Center</a>
     </div>
     <div>
       <h4>Studio</h4>
-      <a href="studio.html">About</a>
-      <a href="studio.html#team">Our Team</a>
-      <a href="studio.html#profile">Download Profile</a>
+      <a href={`${siteRoot}studio.html`}>About</a>
+      <a href={`${siteRoot}studio.html#team`}>Our Team</a>
+      <a href={`${siteRoot}studio.html#profile`}>Download Profile</a>
     </div>
     <div>
       <h4>Contact</h4>

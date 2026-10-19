@@ -25,15 +25,19 @@ describe('migration preservation', () => {
   for (const { source, page, Component } of PAGES) {
     const original = readFileSync(`archive/html/${source}.html`, 'utf8');
 
-    it(`preserves ${source}'s content, links, and anchors`, () => {
+    it(`preserves ${source}'s content, links, and anchors outside data-driven project content`, () => {
       const before = parse(original);
       const after = parse(renderToStaticMarkup(<SiteLayout page={page}><Component /></SiteLayout>));
+      // Project listings now come from JSON; case studies have their own pages.
+      for (const doc of [before, after]) {
+        if (page === 'anatomy') doc.querySelectorAll('.deep-dive').forEach((node) => node.remove());
+      }
       const text = (doc: Document) => Array.from(doc.querySelectorAll(
         'h1,h2,h3,h4,p,blockquote,dt,dd,.stat,.idx,.name,.title,.role,.stage-label,.step-label,.tile-label,.day,.doc-name,.num,.lbl',
       )).map((element) => element.textContent?.replace(/\s+/g, ''));
       expect(text(after)).toEqual(text(before));
 
-      const links = (doc: Document) => Array.from(doc.querySelectorAll('a')).map((a) => a.getAttribute('href'));
+      const links = (doc: Document) => Array.from(doc.querySelectorAll('a:not(.work-card):not(.case-card)')).map((a) => a.getAttribute('href'));
       expect(links(after)).toEqual(links(before));
       const anchors = (doc: Document) => Array.from(doc.querySelectorAll('section[id]')).map((section) => section.id);
       expect(anchors(after)).toEqual(anchors(before));

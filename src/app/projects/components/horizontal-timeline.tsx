@@ -1,4 +1,4 @@
-import { useRef, type ReactNode } from 'react';
+import { Children, useRef, type ReactNode } from 'react';
 import { useScrollUpdate } from '../../../hooks/use-scroll-update';
 
 interface HorizontalTimelineProps {
@@ -28,7 +28,7 @@ export function HorizontalTimeline({ children, trackId, fillId }: HorizontalTime
   });
 
   return (
-    <div ref={wrapRef} className="h-timeline-wrap h-[400vh]">
+    <div ref={wrapRef} className="h-timeline-wrap" style={{ height: `${Math.max(1, Children.count(children)) * 100}vh` }}>
       <div ref={stickyRef} className="h-timeline-sticky">
         <div ref={trackRef} className="h-timeline-track" id={trackId}>{children}</div>
       </div>

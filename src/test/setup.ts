@@ -1,7 +1,7 @@
 import { cleanup } from '@testing-library/react';
 import { afterEach, vi } from 'vitest';
 
-Object.defineProperty(window, 'matchMedia', {
+if (typeof window !== 'undefined') Object.defineProperty(window, 'matchMedia', {
   writable: true,
   value: vi.fn((query: string) => ({
     matches: false,
@@ -15,12 +15,14 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
-Object.defineProperty(HTMLElement.prototype, 'scrollIntoView', { configurable: true, value: vi.fn() });
+if (typeof HTMLElement !== 'undefined') Object.defineProperty(HTMLElement.prototype, 'scrollIntoView', { configurable: true, value: vi.fn() });
 
 afterEach(() => {
   cleanup();
   vi.restoreAllMocks();
   vi.useRealTimers();
-  document.body.className = '';
-  window.history.replaceState({}, '', '/');
+  if (typeof document !== 'undefined') {
+    document.body.className = '';
+    window.history.replaceState({}, '', '/');
+  }
 });

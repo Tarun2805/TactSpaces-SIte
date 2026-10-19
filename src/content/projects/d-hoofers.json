@@ -1,0 +1,57 @@
+{
+  "slug": "d-hoofers",
+  "order": 1,
+  "name": "D Hoofers Dance Studio",
+  "category": "commercial",
+  "location": "Horamavu, Bengaluru",
+  "duration": "45 days",
+  "area": "4,000 sq. ft.",
+  "scope": "Design & Execution",
+  "cover": { "kind": "placeholder", "preset": "studio" },
+  "featured": true,
+  "legacyAnchor": "dd-hoofers",
+  "details": {
+    "summary": "Executed with absolute operational precision on a highly aggressive timeline, proving our capacity to manage multiple vendor overlaps and deliver a high-impact commercial environment without schedule overruns.",
+    "stats": [
+      { "value": "4,000", "label": "Sq. Ft." },
+      { "value": "45", "label": "Days, Start to Handover" },
+      { "value": "0", "label": "Schedule Overruns" }
+    ],
+    "sections": [
+      {
+        "type": "hero",
+        "media": { "kind": "placeholder", "preset": "hero" },
+        "callouts": [
+          { "top": "18%", "left": "20%", "text": "Charcoal fluted panel · reception facade" },
+          { "top": "60%", "left": "78%", "text": "Suspended linear LED · studio ceiling" },
+          { "top": "35%", "left": "65%", "text": "Sprung hardwood flooring · main studio" }
+        ]
+      },
+      {
+        "type": "timeline",
+        "stages": [
+          {
+            "label": "Day 1", "title": "Raw Shell",
+            "description": "A bare 4,000 sq. ft. commercial floorplate, structurally surveyed for MEP before a single wall goes up.",
+            "media": { "kind": "placeholder", "preset": "raw-commercial" }
+          },
+          {
+            "label": "Day 15", "title": "Structure & MEP",
+            "description": "Electrical, HVAC, and acoustic backing routed alongside framing, the phase most turnkey firms let slip.",
+            "media": { "kind": "placeholder", "preset": "structure" }
+          },
+          {
+            "label": "Day 30", "title": "Finishes",
+            "description": "Fluted panelling, sprung flooring, and the linear LED grid land, and the studio starts reading as designed space.",
+            "media": { "kind": "placeholder", "preset": "finishes-commercial" }
+          },
+          {
+            "label": "Day 45", "title": "Handover",
+            "description": "Final quality pass against the approved drawing set. Keys handed over on the date signed in the Master Contract.",
+            "media": { "kind": "placeholder", "preset": "handover" }
+          }
+        ]
+      }
+    ]
+  }
+}

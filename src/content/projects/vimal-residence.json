@@ -1,0 +1,11 @@
+{
+  "slug": "vimal-residence",
+  "order": 4,
+  "name": "Vimal Residence",
+  "category": "residential",
+  "location": "Hennur, Bengaluru",
+  "duration": "20 days",
+  "area": "1,200 sq. ft.",
+  "scope": "Interior Design",
+  "cover": { "kind": "placeholder", "preset": "vimal" }
+}

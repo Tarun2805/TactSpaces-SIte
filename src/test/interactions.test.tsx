@@ -2,6 +2,8 @@ import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import { StrictMode } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import AnatomyPage from '../app/anatomy/page';
+import ProjectPage from '../app/projects/page';
+import { PROJECTS } from '../constants/projects';
 import HomePage from '../app/home/page';
 import StandardPage from '../app/standard/page';
 import StudioPage from '../app/studio/page';
@@ -51,7 +53,7 @@ describe('page interactions', () => {
     expect(container.querySelector('#heroVisual')?.classList.contains('animate')).toBe(true);
   });
 
-  it('filters the portfolio and restores all eight cards', () => {
+  it('filters the portfolio and restores all eight cards, including listing-only projects', () => {
     const { container } = render(<AnatomyPage />);
     const cards = () => Array.from(container.querySelectorAll<HTMLElement>('.case-card'));
     fireEvent.click(screen.getByRole('button', { name: 'Premium Residential' }));
@@ -65,16 +67,16 @@ describe('page interactions', () => {
   });
 
   it('keeps comparison sliders independent', () => {
-    const { container } = render(<AnatomyPage />);
+    const { container } = render(<><ProjectPage project={PROJECTS[1]} /><ProjectPage project={PROJECTS[2]} /></>);
     fireEvent.change(screen.getByRole('slider', { name: 'Pinaki Residence before and after comparison' }), { target: { value: '75' } });
-    expect(container.querySelector<HTMLElement>('#baPinaki .ba-before-wrap')?.style.width).toBe('75%');
-    expect(container.querySelector<HTMLElement>('#baPinaki .ba-handle')?.style.left).toBe('75%');
-    expect(container.querySelector<HTMLElement>('#baHakuna .ba-before-wrap')?.style.width).toBe('50%');
+    expect(container.querySelector<HTMLElement>('#pinaki-residence-2 .ba-before-wrap')?.style.clipPath).toBe('inset(0 25% 0 0)');
+    expect(container.querySelector<HTMLElement>('#pinaki-residence-2 .ba-handle')?.style.left).toBe('75%');
+    expect(container.querySelector<HTMLElement>('#hakuna-matata-0 .ba-before-wrap')?.style.clipPath).toBe('inset(0 50% 0 0)');
   });
 
   it('reveals material callouts on touch and dismisses them after the original delay', () => {
     vi.useFakeTimers();
-    const { container } = render(<AnatomyPage />);
+    const { container } = render(<ProjectPage project={PROJECTS[0]} />);
     fireEvent.touchStart(screen.getByRole('button', { name: 'Charcoal fluted panel · reception facade' }));
     expect(container.querySelector('.callout-tip')?.classList.contains('show')).toBe(true);
     act(() => { vi.advanceTimersByTime(2200); });
