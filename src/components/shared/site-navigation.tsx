@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import logo from '../../assets/tactspaces-logo.png';
 import { DESKTOP_MENU_QUERY, SITE_NAVIGATION } from '../../constants/site-navigation';
 import type { PageName } from '../../types/site';
@@ -10,7 +10,28 @@ interface SiteNavigationProps {
 
 export function SiteNavigation({ page, siteRoot = '' }: SiteNavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
+
+  useLayoutEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+    const root = document.documentElement;
+    const previousHeight = root.style.getPropertyValue('--nav-h');
+    const updateHeight = () => {
+      root.style.setProperty('--nav-h', `${nav.getBoundingClientRect().height}px`);
+    };
+    updateHeight();
+    const observer = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(updateHeight) : undefined;
+    observer?.observe(nav, { box: 'border-box' });
+    if (!observer) window.addEventListener('resize', updateHeight);
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener('resize', updateHeight);
+      if (previousHeight) root.style.setProperty('--nav-h', previousHeight);
+      else root.style.removeProperty('--nav-h');
+    };
+  }, []);
 
   useEffect(() => {
     document.body.classList.toggle('nav-locked', isOpen);
@@ -38,7 +59,7 @@ export function SiteNavigation({ page, siteRoot = '' }: SiteNavigationProps) {
 
   return (
     <>
-      <nav id="nav" aria-label="Main navigation">
+      <nav ref={navRef} id="nav" aria-label="Main navigation">
         <a className="logo-mark" href={`${siteRoot}index.html`}>
           <img src={logo} alt="TactSpaces" />
         </a>

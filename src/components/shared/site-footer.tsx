@@ -26,9 +26,15 @@ export function SiteFooter({ siteRoot = '' }: SiteFooterProps) {
     </div>
     <div>
       <h4>Contact</h4>
-      <p>+91 73489 21433</p>
-      <p>tactspaces@gmail.com</p>
-      <p>#16, SRS Building, Gangaiah Layout,<br />Kereguddadahalli, Bengaluru 560090</p>
+      <a href="tel:+917348921433">+91 73489 21433</a>
+      <a href="mailto:tactspaces@gmail.com">tactspaces@gmail.com</a>
+      <a
+        href="https://www.google.com/maps/search/?api=1&query=%2316%2C%20SRS%20Building%2C%20Gangaiah%20Layout%2C%20Kereguddadahalli%2C%20Bengaluru%20560090"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        #16, SRS Building, Gangaiah Layout,<br />Kereguddadahalli, Bengaluru 560090
+      </a>
     </div>
   </div>
   <div className="footer-bottom">

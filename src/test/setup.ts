@@ -20,6 +20,7 @@ if (typeof HTMLElement !== 'undefined') Object.defineProperty(HTMLElement.protot
 afterEach(() => {
   cleanup();
   vi.restoreAllMocks();
+  vi.unstubAllGlobals();
   vi.useRealTimers();
   if (typeof document !== 'undefined') {
     document.body.className = '';

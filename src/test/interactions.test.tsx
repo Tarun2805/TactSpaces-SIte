@@ -12,6 +12,43 @@ import { SiteLayout } from '../components/shared/site-layout';
 import { SiteNavigation } from '../components/shared/site-navigation';
 
 describe('navigation', () => {
+  it('keeps sticky offsets aligned with the measured navigation height and cleans up', () => {
+    let notifyResize: () => void = () => {};
+    const observe = vi.fn();
+    const disconnect = vi.fn();
+    vi.stubGlobal('ResizeObserver', class {
+      constructor(callback: () => void) { notifyResize = callback; }
+      observe = observe;
+      disconnect = disconnect;
+    });
+    const bounds = vi.spyOn(HTMLElement.prototype, 'getBoundingClientRect');
+    bounds.mockReturnValue({ height: 86.5 } as DOMRect);
+    const { container, unmount } = render(<StrictMode><SiteNavigation page="anatomy" /></StrictMode>);
+    const root = document.documentElement;
+    expect(root.style.getPropertyValue('--nav-h')).toBe('86.5px');
+    expect(observe).toHaveBeenLastCalledWith(container.querySelector('#nav'), { box: 'border-box' });
+    bounds.mockReturnValue({ height: 64.2 } as DOMRect);
+    act(() => notifyResize());
+    expect(root.style.getPropertyValue('--nav-h')).toBe('64.2px');
+    unmount();
+    expect(root.style.getPropertyValue('--nav-h')).toBe('');
+    expect(disconnect).toHaveBeenCalledTimes(2);
+  });
+
+  it('updates the sticky offset on resize when ResizeObserver is unavailable', () => {
+    vi.stubGlobal('ResizeObserver', undefined);
+    const bounds = vi.spyOn(HTMLElement.prototype, 'getBoundingClientRect');
+    bounds.mockReturnValue({ height: 87 } as DOMRect);
+    const { unmount } = render(<SiteNavigation page="anatomy" />);
+    expect(document.documentElement.style.getPropertyValue('--nav-h')).toBe('87px');
+    bounds.mockReturnValue({ height: 64 } as DOMRect);
+    fireEvent(window, new Event('resize'));
+    expect(document.documentElement.style.getPropertyValue('--nav-h')).toBe('64px');
+    unmount();
+    fireEvent(window, new Event('resize'));
+    expect(document.documentElement.style.getPropertyValue('--nav-h')).toBe('');
+  });
+
   it('opens, closes on Escape/backdrop/link, and unlocks scrolling on cleanup', () => {
     const { container, unmount } = render(<StrictMode><SiteNavigation page="home" /></StrictMode>);
     const toggle = screen.getByRole('button', { name: 'Toggle menu' });

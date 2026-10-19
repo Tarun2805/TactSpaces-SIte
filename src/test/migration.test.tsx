@@ -33,11 +33,20 @@ describe('migration preservation', () => {
         if (page === 'anatomy') doc.querySelectorAll('.deep-dive').forEach((node) => node.remove());
       }
       const text = (doc: Document) => Array.from(doc.querySelectorAll(
-        'h1,h2,h3,h4,p,blockquote,dt,dd,.stat,.idx,.name,.title,.role,.stage-label,.step-label,.tile-label,.day,.doc-name,.num,.lbl',
+        'h1,h2,h3,h4,p,blockquote,dt,dd,.stat,.idx,.name,.title,.role,.stage-label,.step-label,.tile-label,.day,.doc-name,.num,.lbl,footer a[href^="tel:"],footer a[href^="mailto:"],footer a[href^="https://www.google.com/maps/"]',
       )).map((element) => element.textContent?.replace(/\s+/g, ''));
       expect(text(after)).toEqual(text(before));
 
-      const links = (doc: Document) => Array.from(doc.querySelectorAll('a:not(.work-card):not(.case-card)')).map((a) => a.getAttribute('href'));
+      // Footer contact links intentionally replace the original plain text.
+      expect(after.querySelector('footer a[href="tel:+917348921433"]')?.textContent).toBe('+91 73489 21433');
+      expect(after.querySelector('footer a[href="mailto:tactspaces@gmail.com"]')?.textContent).toBe('tactspaces@gmail.com');
+      const addressLink = after.querySelector('footer a[href^="https://www.google.com/maps/"]');
+      const mapsUrl = new URL(addressLink!.getAttribute('href')!);
+      expect(mapsUrl.searchParams.get('api')).toBe('1');
+      expect(mapsUrl.searchParams.get('query')).toBe('#16, SRS Building, Gangaiah Layout, Kereguddadahalli, Bengaluru 560090');
+      expect(addressLink?.getAttribute('target')).toBe('_blank');
+      expect(addressLink?.getAttribute('rel')).toBe('noopener noreferrer');
+      const links = (doc: Document) => Array.from(doc.querySelectorAll('a:not(.work-card):not(.case-card):not(footer a[href^="tel:"]):not(footer a[href^="mailto:"]):not(footer a[href^="https://www.google.com/maps/"])')).map((a) => a.getAttribute('href'));
       expect(links(after)).toEqual(links(before));
       const anchors = (doc: Document) => Array.from(doc.querySelectorAll('section[id]')).map((section) => section.id);
       expect(anchors(after)).toEqual(anchors(before));
@@ -50,9 +59,12 @@ describe('migration preservation', () => {
         .replace(/^@layer components \{\n/, '').replace(/\n\}\n$/, '').trim();
       const preservedStyles = (styles: string) => page === 'anatomy'
         ? styles
+          .replace(/(\.filter-bar\{position:sticky; top:)72px/, '$1var(--nav-h)')
           .replace(/\/\* ---------- CASE GRID \(teasers\) ---------- \*\/[\s\S]*?(?=\/\* ---------- DEEP DIVE SECTIONS)/, '')
           .replace(/\.case-grid\{[^}]*\}/g, '')
-        : styles;
+        : page === 'studio'
+          ? styles.replace(/\n\s*section\[id\]\{scroll-margin-top:var\(--nav-h\);\}/, '')
+          : styles;
       expect(preservedStyles(extracted)).toBe(preservedStyles(originalStyles!));
     });
   }
@@ -65,8 +77,22 @@ describe('migration preservation', () => {
   });
 });
 
+describe('studio anchor layout', () => {
+  it('offsets anchored sections by the measured header height without changing section spacing', () => {
+    const styles = readFileSync('src/app/studio/studio.css', 'utf8');
+    expect(styles).toContain('section[id]{scroll-margin-top:var(--nav-h);}');
+    expect(styles).toContain('section{padding:5rem 5vw;}');
+    expect(styles).toContain('section{padding:3.5rem 20px;}');
+  });
+});
+
 describe('portfolio grid layout', () => {
   const styles = readFileSync('src/app/anatomy/anatomy.css', 'utf8');
+
+  it('sticks the filter bar below the measured navigation at every breakpoint', () => {
+    const offsets = Array.from(styles.matchAll(/\.filter-bar\{[^}]*?top:([^;]+);/g), (match) => match[1]);
+    expect(offsets).toEqual(['var(--nav-h)', 'var(--nav-h)']);
+  });
 
   it('keeps column counts fixed at desktop, tablet, and mobile breakpoints', () => {
     expect(styles).not.toContain('repeat(auto-fit, minmax(320px,1fr))');
