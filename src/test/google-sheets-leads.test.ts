@@ -123,6 +123,11 @@ describe('client Google Sheets Apps Script', () => {
     expect(services.MailApp.sendEmail).not.toHaveBeenCalled();
   });
 
+  it('accepts enquiries from the deployed Vercel origin', () => {
+    const { post } = createScript();
+    expect(post({}, 'https://tactspaces.vercel.app').result?.ok).toBe(true);
+  });
+
   it('confirms unchanged retries without appending or emailing again', () => {
     const { api, post, rows, services } = createScript();
     api.LEAD_CONFIG.notificationEmail = 'team@example.com';

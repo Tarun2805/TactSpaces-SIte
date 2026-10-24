@@ -22,6 +22,8 @@ npm run preview
 
 Deploy the generated `dist/` folder. Vite builds the five main pages and pre-renders each published project at `/projects/<slug>/index.html`. Existing links (`anatomy.html`, `standard.html`, `command-center.html`, and `studio.html#team`) still work without rewrite rules or a client-side router. The static host should serve directory indexes, not rewrite unknown project URLs to the homepage. Serve through Vite or a web server rather than opening the HTML shells as local files.
 
+For a Squarespace domain hosted on Vercel while keeping DNS at Squarespace, follow the [domain setup guide](docs/domain-setup.md).
+
 ## Lead capture (Google Sheets)
 
 Command Center can save enquiries to a client-owned Google Sheet using Apps Script,
@@ -34,20 +36,9 @@ before accepting real leads.
 
 ## Google Analytics
 
-GA4 is wired into every page, including pre-rendered project pages. To enable it, set one environment variable in the hosting provider's **build environment**, then rebuild and redeploy:
+GA4 is wired into every page, including pre-rendered project pages. After the live domain is connected, follow the [GA4 setup guide](docs/google-analytics.md) to create a web stream, configure the Vercel build variable, redeploy, and verify visits in Realtime.
 
-```dotenv
-VITE_GA_MEASUREMENT_ID=G-XXXXXXXXXX
-```
-
-Ask the client for their GA4 **web stream Measurement ID**, found in Google Analytics → Admin → Data streams → their website. This is a public `G-...` identifier, not a numeric property ID, `GTM-...` container ID, API secret, or service-account credential. No other credentials or code changes are needed.
-
-- Missing, blank, or malformed IDs disable analytics without loading Google's script.
-- Analytics only runs in production builds, not `npm run dev`. For a local check, copy `.env.example` to `.env.local`, fill in the ID, then run `npm run build` and `npm run preview`. These preview visits will reach the configured property.
-- Page views are automatic on each document load; additional automatic events depend on the web stream's Enhanced Measurement settings. No custom lead-conversion events are configured. Do not treat automatic form events as proof that an enquiry was saved.
-- Verify a deployed visit in GA4's **Realtime** report with ad blockers disabled. Changing the variable requires another build and deployment; setting it on an already-built static site has no effect.
-
-**Consent:** When configured, this integration loads GA4 immediately and allows its standard cookies. It does not include a consent banner or consent-management integration. Before enabling it, the client must confirm their privacy notice and any consent requirements for their audience; where prior consent is required, add consent gating first.
+Missing or invalid Measurement IDs leave analytics disabled. The site sends page views automatically; no custom lead-conversion events are configured. Confirm privacy and consent requirements before enabling tracking.
 
 ## Structure
 
