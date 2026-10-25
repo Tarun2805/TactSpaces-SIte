@@ -89,21 +89,15 @@ export default function StandardPage() {
 
 <section className="commit-section">
   <div className="commit-head reveal">
-    <h2>The fine print, up front.</h2>
+    <h2>Our core principles</h2>
   </div>
   <div className="commit-grid reveal">
     <div className="commit-card"><h4>Client-Centric Approach</h4><p>Every project begins with understanding your vision, lifestyle, and functional needs.</p></div>
     <div className="commit-card"><h4>Quality Commitment</h4><p>Thoughtful designs, quality documentation, and meticulous execution in every project.</p></div>
-    <div className="commit-card"><h4>Design Excellence</h4><p>Every design balances functionality, innovation, aesthetics, and sustainability.</p></div>
+    <div className="commit-card"><h4>Design Excellence</h4><p>Every design balances functionality, innovation, and aesthetics.</p></div>
     <div className="commit-card"><h4>Transparency</h4><p>Honest communication, clear timelines, and transparent cost discussions throughout.</p></div>
-    <div className="commit-card"><h4>Professional Ethics</h4><p>Integrity, accountability, confidentiality, and respect in every relationship.</p></div>
-    <div className="commit-card"><h4>Timely Delivery</h4><p>Every project delivered within the agreed schedule through efficient coordination.</p></div>
     <div className="commit-card"><h4>Collaboration</h4><p>Built through close work with clients, consultants, contractors, and vendors.</p></div>
-    <div className="commit-card"><h4>Continuous Innovation</h4><p>Evolving methodologies and technologies to deliver future-ready spaces.</p></div>
-    <div className="commit-card"><h4>Sustainability</h4><p>Environmentally responsible design and conscious material selection wherever possible.</p></div>
-    <div className="commit-card"><h4>Safety &amp; Compliance</h4><p>Every project follows applicable building regulations and safety practices.</p></div>
-    <div className="commit-card"><h4>Customer Satisfaction</h4><p>Measured by the trust and lasting relationships we build through our work.</p></div>
-    <div className="commit-card"><h4>Continuous Support</h4><p>Guidance and assistance whenever required, well beyond project completion.</p></div>
+    <div className="commit-card"><h4>Sustainability</h4><p>Environmentally responsible design and thoughtful material choices, wherever possible.</p></div>
   </div>
 </section>
     </>

@@ -32,6 +32,13 @@ describe('migration preservation', () => {
       for (const doc of [before, after]) {
         if (page === 'anatomy') doc.querySelectorAll('.deep-dive').forEach((node) => node.remove());
       }
+      if (page === 'standard') {
+        before.querySelector('.commit-section')?.remove();
+        const principles = after.querySelector('.commit-section');
+        expect(principles?.querySelector('h2')?.textContent).toBe('Our core principles');
+        expect(principles?.querySelectorAll('.commit-card')).toHaveLength(6);
+        principles?.remove();
+      }
       const text = (doc: Document) => Array.from(doc.querySelectorAll(
         'h1,h2,h3,h4,p,blockquote,dt,dd,.stat,.idx,.name,.title,.role,.stage-label,.step-label,.tile-label,.day,.doc-name,.num,.lbl,footer a[href^="tel:"],footer a[href^="mailto:"],footer a[href^="https://www.google.com/maps/"],footer a[href="https://maps.app.goo.gl/yyCswfFMvS2y59Bq6"]',
       )).filter((element) => !element.classList.contains('eyebrow') && !element.closest('.studio-gallery-section'))

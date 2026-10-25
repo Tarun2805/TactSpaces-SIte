@@ -95,7 +95,7 @@
   /* ---- Commitments band ---- */
   .commit-section{padding:6rem 5vw;}
   .commit-head{max-width:680px; margin-bottom:3rem;}
-  .commit-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .commit-grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); grid-auto-rows:1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
   .commit-card{background:var(--alabaster); padding:1.8rem;}
   .commit-card h4{font-size:0.95rem; font-weight:700; margin-bottom:0.4rem;}
   .commit-card p{font-size:0.84rem; color:#5C645F; line-height:1.55;}
@@ -105,7 +105,7 @@
   .footer-grid h4{font-size:0.72rem; letter-spacing:0.15em; text-transform:uppercase; opacity:0.6; margin-bottom:1.1rem; font-weight:600;}
   .footer-grid a, .footer-grid p{font-size:0.88rem; opacity:0.9; display:block; margin-bottom:0.6rem; line-height:1.5;}
   .footer-bottom{display:flex; justify-content:space-between; padding-top:1.6rem; font-size:0.75rem; opacity:0.55;}
-  @media (max-width:900px){ .footer-grid{grid-template-columns:1fr 1fr;} .doc-grid{grid-template-columns:1fr;} }
+  @media (max-width:900px){ .footer-grid{grid-template-columns:1fr 1fr;} .doc-grid{grid-template-columns:1fr;} .commit-grid{grid-template-columns:repeat(2,minmax(0,1fr));} }
 
 /* ================= MOBILE REFINEMENTS ================= */
 :root{--nav-h:64px;}
@@ -157,6 +157,7 @@ a,button,.tile,.toggle-card,.doc-card,.case-card,.filter-pill{-webkit-tap-highli
   .doc-preview{aspect-ratio:16/10;}
   .doc-name{padding:1rem 1.1rem;}
   .commit-section{padding:3.25rem 20px;}
+  .commit-grid{grid-template-columns:1fr;}
   .commit-head{margin-bottom:2rem;}
   .commit-card{padding:1.25rem;}
 }
