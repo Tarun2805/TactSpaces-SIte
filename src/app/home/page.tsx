@@ -33,7 +33,7 @@ export default function HomePage() {
 
 <section>
   <div className="section-head reveal">
-    <h2>What we guarantee, in writing.</h2>
+    <h2>Our commitment</h2>
   </div>
   <div className="trust-grid reveal">
     <div className="trust-card">

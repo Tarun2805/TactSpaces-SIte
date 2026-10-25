@@ -32,6 +32,14 @@ describe('migration preservation', () => {
       for (const doc of [before, after]) {
         if (page === 'anatomy') doc.querySelectorAll('.deep-dive').forEach((node) => node.remove());
       }
+      if (page === 'home') {
+        before.querySelectorAll('h2').forEach((heading) => {
+          if (heading.textContent === 'What we guarantee, in writing.') heading.remove();
+        });
+        after.querySelectorAll('h2').forEach((heading) => {
+          if (heading.textContent === 'Our commitment') heading.remove();
+        });
+      }
       if (page === 'standard') {
         before.querySelector('.commit-section')?.remove();
         const principles = after.querySelector('.commit-section');
@@ -65,6 +73,11 @@ describe('migration preservation', () => {
       expect(styles).not.toMatch(/nav\{[^}]*border-bottom:1px solid var\(--line\)/);
     });
   }
+
+  it('uses the approved homepage commitment heading', () => {
+    const after = parse(renderToStaticMarkup(<SiteLayout page="home"><HomePage /></SiteLayout>));
+    expect(after.querySelector('.section-head h2')?.textContent).toBe('Our commitment');
+  });
 
   it('retains the exact embedded logo bytes', () => {
     const original = readFileSync('archive/html/index.html', 'utf8');
