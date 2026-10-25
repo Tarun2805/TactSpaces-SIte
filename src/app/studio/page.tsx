@@ -16,6 +16,19 @@ export default function StudioPage() {
   </aside>
 </header>
 
+<section className="studio-gallery-section" aria-labelledby="studio-gallery-title">
+  <div className="section-head reveal">
+    <h2 id="studio-gallery-title">Our Studio Space</h2>
+  </div>
+  <div className="studio-gallery reveal">
+    <div className="studio-gallery__placeholder" role="img" aria-label="Office photo placeholder 1" />
+    <div className="studio-gallery__placeholder" role="img" aria-label="Office photo placeholder 2" />
+    <div className="studio-gallery__placeholder" role="img" aria-label="Office photo placeholder 3" />
+    <div className="studio-gallery__placeholder" role="img" aria-label="Office photo placeholder 4" />
+    <div className="studio-gallery__placeholder" role="img" aria-label="Office photo placeholder 5" />
+  </div>
+</section>
+
 <section id="team" className="team-split">
   <div className="team-main">
   <div className="section-head reveal"><h2>The two behind every mandate.</h2></div>

@@ -29,7 +29,7 @@ export function SiteFooter({ siteRoot = '' }: SiteFooterProps) {
       <a href="tel:+917348921433">+91 73489 21433</a>
       <a href="mailto:tactspaces@gmail.com">tactspaces@gmail.com</a>
       <a
-        href="https://maps.app.goo.gl/KhtF7h1Lk1F52V9P7"
+        href="https://maps.app.goo.gl/yyCswfFMvS2y59Bq6"
         target="_blank"
         rel="noopener noreferrer"
       >
