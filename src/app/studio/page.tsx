@@ -31,7 +31,7 @@ export default function StudioPage() {
 
 <section id="team" className="team-split">
   <div className="team-main">
-  <div className="section-head reveal"><h2>The two behind every mandate.</h2></div>
+  <div className="section-head reveal"><h2>Driving the vision...</h2></div>
   <div className="team-grid reveal">
     <div className="team-card">
       <div className="photo"><div className="blk left-[15%] top-[10%] w-[70%] h-[80%]" /></div>
@@ -61,15 +61,27 @@ export default function StudioPage() {
   </div>
 </section>
 
-<section className="why-split">
-  <div className="section-head reveal"><h2>Understand. Design. Deliver.</h2></div>
-  <ul className="why-list reveal">
-    <li><span className="n">01</span><p>We start by listening to your lifestyle, requirements, and aspirations.</p></li>
-    <li><span className="n">02</span><p>Every decision is driven by functionality, with aesthetics evolving naturally.</p></li>
-    <li><span className="n">03</span><p>We ensure every idea is executed with precision, quality, and attention to detail.</p></li>
-    <li><span className="n">04</span><p>Transparent communication throughout the project.</p></li>
-    <li><span className="n">05</span><p>Single-point responsibility from design to execution.</p></li>
-  </ul>
+<section className="home-commitment" aria-labelledby="commitment-title">
+  <div className="section-head reveal">
+    <h2 id="commitment-title">Our commitment</h2>
+  </div>
+  <div className="trust-grid reveal">
+    <div className="trust-card">
+      <span className="idx">01</span>
+      <h3>Absolute Financial Transparency</h3>
+      <p>Costs are itemized against a Master Contract before a single vendor is booked. No hidden markups, no verbal change orders.</p>
+    </div>
+    <div className="trust-card">
+      <span className="idx">02</span>
+      <h3>Single-Point Responsibility</h3>
+      <p>One team owns design and execution end to end. One call, not five contractors, whenever a decision is needed.</p>
+    </div>
+    <div className="trust-card">
+      <span className="idx">03</span>
+      <h3>Contractual Timely Delivery</h3>
+      <p>Timelines are binding, not aspirational. D Hoofers Dance Studio: 4,000&nbsp;sq.&nbsp;ft. in 45&nbsp;days, exactly as signed for.</p>
+    </div>
+  </div>
 </section>
 
 <section id="profile">

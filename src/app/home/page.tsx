@@ -33,29 +33,6 @@ export default function HomePage() {
 
 <section>
   <div className="section-head reveal">
-    <h2>Our commitment</h2>
-  </div>
-  <div className="trust-grid reveal">
-    <div className="trust-card">
-      <span className="idx">01</span>
-      <h3>Absolute Financial Transparency</h3>
-      <p>Costs are itemized against a Master Contract before a single vendor is booked. No hidden markups, no verbal change orders.</p>
-    </div>
-    <div className="trust-card">
-      <span className="idx">02</span>
-      <h3>Single-Point Responsibility</h3>
-      <p>One team owns design and execution end to end. One call, not five contractors, whenever a decision is needed.</p>
-    </div>
-    <div className="trust-card">
-      <span className="idx">03</span>
-      <h3>Contractual Timely Delivery</h3>
-      <p>Timelines are binding, not aspirational. D Hoofers Dance Studio: 4,000&nbsp;sq.&nbsp;ft. in 45&nbsp;days, exactly as signed for.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div className="section-head reveal">
     <h2>Evidence of execution.</h2>
   </div>
   <div className="work-strip reveal">
@@ -63,6 +40,17 @@ export default function HomePage() {
       <ProjectCard key={project.slug} project={project} variant="home" />
     ))}
   </div>
+</section>
+
+<section className="why-split">
+  <div className="section-head reveal"><h2>Understand. Design. Deliver.</h2></div>
+  <ul className="why-list reveal">
+    <li><span className="n">01</span><p>We start by listening to your lifestyle, requirements, and aspirations.</p></li>
+    <li><span className="n">02</span><p>Every decision is driven by functionality, with aesthetics evolving naturally.</p></li>
+    <li><span className="n">03</span><p>We ensure every idea is executed with precision, quality, and attention to detail.</p></li>
+    <li><span className="n">04</span><p>Transparent communication throughout the project.</p></li>
+    <li><span className="n">05</span><p>Single-point responsibility from design to execution.</p></li>
+  </ul>
 </section>
 
 <div className="founders reveal">

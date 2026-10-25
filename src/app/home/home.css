@@ -157,6 +157,17 @@
   .trust-card p{font-size:0.92rem; line-height:1.6; color:inherit; opacity:0.85;}
   @media (max-width:900px){ .trust-grid{grid-template-columns:1fr;} }
 
+  .why-list{max-width:720px;}
+  .why-list li{list-style:none; padding:1.4rem 0; border-bottom:1px solid var(--line); display:flex; gap:1.2rem; align-items:baseline;}
+  .why-list li:first-child{border-top:1px solid var(--line);}
+  .why-list .n{font-family:'Playfair Display',serif; color:var(--accent); font-size:1.1rem; flex-shrink:0; width:32px;}
+  .why-list p{color:#3A413D; line-height:1.6;}
+  @media (min-width:901px){
+    .why-split{display:grid; grid-template-columns:minmax(260px,.7fr) minmax(0,1.3fr); gap:6rem; align-items:start;}
+    .why-split .section-head{position:sticky; top:110px; margin-bottom:0;}
+    .why-split .why-list{max-width:none;}
+  }
+
   /* ---------- FEATURED WORK ---------- */
   .work-strip{
     display:grid; grid-auto-flow:column; grid-auto-columns:minmax(320px, 30vw);
@@ -265,6 +276,7 @@ a,button,.tile,.toggle-card,.doc-card,.case-card,.filter-pill{-webkit-tap-highli
   .trust-card{padding:2rem 1.5rem;}
   .trust-card .idx{margin-bottom:1rem;}
   .trust-card h3{font-size:1.2rem;}
+  .why-list li{padding:1.1rem 0; gap:.9rem;}
   .work-strip{grid-auto-columns:minmax(250px, 76vw); margin:0 -20px; padding:0 20px 1rem; scroll-padding-left:20px;}
   .founders{padding:3.25rem 20px; gap:1.75rem;}
   .founders blockquote{font-size:1.3rem;}

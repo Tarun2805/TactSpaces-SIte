@@ -33,12 +33,13 @@ describe('migration preservation', () => {
         if (page === 'anatomy') doc.querySelectorAll('.deep-dive').forEach((node) => node.remove());
       }
       if (page === 'home') {
-        before.querySelectorAll('h2').forEach((heading) => {
-          if (heading.textContent === 'What we guarantee, in writing.') heading.remove();
-        });
-        after.querySelectorAll('h2').forEach((heading) => {
-          if (heading.textContent === 'Our commitment') heading.remove();
-        });
+        before.querySelector('.trust-grid')?.closest('section')?.remove();
+        after.querySelector('.trust-grid')?.closest('section')?.remove();
+        after.querySelector('.why-split')?.remove();
+      }
+      if (page === 'studio') {
+        before.querySelector('.why-split')?.remove();
+        after.querySelector('.trust-grid')?.closest('section')?.remove();
       }
       if (page === 'standard') {
         before.querySelector('.commit-section')?.remove();
@@ -74,9 +75,14 @@ describe('migration preservation', () => {
     });
   }
 
-  it('uses the approved homepage commitment heading', () => {
-    const after = parse(renderToStaticMarkup(<SiteLayout page="home"><HomePage /></SiteLayout>));
-    expect(after.querySelector('.section-head h2')?.textContent).toBe('Our commitment');
+  it('places the commitment section on studio instead of home', () => {
+    const home = parse(renderToStaticMarkup(<SiteLayout page="home"><HomePage /></SiteLayout>));
+    const studio = parse(renderToStaticMarkup(<SiteLayout page="studio"><StudioPage /></SiteLayout>));
+    expect(home.querySelector('.trust-grid')).toBeNull();
+    expect(home.querySelector('.why-split + .founders')).not.toBeNull();
+    expect(home.querySelector('.why-split h2')?.textContent).toBe('Understand. Design. Deliver.');
+    expect(studio.querySelector('.trust-grid')?.closest('section')?.querySelector('h2')?.textContent).toBe('Our commitment');
+    expect(studio.querySelectorAll('.trust-card')).toHaveLength(3);
   });
 
   it('retains the exact embedded logo bytes', () => {
