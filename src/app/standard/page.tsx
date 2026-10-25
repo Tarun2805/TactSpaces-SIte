@@ -20,7 +20,6 @@ export default function StandardPage() {
   return (
     <>
 <header className="page-header reveal">
-  <p className="eyebrow">Policies &amp; Process</p>
   <h1>The Standard We Hold Ourselves To.</h1>
   <p>Seven stages. Zero ambiguity. This is the operational discipline that separates a portfolio from a paper trail.</p>
 </header>
@@ -41,7 +40,6 @@ export default function StandardPage() {
 
     <aside className="process-aside reveal">
       <div className="aside-sticky">
-        <p className="eyebrow">Why It Holds Up</p>
         <p className="aside-note">Every stage below feeds a document. Nothing moves to site until it's on paper.</p>
         <div className="aside-stats">
           <div><span className="num">7</span><span className="lbl">Stages, Start to Support</span></div>
@@ -55,7 +53,6 @@ export default function StandardPage() {
 
 <section className="doc-section">
   <div className="doc-head reveal">
-    <p className="eyebrow">The Differentiator</p>
     <h2>Our paper trail, not just our portfolio.</h2>
     <p style={{"marginTop": "1rem", "color": "#4B534F", "lineHeight": "1.65"}}>Blurred previews of the documents that govern every project, because a firm with nothing to hide shows the paperwork too.</p>
   </div>
@@ -92,7 +89,6 @@ export default function StandardPage() {
 
 <section className="commit-section">
   <div className="commit-head reveal">
-    <p className="eyebrow">Our Commitments</p>
     <h2>The fine print, up front.</h2>
   </div>
   <div className="commit-grid reveal">

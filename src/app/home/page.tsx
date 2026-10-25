@@ -15,7 +15,6 @@ export default function HomePage() {
     <>
 <section className="hero p-0">
   <div className="hero-copy">
-    <p className="eyebrow">TactSpaces Architecture &amp; Interiors</p>
     <h1>Architecture &amp; Interiors.<br />Governed by Precision.</h1>
     <p>Turnkey design and execution across Bengaluru, where every material, timeline, and rupee is documented before it's promised.</p>
     <div className="hero-ctas">
@@ -29,16 +28,11 @@ export default function HomePage() {
     <div className="logo-reveal">
       <img src={logo} alt="TactSpaces" />
     </div>
-    <div className="tag">
-      <span>Blueprint</span>
-      <span>→ Executed Reality</span>
-    </div>
   </div>
 </section>
 
 <section>
   <div className="section-head reveal">
-    <p className="eyebrow">Why TactSpaces</p>
     <h2>What we guarantee, in writing.</h2>
   </div>
   <div className="trust-grid reveal">
@@ -62,7 +56,6 @@ export default function HomePage() {
 
 <section>
   <div className="section-head reveal">
-    <p className="eyebrow">Selected Mandates</p>
     <h2>Evidence of execution.</h2>
   </div>
   <div className="work-strip reveal">

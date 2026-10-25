@@ -3,7 +3,6 @@ export default function StudioPage() {
     <>
 <header className="page-header has-aside reveal">
   <div className="ph-copy">
-  <p className="eyebrow">The Studio</p>
   <h1>Two Architects. One Standard.</h1>
   <p>Founded in 2025, TactSpaces is the result of two architects coming together with a shared vision to create spaces that are thoughtful, functional, and timeless. What began as a shared passion has grown into a partnership dedicated to transforming ideas into spaces that truly reflect the people who inhabit them.</p>
 </div>
@@ -19,7 +18,7 @@ export default function StudioPage() {
 
 <section id="team" className="team-split">
   <div className="team-main">
-  <div className="section-head reveal"><p className="eyebrow">Our Team</p><h2>The two behind every mandate.</h2></div>
+  <div className="section-head reveal"><h2>The two behind every mandate.</h2></div>
   <div className="team-grid reveal">
     <div className="team-card">
       <div className="photo"><div className="blk left-[15%] top-[10%] w-[70%] h-[80%]" /></div>
@@ -50,7 +49,7 @@ export default function StudioPage() {
 </section>
 
 <section className="why-split">
-  <div className="section-head reveal"><p className="eyebrow">Why Choose Us</p><h2>Understand. Design. Deliver.</h2></div>
+  <div className="section-head reveal"><h2>Understand. Design. Deliver.</h2></div>
   <ul className="why-list reveal">
     <li><span className="n">01</span><p>We start by listening to your lifestyle, requirements, and aspirations.</p></li>
     <li><span className="n">02</span><p>Every decision is driven by functionality, with aesthetics evolving naturally.</p></li>

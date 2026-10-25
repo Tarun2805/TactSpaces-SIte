@@ -36,7 +36,7 @@ describe('JSON-driven projects', () => {
   it.each(PROJECTS.filter((project) => project.details))('preserves $name’s existing case-study content', (project) => {
     const original = new DOMParser().parseFromString(readFileSync('archive/html/anatomy.html', 'utf8'), 'text/html');
     const { container } = render(<ProjectPage project={project} />);
-    const selectors = '.eyebrow,h1,h2,.num,.lbl,.mandate-copy,.day,h3,.h-panel p,blockquote';
+    const selectors = 'h1,h2,.num,.lbl,.mandate-copy,.day,h3,.h-panel p,blockquote';
     const content = (parent: ParentNode) => Array.from(parent.querySelectorAll(selectors)).map((node) => node.textContent?.replace(/[“”]/g, '"').replace(/\s+/g, ''));
     expect(content(container)).toEqual(content(original.querySelector(`#${project.legacyAnchor}`)!));
     expect(container.querySelectorAll('h1')).toHaveLength(1);

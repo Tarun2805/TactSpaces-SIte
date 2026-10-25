@@ -4,6 +4,16 @@ import { createServer, type Plugin, type ViteDevServer } from 'vite';
 import { parseProject } from '../src/lib/validations/project.ts';
 import type { Project, ProjectMedia } from '../src/types/project.ts';
 
+const SITE_URL = 'https://tactspaces.in';
+
+const STATIC_PAGES = [
+  { path: '/', title: 'Architecture & Interiors in Bengaluru | TactSpaces', description: 'Architecture and turnkey interior design across Bengaluru, governed by precision.' },
+  { path: '/anatomy.html', title: 'Architecture & Interior Design Projects | TactSpaces', description: 'Selected residential, commercial, and hospitality projects by TactSpaces in Bengaluru.' },
+  { path: '/standard.html', title: 'The TactSpaces Project Delivery Standard', description: 'Seven documented stages guide each TactSpaces project from discovery through handover.' },
+  { path: '/studio.html', title: 'About the TactSpaces Studio', description: 'Meet TactSpaces, a Bengaluru architecture and interiors studio.' },
+  { path: '/command-center.html', title: 'Start an Architecture or Interiors Project | TactSpaces', description: 'Share your project brief and start a prepared discovery conversation with TactSpaces.' },
+];
+
 function validateImage(media: ProjectMedia, root: string, source: string) {
   if (media.kind !== 'image' || media.src.startsWith('https://')) return;
   const publicRoot = resolve(root, 'public');
@@ -50,9 +60,21 @@ function escapeHtml(value: string) {
 
 export function projectDocument(template: string, project: Project, markup: string) {
   if (!project.details) throw new Error(`Cannot generate a page for listing-only project ${project.slug}.`);
+  const url = `${SITE_URL}/projects/${project.slug}/`;
+  const title = `${project.name} | TactSpaces`;
+  const description = project.details.summary;
+  const structuredData = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description,
+    url,
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    about: { '@id': `${SITE_URL}/#organization` },
+  }).replace(/</g, '\\u003c');
   return template
     .replace('<html lang="en">', `<html lang="en" data-project-slug="${escapeHtml(project.slug)}">`)
-    .replace('<title>Project | TactSpaces</title>', () => `<title>${escapeHtml(project.name)} | TactSpaces</title>\n    <meta name="description" content="${escapeHtml(project.details!.summary)}" />\n    <link rel="canonical" href="/projects/${escapeHtml(project.slug)}/" />`)
+    .replace('<title>Project | TactSpaces</title>', () => `<title>${escapeHtml(title)}</title>\n    <meta name="description" content="${escapeHtml(description)}" />\n    <link rel="canonical" href="${url}" />\n    <meta property="og:type" content="article" />\n    <meta property="og:site_name" content="TactSpaces" />\n    <meta property="og:title" content="${escapeHtml(title)}" />\n    <meta property="og:description" content="${escapeHtml(description)}" />\n    <meta property="og:url" content="${url}" />\n    <meta name="twitter:card" content="summary" />\n    <script type="application/ld+json">${structuredData}</script>`)
     .replace('<div id="root"></div>', () => `<div id="root">${markup}</div>`);
 }
 
@@ -109,7 +131,8 @@ export function projectPages(): Plugin {
         optimizeDeps: { noDiscovery: true, include: [] },
       });
       try {
-        for (const project of loadProjects(root)) {
+        const projects = loadProjects(root);
+        for (const project of projects) {
           if (!project.details) continue;
           let markup = await renderProject(server, project);
           // SSR resolves source images; replace them with the client build's hashed assets.
@@ -123,6 +146,18 @@ export function projectPages(): Plugin {
           }
           this.emitFile({ type: 'asset', fileName: `projects/${project.slug}/index.html`, source: projectDocument(String(shell.source), project, markup) });
         }
+        const urls = [
+          ...STATIC_PAGES.map((page) => `${SITE_URL}${page.path}`),
+          ...projects.filter((project) => project.details).map((project) => `${SITE_URL}/projects/${project.slug}/`),
+        ];
+        const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((url) => `  <url><loc>${url}</loc></url>`).join('\n')}\n</urlset>\n`;
+        this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemap });
+
+        const llmsEntries = [
+          ...STATIC_PAGES.map((page) => `- [${page.title}](${SITE_URL}${page.path}): ${page.description}`),
+          ...projects.filter((project) => project.details).map((project) => `- [${project.name}](${SITE_URL}/projects/${project.slug}/): ${project.details!.summary}`),
+        ];
+        this.emitFile({ type: 'asset', fileName: 'llms.txt', source: `# TactSpaces\n\n> Architecture and turnkey interior design across Bengaluru, India.\n\n## Website\n\n${llmsEntries.join('\n')}\n` });
         delete bundle['project.html'];
       } finally { await server.close(); }
     },

@@ -15,7 +15,6 @@ export default function AnatomyPage() {
   return (
     <>
       <header className="page-header reveal">
-        <p className="eyebrow">Portfolio</p>
         <h1>Evidence of Execution.</h1>
         <p>A curated selection of completed mandates: proof of spatial maximization, material transparency, and operational control.</p>
       </header>

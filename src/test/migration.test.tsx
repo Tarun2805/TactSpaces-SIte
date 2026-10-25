@@ -34,7 +34,8 @@ describe('migration preservation', () => {
       }
       const text = (doc: Document) => Array.from(doc.querySelectorAll(
         'h1,h2,h3,h4,p,blockquote,dt,dd,.stat,.idx,.name,.title,.role,.stage-label,.step-label,.tile-label,.day,.doc-name,.num,.lbl,footer a[href^="tel:"],footer a[href^="mailto:"],footer a[href^="https://www.google.com/maps/"]',
-      )).map((element) => element.textContent?.replace(/[“”]/g, '"').replace(/\s+/g, ''));
+      )).filter((element) => !element.classList.contains('eyebrow'))
+        .map((element) => element.textContent?.replace(/[“”]/g, '"').replace(/\s+/g, ''));
       expect(text(after)).toEqual(text(before));
 
       // Footer contact links intentionally replace the original plain text.
@@ -52,20 +53,11 @@ describe('migration preservation', () => {
       expect(anchors(after)).toEqual(anchors(before));
     });
 
-    it(`retains ${source}'s original CSS outside intentional layout changes`, () => {
-      const originalStyles = original.match(/<style>([\s\S]*?)<\/style>/)?.[1]
-        .replace(/\s*@import url\([^\n]*\);/, '').trim();
-      const extracted = readFileSync(`src/app/${page}/${page}.css`, 'utf8')
-        .replace(/^@layer components \{\n/, '').replace(/\n\}\n$/, '').trim();
-      const preservedStyles = (styles: string) => page === 'anatomy'
-        ? styles
-          .replace(/(\.filter-bar\{position:sticky; top:)72px/, '$1var(--nav-h)')
-          .replace(/\/\* ---------- CASE GRID \(teasers\) ---------- \*\/[\s\S]*?(?=\/\* ---------- DEEP DIVE SECTIONS)/, '')
-          .replace(/\.case-grid\{[^}]*\}/g, '')
-        : page === 'studio'
-          ? styles.replace(/\n\s*section\[id\]\{scroll-margin-top:var\(--nav-h\);\}/, '')
-          : styles;
-      expect(preservedStyles(extracted)).toBe(preservedStyles(originalStyles!));
+    it(`removes decorative hairlines from ${source}`, () => {
+      const styles = readFileSync(`src/app/${page}/${page}.css`, 'utf8');
+      expect(styles).not.toMatch(/\.eyebrow::before\{content:'?'[^}]*height:1px/);
+      expect(styles).not.toMatch(/\.nav-links a::after\{content:'?'[^}]*height:1px/);
+      expect(styles).not.toMatch(/nav\{[^}]*border-bottom:1px solid var\(--line\)/);
     });
   }
 

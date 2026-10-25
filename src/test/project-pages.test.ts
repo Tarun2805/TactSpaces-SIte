@@ -19,6 +19,11 @@ describe('project page generation', () => {
     const pages = output.output.filter((item) => item.fileName.startsWith('projects/'));
     expect(pages.map((page) => page.fileName).sort()).toEqual(projects.map((project) => `projects/${project.slug}/index.html`).sort());
     expect(output.output.some((item) => item.fileName === 'project.html')).toBe(false);
+    const sitemap = output.output.find((item) => item.fileName === 'sitemap.xml');
+    const llms = output.output.find((item) => item.fileName === 'llms.txt');
+    expect(sitemap?.type === 'asset' ? String(sitemap.source) : '').toContain('https://tactspaces.in/');
+    expect(sitemap?.type === 'asset' ? String(sitemap.source) : '').toContain('https://tactspaces.in/projects/d-hoofers/');
+    expect(llms?.type === 'asset' ? String(llms.source) : '').toContain('[D Hoofers Dance Studio](https://tactspaces.in/projects/d-hoofers/)');
     for (const project of projects) {
       const page = pages.find((item) => item.fileName === `projects/${project.slug}/index.html`)!;
       if (page.type !== 'asset') throw new Error('Expected HTML asset.');
@@ -26,6 +31,8 @@ describe('project page generation', () => {
       expect(html).toContain(`<h1>${project.name}</h1>`);
       expect(html).toContain(renderToStaticMarkup(createElement('p', { className: 'mandate-copy reveal' }, project.details!.summary)));
       expect(html).toContain(`data-project-slug="${project.slug}"`);
+      expect(html).toContain(`<link rel="canonical" href="https://tactspaces.in/projects/${project.slug}/" />`);
+      expect(html).toContain('application/ld+json');
       expect(html).toContain('href="/index.html"');
       expect(html).toContain('href="/command-center.html"');
       expect(html).toContain('src="/assets/tactspaces-logo-');
@@ -60,6 +67,7 @@ describe('project page generation', () => {
     const template = readFileSync(join(ROOT, 'project.html'), 'utf8');
     const html = projectDocument(template, project, '<h1>$&</h1>');
     expect(html).toContain('<title>A &amp; B &quot;$&amp;&quot; &lt;Studio&gt; | TactSpaces</title>');
+    expect(html).toContain('href="https://tactspaces.in/projects/d-hoofers/"');
     expect(html).toContain('<div id="root"><h1>$&</h1></div>');
     const { details: _details, ...listing } = project;
     expect(() => projectDocument(template, listing, '')).toThrow('listing-only');

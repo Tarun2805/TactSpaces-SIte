@@ -1,4 +1,3 @@
-import { PROJECT_CATEGORIES } from '../../constants/projects';
 import { ProjectMedia } from '../../components/shared/project-media';
 import type { Project, ProjectSection } from '../../types/project';
 import { BeforeAfterSlider } from './components/before-after-slider';
@@ -55,7 +54,6 @@ export default function ProjectPage({ project }: ProjectPageProps) {
     <article className="project-page deep-dive">
       <div className="deep-dive-head reveal">
         <a className="project-back" href="/anatomy.html">← All projects</a>
-        <p className="eyebrow">{PROJECT_CATEGORIES[project.category]}</p>
         <h1>{project.name}</h1>
         <p className="project-location">{project.location} · {project.scope}</p>
       </div>
