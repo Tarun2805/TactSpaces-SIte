@@ -1,28 +1,24 @@
 import logo from '../../assets/tactspaces-logo.png';
 
-interface SiteFooterProps {
-  siteRoot?: string;
-}
-
-export function SiteFooter({ siteRoot = '' }: SiteFooterProps) {
+export function SiteFooter() {
   return (
     <footer>
       <div className="footer-grid">
     <div>
-      <img src={logo} alt="TactSpaces" className="h-[34px] brightness-0 invert mb-4" />
+      <img src={typeof logo === 'string' ? logo : logo.src} alt="TactSpaces" className="h-[34px] brightness-0 invert mb-4" />
       <p className="max-w-[260px] opacity-70">Architecture &amp; Interiors, governed by precision.</p>
     </div>
     <div>
       <h4>Explore</h4>
-      <a href={`${siteRoot}anatomy.html`}>Anatomy of Execution</a>
-      <a href={`${siteRoot}standard.html`}>The Standard</a>
-      <a href={`${siteRoot}command-center.html`}>Command Center</a>
+      <a href="/anatomy">Anatomy of Execution</a>
+      <a href="/standard">The Standard</a>
+      <a href="/command-center">Command Center</a>
     </div>
     <div>
       <h4>Studio</h4>
-      <a href={`${siteRoot}studio.html`}>About</a>
-      <a href={`${siteRoot}studio.html#team`}>Our Team</a>
-      <a href={`${siteRoot}studio.html#profile`}>Download Profile</a>
+      <a href="/studio">About</a>
+      <a href="/studio#team">Our Team</a>
+      <a href="/studio#profile">Download Profile</a>
     </div>
     <div>
       <h4>Contact</h4>

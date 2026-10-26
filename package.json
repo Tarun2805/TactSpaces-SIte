@@ -4,17 +4,20 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc --noEmit && vite build",
-    "preview": "vite preview",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "preview": "next start",
     "typecheck": "tsc --noEmit",
     "test": "vitest run"
   },
   "dependencies": {
+    "next": "^16.4.3",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/vite": "^4.3.3",
     "@testing-library/react": "^16.3.0",
     "@types/node": "^24.0.0",

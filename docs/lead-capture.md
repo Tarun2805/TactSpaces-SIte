@@ -16,7 +16,7 @@
 
 ## Connect the website
 
-1. Set `VITE_GOOGLE_APPS_SCRIPT_URL` to the `/exec` URL in the hosting provider's build environment.
+1. Set `NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL` to the `/exec` URL in the hosting provider's build environment.
 2. For local development, set the same variable in `.env.local` and restart Vite.
 3. Rebuild and redeploy the website after changing its environment variable.
 4. Submit a test enquiry on the live site and confirm it appears once in the Sheet.

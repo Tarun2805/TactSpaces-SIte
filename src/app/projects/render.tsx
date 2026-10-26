@@ -2,12 +2,12 @@ import { renderToString } from 'react-dom/server';
 import { StrictMode } from 'react';
 import { SiteLayout } from '../../components/shared/site-layout';
 import type { Project } from '../../types/project';
-import ProjectPage from './page';
+import ProjectPage from './project-view';
 
 export function renderProject(project: Project) {
   return renderToString(
     <StrictMode>
-      <SiteLayout page="anatomy" siteRoot="/">
+      <SiteLayout page="anatomy">
         <ProjectPage project={project} />
       </SiteLayout>
     </StrictMode>,

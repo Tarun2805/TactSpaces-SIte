@@ -4,8 +4,8 @@ import { hydrateRoot } from 'react-dom/client';
 import { renderToString } from 'react-dom/server';
 import { StrictMode } from 'react';
 import { describe, expect, it, vi } from 'vitest';
-import ProjectPage from '../app/projects/page';
-import AnatomyPage from '../app/anatomy/page';
+import ProjectPage from '../app/projects/project-view';
+import AnatomyPage from '../app/anatomy/anatomy-view';
 import { renderProject } from '../app/projects/render';
 import { ProjectCard } from '../components/shared/project-card';
 import { SiteLayout } from '../components/shared/site-layout';
@@ -95,10 +95,10 @@ describe('JSON-driven projects', () => {
     const errors = vi.fn();
     let root: ReturnType<typeof hydrateRoot>;
     await act(async () => {
-      root = hydrateRoot(container, <StrictMode><SiteLayout page="anatomy" siteRoot="/"><ProjectPage project={PROJECTS[2]} /></SiteLayout></StrictMode>, { onRecoverableError: errors });
+      root = hydrateRoot(container, <StrictMode><SiteLayout page="anatomy"><ProjectPage project={PROJECTS[2]} /></SiteLayout></StrictMode>, { onRecoverableError: errors });
     });
     expect(errors).not.toHaveBeenCalled();
-    expect(container.querySelector('.logo-mark')?.getAttribute('href')).toBe('/index.html');
+    expect(container.querySelector('.logo-mark')?.getAttribute('href')).toBe('/');
     fireEvent.change(screen.getByRole('slider'), { target: { value: '80' } });
     expect(container.querySelector<HTMLElement>('.ba-handle')?.style.left).toBe('80%');
     await act(async () => root!.unmount());

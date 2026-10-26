@@ -5,10 +5,9 @@ import type { PageName } from '../../types/site';
 
 interface SiteNavigationProps {
   page: PageName;
-  siteRoot?: string;
 }
 
-export function SiteNavigation({ page, siteRoot = '' }: SiteNavigationProps) {
+export function SiteNavigation({ page }: SiteNavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -60,20 +59,20 @@ export function SiteNavigation({ page, siteRoot = '' }: SiteNavigationProps) {
   return (
     <>
       <nav ref={navRef} id="nav" aria-label="Main navigation">
-        <a className="logo-mark" href={`${siteRoot}index.html`}>
-          <img src={logo} alt="TactSpaces" />
+        <a className="logo-mark" href="/">
+          <img src={typeof logo === 'string' ? logo : logo.src} alt="TactSpaces" />
         </a>
         <div className={`nav-links${isOpen ? ' open' : ''}`} id="navLinks">
           {SITE_NAVIGATION.map((item) => (
-            <a key={item.page} href={`${siteRoot}${item.href}`} className={item.page === page ? 'current' : undefined}
+            <a key={item.page} href={item.href} className={item.page === page ? 'current' : undefined}
               aria-current={item.page === page ? 'page' : undefined} onClick={close}>
               {item.label}
             </a>
           ))}
-          <a className="btn drawer-cta" href={`${siteRoot}command-center.html`} onClick={close}>Start Your Project →</a>
+          <a className="btn drawer-cta" href="/command-center" onClick={close}>Start Your Project →</a>
         </div>
         <div className="nav-actions">
-          <a className="btn" href={`${siteRoot}command-center.html`}>
+          <a className="btn" href="/command-center">
             <span className="btn-label-full">Start Your Project</span>
             <span className="btn-label-short">Start Project</span>&nbsp;→
           </a>

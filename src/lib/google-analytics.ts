@@ -1,7 +1,7 @@
 export function initializeGoogleAnalytics() {
-  if (!import.meta.env.PROD || typeof window === 'undefined') return;
+  if (process.env.NODE_ENV !== 'production' || typeof window === 'undefined') return;
 
-  const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID?.trim();
+  const measurementId = (process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? process.env.VITE_GA_MEASUREMENT_ID)?.trim();
   if (!measurementId || !/^G-[A-Z0-9]+$/.test(measurementId)) return;
   if (document.querySelector('script[data-google-analytics]')) return;
 

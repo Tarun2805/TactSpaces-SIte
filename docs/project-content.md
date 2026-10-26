@@ -58,7 +58,7 @@ Add a `details` object to the same file. A summary and at least one stat are req
 }
 ```
 
-The page is generated at `/projects/new-studio/`. Removing `details` unpublishes the page on the next build while retaining the card. Deploy the complete new `dist/` output rather than merging it over older project files.
+The page is generated at `/projects/new-studio/`. Removing `details` unpublishes the page on the next build while retaining the card. Deploy the new Next.js build through Vercel or the configured Next.js host.
 
 ## Images
 

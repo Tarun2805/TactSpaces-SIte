@@ -1,13 +1,6 @@
-import { ProjectPlannerForm } from '../../components/forms/project-planner-form';
+import type { Metadata } from 'next';
+import CommandCenterView from './command-center-view';
+import { PageFrame } from '../site-shell';
 
-export default function CommandCenterPage() {
-  return (
-    <>
-      <header className="page-header">
-        <h1>Let's Scope This Properly.</h1>
-        <p>Four short steps, and our Discovery team calls you prepared, not to pitch you.</p>
-      </header>
-      <ProjectPlannerForm />
-    </>
-  );
-}
+export const metadata: Metadata = { title: 'Start an Architecture or Interiors Project | TactSpaces', description: 'Share your project brief and start a prepared discovery conversation with TactSpaces.', alternates: { canonical: '/command-center' } };
+export default function CommandCenter() { return <PageFrame page="command-center"><CommandCenterView /></PageFrame>; }

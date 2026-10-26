@@ -5,7 +5,7 @@ import {
 import type { ProjectLeadSubmission } from '../types/project-lead';
 
 export function getProjectLeadEndpoint(): string | null {
-  const value = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL?.trim();
+  const value = (process.env.NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL ?? process.env.VITE_GOOGLE_APPS_SCRIPT_URL)?.trim();
   return value && /^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec$/.test(value) ? value : null;
 }
 

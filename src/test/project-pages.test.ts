@@ -33,8 +33,8 @@ describe('project page generation', () => {
       expect(html).toContain(`data-project-slug="${project.slug}"`);
       expect(html).toContain(`<link rel="canonical" href="https://tactspaces.in/projects/${project.slug}/" />`);
       expect(html).toContain('application/ld+json');
-      expect(html).toContain('href="/index.html"');
-      expect(html).toContain('href="/command-center.html"');
+      expect(html).toContain('href="/"');
+      expect(html).toContain('href="/command-center"');
       expect(html).toContain('src="/assets/tactspaces-logo-');
       expect(html).not.toContain('/src/');
       for (const match of html.matchAll(/(?:src|href)="(\/assets\/[^"?]+)"/g)) {

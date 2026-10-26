@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import logo from '../../assets/tactspaces-logo.png';
 import { HERO_REVEAL_DELAY_MS } from '../../constants/site-navigation';
@@ -18,15 +20,15 @@ export default function HomePage() {
     <h1>Architecture &amp; Interiors.<br />Governed by Precision.</h1>
     <p>Turnkey design and execution across Bengaluru, where every material, timeline, and rupee is documented before it's promised.</p>
     <div className="hero-ctas">
-      <a className="btn" href="command-center.html">Start Your Project →</a>
-      <a href="standard.html" className="ghost">View the Standard ↓</a>
+      <a className="btn" href="/command-center">Start Your Project →</a>
+      <a href="/standard" className="ghost">View the Standard ↓</a>
     </div>
   </div>
   <div className={`hero-visual${isAnimated ? ' animate' : ''}`} id="heroVisual">
     <div className="render-block"></div>
 
     <div className="logo-reveal">
-      <img src={logo} alt="TactSpaces" />
+      <img src={typeof logo === 'string' ? logo : logo.src} alt="TactSpaces" />
     </div>
   </div>
 </section>

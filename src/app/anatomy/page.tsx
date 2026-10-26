@@ -1,40 +1,11 @@
-import { useEffect, useState } from 'react';
-import { ProjectCard } from '../../components/shared/project-card';
-import { PROJECT_CATEGORIES, PROJECTS } from '../../constants/projects';
-import { getProjectHref } from '../../utils/project';
+import type { Metadata } from 'next';
+import AnatomyView from './anatomy-view';
+import { PageFrame } from '../site-shell';
 
-export default function AnatomyPage() {
-  const [category, setCategory] = useState('all');
+export const metadata: Metadata = {
+  title: 'Architecture & Interior Design Projects | TactSpaces',
+  description: 'Selected residential, commercial, and hospitality projects by TactSpaces in Bengaluru.',
+  alternates: { canonical: '/anatomy' },
+};
 
-  useEffect(() => {
-    const project = PROJECTS.find((item) => item.legacyAnchor === window.location.hash.slice(1));
-    const href = project && getProjectHref(project);
-    if (href) window.location.replace(href);
-  }, []);
-
-  return (
-    <>
-      <header className="page-header reveal">
-        <h1>Evidence of Execution.</h1>
-        <p>A curated selection of completed mandates: proof of spatial maximization, material transparency, and operational control.</p>
-      </header>
-      <div className="portfolio-index">
-        <div className="filter-bar">
-          <button className={`filter-pill${category === 'all' ? ' active' : ''}`} data-f="all"
-            aria-pressed={category === 'all'} onClick={() => setCategory('all')}>All</button>
-          {Object.entries(PROJECT_CATEGORIES).map(([value, label]) => (
-            <button key={value} className={`filter-pill${category === value ? ' active' : ''}`} data-f={value}
-              aria-pressed={category === value} onClick={() => setCategory(value)}>{label}</button>
-          ))}
-        </div>
-        <section style={{ padding: '4rem 0 2rem' }}>
-          <div className="case-grid reveal" id="caseGrid">
-            {PROJECTS.map((project) => (
-              <ProjectCard key={project.slug} project={project} hidden={category !== 'all' && category !== project.category} />
-            ))}
-          </div>
-        </section>
-      </div>
-    </>
-  );
-}
+export default function Anatomy() { return <PageFrame page="anatomy"><AnatomyView /></PageFrame>; }

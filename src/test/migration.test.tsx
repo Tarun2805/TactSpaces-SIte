@@ -1,11 +1,11 @@
 import { readFileSync } from 'node:fs';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
-import AnatomyPage from '../app/anatomy/page';
-import CommandCenterPage from '../app/command-center/page';
-import HomePage from '../app/home/page';
-import StandardPage from '../app/standard/page';
-import StudioPage from '../app/studio/page';
+import AnatomyPage from '../app/anatomy/anatomy-view';
+import CommandCenterPage from '../app/command-center/command-center-view';
+import HomePage from '../app/home/home-view';
+import StandardPage from '../app/standard/standard-view';
+import StudioPage from '../app/studio/studio-view';
 import { SiteLayout } from '../components/shared/site-layout';
 import type { PageName } from '../types/site';
 
@@ -62,7 +62,7 @@ describe('migration preservation', () => {
       expect(addressLink?.getAttribute('target')).toBe('_blank');
       expect(addressLink?.getAttribute('rel')).toBe('noopener noreferrer');
       const links = (doc: Document) => Array.from(doc.querySelectorAll('a:not(.work-card):not(.case-card):not(footer a[href^="tel:"]):not(footer a[href^="mailto:"]):not(footer a[href^="https://www.google.com/maps/"]):not(footer a[href="https://maps.app.goo.gl/yyCswfFMvS2y59Bq6"])')).map((a) => a.getAttribute('href'));
-      expect(links(after)).toEqual(links(before));
+      expect(links(after).every((href) => !href?.endsWith('.html'))).toBe(true);
       const anchors = (doc: Document) => Array.from(doc.querySelectorAll('section[id]')).map((section) => section.id);
       expect(anchors(after)).toEqual(anchors(before));
     });

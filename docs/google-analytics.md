@@ -10,7 +10,7 @@
 ## Connect the site to GA4
 
 1. In Vercel, open the website project and go to **Settings → Environment Variables**.
-2. Add `VITE_GA_MEASUREMENT_ID` with the copied `G-...` Measurement ID; enable it for **Production**.
+2. Add `NEXT_PUBLIC_GA_MEASUREMENT_ID` with the copied `G-...` Measurement ID; enable it for **Production**.
 3. Save the variable and redeploy the site so Vite includes it in the production build.
 4. Open the live website in a new tab with ad blockers disabled. Analytics does not run in the local development server.
 

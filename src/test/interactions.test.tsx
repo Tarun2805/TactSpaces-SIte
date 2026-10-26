@@ -1,12 +1,12 @@
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import { StrictMode } from 'react';
 import { describe, expect, it, vi } from 'vitest';
-import AnatomyPage from '../app/anatomy/page';
-import ProjectPage from '../app/projects/page';
+import AnatomyPage from '../app/anatomy/anatomy-view';
+import ProjectPage from '../app/projects/project-view';
 import { PROJECTS } from '../constants/projects';
-import HomePage from '../app/home/page';
-import StandardPage from '../app/standard/page';
-import StudioPage from '../app/studio/page';
+import HomePage from '../app/home/home-view';
+import StandardPage from '../app/standard/standard-view';
+import StudioPage from '../app/studio/studio-view';
 import { ProjectPlannerForm } from '../components/forms/project-planner-form';
 import { SiteLayout } from '../components/shared/site-layout';
 import { SiteNavigation } from '../components/shared/site-navigation';
@@ -131,7 +131,7 @@ describe('page interactions', () => {
 
   it('restores incoming fragment links after React mounts', () => {
     vi.mocked(HTMLElement.prototype.scrollIntoView).mockClear();
-    window.history.replaceState({}, '', '/studio.html#team');
+    window.history.replaceState({}, '', '/studio#team');
     render(<SiteLayout page="studio"><StudioPage /></SiteLayout>);
     expect(HTMLElement.prototype.scrollIntoView).toHaveBeenCalled();
   });

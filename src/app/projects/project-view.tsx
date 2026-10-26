@@ -1,3 +1,5 @@
+'use client';
+
 import { ProjectMedia } from '../../components/shared/project-media';
 import type { Project, ProjectSection } from '../../types/project';
 import { BeforeAfterSlider } from './components/before-after-slider';
@@ -53,7 +55,7 @@ export default function ProjectPage({ project }: ProjectPageProps) {
   return (
     <article className="project-page deep-dive">
       <div className="deep-dive-head reveal">
-        <a className="project-back" href="/anatomy.html">← All projects</a>
+        <a className="project-back" href="/anatomy">← All projects</a>
         <h1>{project.name}</h1>
         <p className="project-location">{project.location} · {project.scope}</p>
       </div>

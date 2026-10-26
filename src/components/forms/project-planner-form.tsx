@@ -219,7 +219,7 @@ export function ProjectPlannerForm() {
       <div ref={successRef} className={`success-panel${isSubmitted ? ' show' : ''}`} id="successPanel" role="status" tabIndex={-1} hidden={!isSubmitted}>
         <div className="success-icon">✓</div>
         <h2>Received.</h2>
-        <p>Our Discovery phase begins now. Expect a call within 24 hours to schedule your site walkthrough. In the meantime, take a look at <a href="standard.html" className="underline">how we run every project</a>.</p>
+        <p>Our Discovery phase begins now. Expect a call within 24 hours to schedule your site walkthrough. In the meantime, take a look at <a href="/standard" className="underline">how we run every project</a>.</p>
       </div>
     </div>
   );

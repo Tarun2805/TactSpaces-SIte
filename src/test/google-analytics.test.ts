@@ -3,7 +3,7 @@ import { initializeGoogleAnalytics } from '../lib/google-analytics';
 
 describe('Google Analytics', () => {
   beforeEach(() => {
-    vi.stubEnv('PROD', true);
+    vi.stubEnv('NODE_ENV', 'production');
     vi.stubEnv('VITE_GA_MEASUREMENT_ID', 'G-ABC1234567');
   });
 
@@ -25,7 +25,7 @@ describe('Google Analytics', () => {
   });
 
   it('does not track development visits even when an ID is configured', () => {
-    vi.stubEnv('PROD', false);
+    vi.stubEnv('NODE_ENV', 'development');
 
     initializeGoogleAnalytics();
 

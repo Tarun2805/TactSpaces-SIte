@@ -1,6 +1,6 @@
 import { PROJECTS } from '../../constants/projects';
 import { renderPage } from '../../render-page';
-import ProjectPage from './page';
+import ProjectPage from './project-view';
 import '../../styles/tailwind.css';
 import '../anatomy/anatomy.css';
 import './projects.css';
@@ -11,4 +11,4 @@ function CurrentProjectPage() {
   return <ProjectPage project={project} />;
 }
 
-renderPage(CurrentProjectPage, 'anatomy', { hydrate: true, siteRoot: '/' });
+renderPage(CurrentProjectPage, 'anatomy', { hydrate: true });

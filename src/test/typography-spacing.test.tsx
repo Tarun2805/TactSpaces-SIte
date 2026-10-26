@@ -1,8 +1,8 @@
 import { readFileSync } from 'node:fs';
 import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import HomePage from '../app/home/page';
-import ProjectPage from '../app/projects/page';
+import HomePage from '../app/home/home-view';
+import ProjectPage from '../app/projects/project-view';
 import { ProjectCard } from '../components/shared/project-card';
 import { PROJECTS } from '../constants/projects';
 

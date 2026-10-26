@@ -1,26 +1,26 @@
 # TactSpaces
 
-React 19 + TypeScript, Vite, and Tailwind CSS 4. This is a styling-preserving migration of the original five-page HTML site, not a redesign.
+Next.js 16 + React 19, TypeScript, and Tailwind CSS 4. The design and content are preserved, with the main pages server-rendered and project case studies statically generated for search engines.
 
 ## Run locally
 
 Requires Node.js 22.12+.
 
 ```sh
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
-Open the local URL printed by Vite. Other commands:
+Open the local URL printed by Next.js. Other commands:
 
 ```sh
-npm run typecheck
-npm test
-npm run build
-npm run preview
+pnpm typecheck
+pnpm test
+pnpm build
+pnpm start
 ```
 
-Deploy the generated `dist/` folder. Vite builds the five main pages and pre-renders each published project at `/projects/<slug>/index.html`. Existing links (`anatomy.html`, `standard.html`, `command-center.html`, and `studio.html#team`) still work without rewrite rules or a client-side router. The static host should serve directory indexes, not rewrite unknown project URLs to the homepage. Serve through Vite or a web server rather than opening the HTML shells as local files.
+Deploy with Vercel's Next.js preset or run `pnpm build` followed by `pnpm start`. The homepage, information pages, and published `/projects/<slug>/` pages are pre-rendered as HTML at build time. Legacy `.html` paths permanently redirect to clean URLs. `sitemap.xml` and `robots.txt` are generated from the published project data.
 
 For a Squarespace domain hosted on Vercel while keeping DNS at Squarespace, follow the [domain setup guide](docs/domain-setup.md).
 
@@ -29,14 +29,14 @@ For a Squarespace domain hosted on Vercel while keeping DNS at Squarespace, foll
 Command Center can save enquiries to a client-owned Google Sheet using Apps Script,
 with no additional paid service. Follow [the setup guide](docs/lead-capture.md) and
 paste [`scripts/google-sheets-leads.gs`](scripts/google-sheets-leads.gs) into the
-client Sheet's Apps Script editor. Set `VITE_GOOGLE_APPS_SCRIPT_URL` in the build
+client Sheet's Apps Script editor. Set `NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL` in the build
 environment and rebuild. Until configured, submission is safely disabled; it does
 not show a demo confirmation. Live Google deployment/browser checks are required
 before accepting real leads.
 
 ## Google Analytics
 
-GA4 is wired into every page, including pre-rendered project pages. After the live domain is connected, follow the [GA4 setup guide](docs/google-analytics.md) to create a web stream, configure the Vercel build variable, redeploy, and verify visits in Realtime.
+GA4 is wired into every page, including pre-rendered project pages. After the live domain is connected, follow the [GA4 setup guide](docs/google-analytics.md) to create a web stream, configure `NEXT_PUBLIC_GA_MEASUREMENT_ID` in Vercel, redeploy, and verify visits in Realtime.
 
 Missing or invalid Measurement IDs leave analytics disabled. The site sends page views automatically; no custom lead-conversion events are configured. Confirm privacy and consent requirements before enabling tracking.
 
@@ -44,11 +44,11 @@ Missing or invalid Measurement IDs leave analytics disabled. The site sends page
 
 ```text
 archive/html/          Original, byte-for-byte HTML files; open index.html here for the old site
-src/app/<page>/        React page, entry point, original page-specific CSS, and local components
+src/app/              Next.js App Router pages, metadata, sitemap, and original page CSS
 src/components/       Shared navigation/footer/layout and the project planner
 src/constants/        Navigation and planner options
 src/content/projects/ One JSON file per project, including listing-only projects
-plugins/              Project content validation and static page generation
+plugins/              Legacy Vite project-content validation used by regression tests
 src/hooks/            Scroll and reveal effects with cleanup
 src/assets/           Original logo extracted from the embedded PNG
 src/styles/           Tailwind integration and matching theme tokens
