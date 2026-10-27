@@ -51,17 +51,17 @@ describe('migration preservation', () => {
       const text = (doc: Document) => Array.from(doc.querySelectorAll(
         'h1,h2,h3,h4,p,blockquote,dt,dd,.stat,.idx,.name,.title,.role,.stage-label,.step-label,.tile-label,.day,.doc-name,.num,.lbl,footer a[href^="tel:"],footer a[href^="mailto:"],footer a[href^="https://www.google.com/maps/"],footer a[href="https://maps.app.goo.gl/yyCswfFMvS2y59Bq6"]',
       )).filter((element) => !element.classList.contains('eyebrow') && !element.closest('.studio-gallery-section'))
-        .map((element) => element.textContent?.replace(/[“”]/g, '"').replace(/\s+/g, ''));
+        .map((element) => element.textContent?.replace(/[“”]/g, '"').replace(/\.\.\./g, '…').replace(/\s+/g, ''));
       expect(text(after)).toEqual(text(before));
 
       // Footer contact links intentionally replace the original plain text.
       expect(after.querySelector('footer a[href="tel:+917348921433"]')?.textContent).toBe('+91 73489 21433');
       expect(after.querySelector('footer a[href="mailto:tactspaces@gmail.com"]')?.textContent).toBe('tactspaces@gmail.com');
-      const addressLink = after.querySelector('footer a[href="https://maps.app.goo.gl/yyCswfFMvS2y59Bq6"]');
+      const addressLink = after.querySelector('footer a[href^="https://www.google.com/maps/place/TactSpaces/"]');
       expect(addressLink).toBeTruthy();
       expect(addressLink?.getAttribute('target')).toBe('_blank');
       expect(addressLink?.getAttribute('rel')).toBe('noopener noreferrer');
-      const links = (doc: Document) => Array.from(doc.querySelectorAll('a:not(.work-card):not(.case-card):not(footer a[href^="tel:"]):not(footer a[href^="mailto:"]):not(footer a[href^="https://www.google.com/maps/"]):not(footer a[href="https://maps.app.goo.gl/yyCswfFMvS2y59Bq6"])')).map((a) => a.getAttribute('href'));
+      const links = (doc: Document) => Array.from(doc.querySelectorAll('a:not(.work-card):not(.case-card):not(footer a[href^="tel:"]):not(footer a[href^="mailto:"]):not(footer a[href^="https://www.google.com/maps/"])')).map((a) => a.getAttribute('href'));
       expect(links(after).every((href) => !href?.endsWith('.html'))).toBe(true);
       const anchors = (doc: Document) => Array.from(doc.querySelectorAll('section[id]')).map((section) => section.id);
       expect(anchors(after)).toEqual(anchors(before));

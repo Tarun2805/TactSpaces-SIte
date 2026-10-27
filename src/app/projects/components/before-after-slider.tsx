@@ -14,9 +14,9 @@ export function BeforeAfterSlider({ id, project, before, after }: BeforeAfterSli
 
   return (
     <div className="ba-slider reveal" id={id}>
-      <div className="ba-after">{after ? <img className="project-image" src={after.src} alt={after.alt} loading="lazy" /> : null}</div>
+      <div className="ba-after">{after ? <img className="project-image" src={after.src} alt={after.alt} width="1200" height="900" loading="lazy" /> : null}</div>
       <div className="ba-before-wrap" style={{ width: '100%', clipPath: `inset(0 ${100 - position}% 0 0)` }}>
-        <div className="ba-before">{before ? <img className="project-image" src={before.src} alt={before.alt} loading="lazy" /> : null}</div>
+        <div className="ba-before">{before ? <img className="project-image" src={before.src} alt={before.alt} width="1200" height="900" loading="lazy" /> : null}</div>
       </div>
       <div className="ba-divider" style={{ left: percentage }} />
       <div className="ba-handle" style={{ left: percentage }}>⇔</div>

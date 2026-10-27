@@ -31,7 +31,7 @@ export default function StudioPage() {
 
 <section id="team" className="team-split">
   <div className="team-main">
-  <div className="section-head reveal"><h2>Driving the vision...</h2></div>
+   <div className="section-head reveal"><h2>Driving the vision…</h2></div>
   <div className="team-grid reveal">
     <div className="team-card">
       <div className="photo"><div className="blk left-[15%] top-[10%] w-[70%] h-[80%]" /></div>
@@ -90,7 +90,7 @@ export default function StudioPage() {
       <h3>Want the full studio profile?</h3>
       <p>Services, process, team, and the complete project list in one document.</p>
     </div>
-    <a className="btn" href="#">Download Profile (PDF) →</a>
+     <a className="btn" href="mailto:tactspaces@gmail.com?subject=Request%20for%20TactSpaces%20Studio%20Profile">Request Studio Profile →</a>
   </div>
 </section>
     </>

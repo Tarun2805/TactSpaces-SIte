@@ -8,7 +8,7 @@ interface ProjectMediaProps {
 
 export function ProjectMedia({ media, eager = false }: ProjectMediaProps) {
   if (media.kind === 'image') {
-    return <img className="project-image" src={media.src} alt={media.alt} loading={eager ? 'eager' : 'lazy'} />;
+    return <img className="project-image" src={media.src} alt={media.alt} width="1200" height="900" loading={eager ? 'eager' : 'lazy'} />;
   }
 
   if (media.preset === 'pending') {

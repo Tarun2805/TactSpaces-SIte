@@ -82,7 +82,8 @@
   .doc-head{max-width:680px; margin-bottom:3rem;}
   .doc-head h2{font-size:clamp(1.9rem,3vw,2.6rem); margin-top:1rem;}
   .doc-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem;}
-  .doc-card{position:relative; background:var(--alabaster); border:1px solid var(--line); overflow:hidden; cursor:pointer;}
+   .doc-card{position:relative; width:100%; padding:0; color:inherit; text-align:left; font:inherit; background:var(--alabaster); border:1px solid var(--line); overflow:hidden; cursor:pointer;}
+   .doc-card:focus-visible{outline:2px solid var(--forest); outline-offset:4px;}
   .doc-preview{aspect-ratio:3/4; position:relative; overflow:hidden; filter:blur(5px); transition:filter 0.5s ease;}
   .doc-card:hover .doc-preview{filter:blur(2.5px);}
   .doc-preview .line{position:absolute; left:12%; right:12%; height:6px; background:#B9C0BA;}
@@ -97,7 +98,7 @@
   .commit-head{max-width:680px; margin-bottom:3rem;}
   .commit-grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); grid-auto-rows:1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
   .commit-card{background:var(--alabaster); padding:1.8rem;}
-  .commit-card h4{font-size:0.95rem; font-weight:700; margin-bottom:0.4rem;}
+   .commit-card h3{font-family:'Inter','Helvetica Neue',sans-serif; font-size:0.95rem; line-height:1.3; font-weight:700; margin-bottom:0.4rem;}
   .commit-card p{font-size:0.84rem; color:#5C645F; line-height:1.55;}
 
   footer{background:var(--forest); color:var(--alabaster); padding:5rem 5vw 2rem;}

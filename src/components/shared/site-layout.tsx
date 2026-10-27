@@ -22,8 +22,9 @@ export function SiteLayout({ page, children }: SiteLayoutProps) {
 
   return (
     <>
+      <a className="skip-link" href="#main-content">Skip to main content</a>
       <SiteNavigation page={page} />
-      <main ref={contentRef}>{children}</main>
+      <main ref={contentRef} id="main-content" className={`page-${page}`} tabIndex={-1}>{children}</main>
       <SiteFooter />
     </>
   );

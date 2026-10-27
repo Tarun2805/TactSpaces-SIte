@@ -94,12 +94,12 @@ export default function StandardPage() {
     <h2>Our core principles</h2>
   </div>
   <div className="commit-grid reveal">
-    <div className="commit-card"><h4>Client-Centric Approach</h4><p>Every project begins with understanding your vision, lifestyle, and functional needs.</p></div>
-    <div className="commit-card"><h4>Quality Commitment</h4><p>Thoughtful designs, quality documentation, and meticulous execution in every project.</p></div>
-    <div className="commit-card"><h4>Design Excellence</h4><p>Every design balances functionality, innovation, and aesthetics.</p></div>
-    <div className="commit-card"><h4>Transparency</h4><p>Honest communication, clear timelines, and transparent cost discussions throughout.</p></div>
-    <div className="commit-card"><h4>Collaboration</h4><p>Built through close work with clients, consultants, contractors, and vendors.</p></div>
-    <div className="commit-card"><h4>Sustainability</h4><p>Environmentally responsible design and thoughtful material choices, wherever possible.</p></div>
+    <div className="commit-card"><h3>Client-Centric Approach</h3><p>Every project begins with understanding your vision, lifestyle, and functional needs.</p></div>
+    <div className="commit-card"><h3>Quality Commitment</h3><p>Thoughtful designs, quality documentation, and meticulous execution in every project.</p></div>
+    <div className="commit-card"><h3>Design Excellence</h3><p>Every design balances functionality, innovation, and aesthetics.</p></div>
+    <div className="commit-card"><h3>Transparency</h3><p>Honest communication, clear timelines, and transparent cost discussions throughout.</p></div>
+    <div className="commit-card"><h3>Collaboration</h3><p>Built through close work with clients, consultants, contractors, and vendors.</p></div>
+    <div className="commit-card"><h3>Sustainability</h3><p>Environmentally responsible design and thoughtful material choices, wherever possible.</p></div>
   </div>
 </section>
     </>

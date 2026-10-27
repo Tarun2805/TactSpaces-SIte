@@ -62,7 +62,7 @@ The archive is source-only and is not bundled into production. Do not edit archi
 ## Existing placeholders
 
 - Lead capture requires the client-owned Apps Script deployment and a configured build URL; see [the setup guide](docs/lead-capture.md).
-- The studio's “Download Profile (PDF)” link still points to `#`; no PDF was supplied.
+- The studio profile CTA requests the profile by email; no PDF was supplied.
 - Existing geometric image placeholders are retained. Projects without details appear as non-clickable cards instead of dead links.
 
 ## Projects

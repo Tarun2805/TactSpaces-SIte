@@ -28,7 +28,7 @@ export default function HomePage() {
     <div className="render-block"></div>
 
     <div className="logo-reveal">
-      <img src={typeof logo === 'string' ? logo : logo.src} alt="TactSpaces" />
+       <img src={typeof logo === 'string' ? logo : logo.src} alt="TactSpaces" width="1604" height="731" />
     </div>
   </div>
 </section>

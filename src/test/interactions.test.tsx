@@ -121,11 +121,11 @@ describe('page interactions', () => {
   });
 
   it('toggles document previews with a tap or keyboard', () => {
-    const { container } = render(<StandardPage />);
-    const card = container.querySelector('.doc-card')!;
+    render(<StandardPage />);
+    const card = screen.getAllByRole('button').find((button) => button.classList.contains('doc-card'))!;
     fireEvent.click(card);
     expect(card.classList.contains('open')).toBe(true);
-    fireEvent.keyDown(card, { key: 'Enter' });
+    fireEvent.click(card);
     expect(card.classList.contains('open')).toBe(false);
   });
 

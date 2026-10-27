@@ -50,9 +50,9 @@
     .btn-label-full{display:none;} .btn-label-short{display:inline;} .logo-mark img{height:24px;}
   }
 
-  .page-header{padding:9rem 5vw 3rem; max-width:760px; text-align:center; margin:0 auto;}
-  .page-header h1{font-size:clamp(2.4rem, 4.6vw, 3.6rem); margin:1.2rem 0 1.2rem;}
-  .page-header p{font-size:1.02rem; line-height:1.6; color:#454E4A;}
+  .page-command-center .page-header{padding:9rem 5vw 3rem; max-width:760px; text-align:center; margin:0 auto;}
+  .page-command-center .page-header h1{font-size:clamp(2.4rem, 4.6vw, 3.6rem); margin:1.2rem 0 1.2rem;}
+  .page-command-center .page-header p{font-size:1.02rem; line-height:1.6; color:#454E4A;}
 
   .planner-wrap{max-width:720px; margin:0 auto; padding:0 5vw 8rem;}
   .planner{background:var(--alabaster-deep); border:1px solid var(--line); padding:3.2rem;}
@@ -137,9 +137,9 @@ a,button,.tile,.toggle-card,.doc-card,.case-card,.filter-pill{-webkit-tap-highli
 @media (max-width:640px){
   nav{padding:.6rem 20px;}
   nav .btn{min-height:40px; justify-content:center;}
-  .page-header{padding:calc(var(--nav-h) + 2.25rem) 20px 2rem;}
-  .page-header h1{font-size:clamp(2.1rem, 9.5vw, 2.6rem); margin:1rem 0 1rem;}
-  .page-header p{font-size:1rem; line-height:1.6;}
+   .page-command-center .page-header{padding:calc(var(--nav-h) + 2.25rem) 20px 2rem;}
+   .page-command-center .page-header h1{font-size:clamp(2.1rem, 9.5vw, 2.6rem); margin:1rem 0 1rem;}
+   .page-command-center .page-header p{font-size:1rem; line-height:1.6;}
   footer{padding:3.25rem 20px 1.5rem;}
   .footer-grid{grid-template-columns:1fr 1fr; gap:2rem 1.25rem; padding-bottom:2.25rem;}
   .footer-grid > div:first-child{grid-column:1 / -1;}
@@ -151,7 +151,7 @@ a,button,.tile,.toggle-card,.doc-card,.case-card,.filter-pill{-webkit-tap-highli
 
 .planner, #successPanel{scroll-margin-top:calc(var(--nav-h) + 12px);}
 @media (max-width:640px){
-  .page-header{padding-bottom:1.5rem;}
+   .page-command-center .page-header{padding-bottom:1.5rem;}
   .planner-wrap{padding:0 20px 3.5rem;}
   .planner{padding:1.5rem 1.25rem;}
   .planner-progress{margin-bottom:1.75rem;}
