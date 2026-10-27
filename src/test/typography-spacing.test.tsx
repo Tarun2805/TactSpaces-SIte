@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import HomePage from '../app/home/home-view';
 import ProjectPage from '../app/projects/project-view';
-import { ProjectCard } from '../components/shared/project-card';
+import { HomeProjectCard, PortfolioProjectCard } from '../components/shared/project-card';
 import { PROJECTS } from '../constants/projects';
 
 describe('shared typography and spacing', () => {
@@ -33,8 +33,8 @@ describe('shared typography and spacing', () => {
 
   it('keeps area units and duration values together in both card variants', () => {
     const project = PROJECTS[0];
-    for (const variant of ['home', 'portfolio'] as const) {
-      const { container, unmount } = render(<ProjectCard project={project} variant={variant} />);
+    for (const Card of [HomeProjectCard, PortfolioProjectCard]) {
+      const { container, unmount } = render(<Card project={project} />);
       expect(container.querySelector('.stat')?.textContent).toBe(`${project.area.replaceAll(' ', '\u00a0')} · ${project.scope}`);
       expect(container.querySelector('.work-meta, .meta-row')?.textContent).toContain(project.duration.replaceAll(' ', '\u00a0'));
       unmount();

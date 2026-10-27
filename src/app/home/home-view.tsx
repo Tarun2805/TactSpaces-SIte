@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import logo from '../../assets/tactspaces-logo.png';
 import { HERO_REVEAL_DELAY_MS } from '../../constants/site-navigation';
 import { PROJECTS } from '../../constants/projects';
-import { ProjectCard } from '../../components/shared/project-card';
+import { HomeProjectCard } from '../../components/shared/project-card';
 
 export default function HomePage() {
   const [isAnimated, setIsAnimated] = useState(false);
@@ -39,7 +39,7 @@ export default function HomePage() {
   </div>
   <div className="work-strip reveal">
     {PROJECTS.filter((project) => project.featured).map((project) => (
-      <ProjectCard key={project.slug} project={project} variant="home" />
+      <HomeProjectCard key={project.slug} project={project} />
     ))}
   </div>
 </section>

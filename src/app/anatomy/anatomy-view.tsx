@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ProjectCard } from '../../components/shared/project-card';
+import { PortfolioProjectCard } from '../../components/shared/project-card';
 import { PROJECT_CATEGORIES, PROJECTS } from '../../constants/projects';
 import { getProjectHref } from '../../utils/project';
 
@@ -32,7 +32,7 @@ export default function AnatomyPage() {
         <section style={{ padding: '4rem 0 2rem' }}>
           <div className="case-grid reveal" id="caseGrid">
             {PROJECTS.map((project) => (
-              <ProjectCard key={project.slug} project={project} hidden={category !== 'all' && category !== project.category} />
+              <PortfolioProjectCard key={project.slug} project={project} hidden={category !== 'all' && category !== project.category} />
             ))}
           </div>
         </section>

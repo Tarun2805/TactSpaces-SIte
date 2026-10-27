@@ -7,7 +7,7 @@ import { describe, expect, it, vi } from 'vitest';
 import ProjectPage from '../app/projects/project-view';
 import AnatomyPage from '../app/anatomy/anatomy-view';
 import { renderProject } from '../app/projects/render';
-import { ProjectCard } from '../components/shared/project-card';
+import { HomeProjectCard, PortfolioProjectCard } from '../components/shared/project-card';
 import { SiteLayout } from '../components/shared/site-layout';
 import { PROJECTS } from '../constants/projects';
 import { parseProject } from '../lib/validations/project';
@@ -46,7 +46,8 @@ describe('JSON-driven projects', () => {
     const { details: _details, ...listing } = PROJECTS[0];
     expect(parseProject(listing).details).toBeUndefined();
     expect(getProjectHref(listing)).toBeUndefined();
-    const { container } = render(<ProjectCard project={listing} variant={variant} />);
+    const Card = variant === 'home' ? HomeProjectCard : PortfolioProjectCard;
+    const { container } = render(<Card project={listing} />);
     expect(container.querySelector('article')).not.toBeNull();
     expect(container.querySelector('a,button,[tabindex]')).toBeNull();
     expect(screen.getByRole('heading', { name: listing.name })).toBeTruthy();
