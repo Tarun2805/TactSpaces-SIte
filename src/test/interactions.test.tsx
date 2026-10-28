@@ -140,7 +140,7 @@ describe('page interactions', () => {
 describe('project planner', () => {
   it('retains choices, custom typology, budget and contact values when navigating back', () => {
     const { container } = render(<ProjectPlannerForm />);
-    const next = () => screen.getByRole<HTMLButtonElement>('button', { name: 'Continue →' });
+    const next = () => screen.getByRole<HTMLButtonElement>('button', { name: 'Continue' });
     expect(next().disabled).toBe(true);
     fireEvent.click(screen.getByRole('button', { name: /Other/ }));
     fireEvent.change(screen.getByLabelText("Tell us what you're building"), { target: { value: 'Clinic' } });
@@ -154,10 +154,10 @@ describe('project planner', () => {
     expect(screen.getByText('₹60L')).toBeTruthy();
     fireEvent.click(next());
     fireEvent.change(screen.getByLabelText('Full Name'), { target: { value: 'Test Client' } });
-    fireEvent.click(screen.getByRole('button', { name: '← Back' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Back' }));
     expect(screen.getByRole<HTMLInputElement>('slider', { name: 'Budget' }).value).toBe('60');
-    fireEvent.click(screen.getByRole('button', { name: '← Back' }));
-    fireEvent.click(screen.getByRole('button', { name: '← Back' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Back' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Back' }));
     expect(screen.getByLabelText<HTMLInputElement>("Tell us what you're building").value).toBe('Clinic');
     fireEvent.click(next()); fireEvent.click(next()); fireEvent.click(next());
     expect(screen.getByLabelText<HTMLInputElement>('Full Name').value).toBe('Test Client');
@@ -175,8 +175,8 @@ describe('project planner', () => {
     scroll.mockClear();
     expect(scroll).not.toHaveBeenCalled();
     fireEvent.click(screen.getByRole('button', { name: /Villa/ }));
-    fireEvent.click(screen.getByRole('button', { name: 'Continue →' }));
-    fireEvent.click(screen.getByRole('button', { name: '← Back' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Continue' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Back' }));
     expect(scroll).toHaveBeenCalledTimes(2);
   });
 });

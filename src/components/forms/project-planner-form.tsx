@@ -9,6 +9,7 @@ import { PROJECT_LEAD_FIELD_IDS, PROJECT_LEAD_LIMITS, PROJECT_LEAD_UNAVAILABLE }
 import { getProjectLeadEndpoint, submitProjectLead } from '../../fetchers/project-lead';
 import { validateProjectLead } from '../../lib/validations/project-lead';
 import type { ProjectLeadDetails, ProjectLeadErrors } from '../../types/project-lead';
+import { ArrowIcon } from '../shared/arrow-icon';
 
 interface PlannerFieldErrorProps {
   field: keyof ProjectLeadDetails;
@@ -139,7 +140,7 @@ export function ProjectPlannerForm() {
               required={typology === 'Other'} {...fieldAccessibility('typologyOther')} />
             <PlannerFieldError field="typologyOther" errors={errors} />
           </div>
-          <div className="mt-[2.6rem] flex justify-between max-[640px]:mt-7 max-[640px]:flex-col-reverse max-[640px]:gap-3 [&>span:empty]:max-[640px]:hidden"><span /><button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-transparent bg-[#1f2d28] px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#f9f9f7] transition-[background,transform] duration-300 hover:-translate-y-px hover:bg-[#16211d] disabled:cursor-not-allowed disabled:opacity-[.35] disabled:transform-none max-[640px]:min-h-[50px] max-[640px]:w-full" id="next1" disabled={!typology} onClick={continueFromTypology}>Continue →</button></div>
+          <div className="mt-[2.6rem] flex justify-between max-[640px]:mt-7 max-[640px]:flex-col-reverse max-[640px]:gap-3 [&>span:empty]:max-[640px]:hidden"><span /><button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-transparent bg-[#1f2d28] px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#f9f9f7] transition-[background,transform] duration-300 hover:-translate-y-px hover:bg-[#16211d] disabled:cursor-not-allowed disabled:opacity-[.35] disabled:transform-none max-[640px]:min-h-[50px] max-[640px]:w-full" id="next1" disabled={!typology} onClick={continueFromTypology}>Continue <ArrowIcon /></button></div>
         </div>
 
         <div className={`${panelClass(2)} ${step === 2 ? 'block' : 'hidden'}`} data-panel="2" hidden={step !== 2}>
@@ -156,8 +157,8 @@ export function ProjectPlannerForm() {
             ))}
           </div>
           <div className="mt-[2.6rem] flex justify-between max-[640px]:mt-7 max-[640px]:flex-col-reverse max-[640px]:gap-3 [&>span:empty]:max-[640px]:hidden">
-            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-[#dad7ce] bg-transparent px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#22282a] transition-colors duration-300 hover:bg-[#f1efea] max-[640px]:min-h-[50px] max-[640px]:w-full" data-back="1" onClick={() => setStep(1)}>← Back</button>
-            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-transparent bg-[#1f2d28] px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#f9f9f7] transition-[background,transform] duration-300 hover:-translate-y-px hover:bg-[#16211d] disabled:cursor-not-allowed disabled:opacity-[.35] disabled:transform-none max-[640px]:min-h-[50px] max-[640px]:w-full" id="next2" disabled={!scope} onClick={() => setStep(3)}>Continue →</button>
+            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-[#dad7ce] bg-transparent px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#22282a] transition-colors duration-300 hover:bg-[#f1efea] max-[640px]:min-h-[50px] max-[640px]:w-full" data-back="1" onClick={() => setStep(1)}><ArrowIcon direction="left" />Back</button>
+            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-transparent bg-[#1f2d28] px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#f9f9f7] transition-[background,transform] duration-300 hover:-translate-y-px hover:bg-[#16211d] disabled:cursor-not-allowed disabled:opacity-[.35] disabled:transform-none max-[640px]:min-h-[50px] max-[640px]:w-full" id="next2" disabled={!scope} onClick={() => setStep(3)}>Continue <ArrowIcon /></button>
           </div>
         </div>
 
@@ -181,8 +182,8 @@ export function ProjectPlannerForm() {
               onChange={(event) => setBudget(Number(event.target.value))} />
           </div>
           <div className="mt-8 flex justify-between max-[640px]:mt-7 max-[640px]:flex-col-reverse max-[640px]:gap-3 [&>span:empty]:max-[640px]:hidden">
-            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-[#dad7ce] bg-transparent px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#22282a] transition-colors duration-300 hover:bg-[#f1efea] max-[640px]:min-h-[50px] max-[640px]:w-full" data-back="2" onClick={() => setStep(2)}>← Back</button>
-            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-transparent bg-[#1f2d28] px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#f9f9f7] transition-[background,transform] duration-300 hover:-translate-y-px hover:bg-[#16211d] disabled:cursor-not-allowed disabled:opacity-[.35] disabled:transform-none max-[640px]:min-h-[50px] max-[640px]:w-full" id="next3" disabled={!timeline} onClick={() => setStep(4)}>Continue →</button>
+            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-[#dad7ce] bg-transparent px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#22282a] transition-colors duration-300 hover:bg-[#f1efea] max-[640px]:min-h-[50px] max-[640px]:w-full" data-back="2" onClick={() => setStep(2)}><ArrowIcon direction="left" />Back</button>
+            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-transparent bg-[#1f2d28] px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#f9f9f7] transition-[background,transform] duration-300 hover:-translate-y-px hover:bg-[#16211d] disabled:cursor-not-allowed disabled:opacity-[.35] disabled:transform-none max-[640px]:min-h-[50px] max-[640px]:w-full" id="next3" disabled={!timeline} onClick={() => setStep(4)}>Continue <ArrowIcon /></button>
           </div>
         </div>
 
@@ -209,8 +210,8 @@ export function ProjectPlannerForm() {
           {submissionError || !isConfigured ? <div role="alert" className="mt-4 text-sm font-semibold leading-relaxed">{submissionError || PROJECT_LEAD_UNAVAILABLE}</div> : null}
           {isSubmitting ? <div role="status" className="mt-4 text-sm">Saving your enquiry…</div> : null}
           <div className="planner-nav mt-[2.6rem] flex justify-between max-[640px]:mt-7 max-[640px]:flex-col-reverse max-[640px]:gap-3 [&>span:empty]:max-[640px]:hidden">
-            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-[#dad7ce] bg-transparent px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#22282a] transition-colors duration-300 hover:bg-[#f1efea] max-[640px]:min-h-[50px] max-[640px]:w-full" data-back="3" onClick={() => setStep(3)}>← Back</button>
-            <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-transparent bg-[#1f2d28] px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#f9f9f7] transition-[background,transform] duration-300 hover:-translate-y-px hover:bg-[#16211d] disabled:cursor-not-allowed disabled:opacity-[.35] disabled:transform-none max-[640px]:min-h-[50px] max-[640px]:w-full" id="submitBtn" disabled={isSubmitting || !isConfigured}>{isSubmitting ? 'Submitting…' : 'Submit to Discovery Team →'}</button>
+            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-[#dad7ce] bg-transparent px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#22282a] transition-colors duration-300 hover:bg-[#f1efea] max-[640px]:min-h-[50px] max-[640px]:w-full" data-back="3" onClick={() => setStep(3)}><ArrowIcon direction="left" />Back</button>
+            <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-transparent bg-[#1f2d28] px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#f9f9f7] transition-[background,transform] duration-300 hover:-translate-y-px hover:bg-[#16211d] disabled:cursor-not-allowed disabled:opacity-[.35] disabled:transform-none max-[640px]:min-h-[50px] max-[640px]:w-full" id="submitBtn" disabled={isSubmitting || !isConfigured}>{isSubmitting ? 'Submitting…' : <>Submit to Discovery Team <ArrowIcon /></>}</button>
           </div>
         </div>
         </fieldset>

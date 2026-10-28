@@ -5,6 +5,7 @@ import logo from '../../assets/tactspaces-logo.png';
 import { HERO_REVEAL_DELAY_MS } from '../../constants/site-navigation';
 import { PROJECTS } from '../../constants/projects';
 import { HomeProjectCard } from '../../components/shared/project-card';
+import { ArrowIcon } from '../../components/shared/arrow-icon';
 
 export default function HomePage() {
   const [isAnimated, setIsAnimated] = useState(false);
@@ -20,8 +21,8 @@ export default function HomePage() {
     <h1 className="mt-[1.2rem] mb-[1.4rem] text-[clamp(2.6rem,4.6vw,4.6rem)] max-[640px]:mt-4 max-[640px]:mb-[1.1rem] max-[640px]:text-[clamp(2.1rem,9.6vw,2.5rem)] max-[640px]:leading-[1.08]">Architecture &amp; Interiors.<br />Governed by Precision.</h1>
     <p className="mb-[2.2rem] max-w-[440px] text-[1.05rem] leading-[1.65] text-[#454e4a] max-[640px]:mb-7 max-[640px]:text-base">Turnkey design and execution across Bengaluru, where every material, timeline, and rupee is documented before it's promised.</p>
     <div className="hero-ctas flex flex-wrap items-center gap-x-[1.5rem] gap-y-4">
-      <a className="inline-flex items-center justify-center gap-2 rounded-[2px] border-0 bg-forest px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-alabaster transition-[background,transform] duration-300 hover:-translate-y-px hover:bg-forest-hover max-[640px]:min-h-12" href="/command-center">Start Your Project →</a>
-      <a href="/standard" className="ghost text-[0.875rem] font-semibold leading-[1.5] max-[640px]:inline-flex max-[640px]:min-h-11 max-[640px]:items-center">View the Standard ↓</a>
+      <a className="inline-flex items-center justify-center gap-2 rounded-[2px] border-0 bg-forest px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-alabaster transition-[background,transform] duration-300 hover:-translate-y-px hover:bg-forest-hover max-[640px]:min-h-12" href="/command-center">Start Your Project <ArrowIcon /></a>
+      <a href="/standard" className="ghost inline-flex items-center gap-1 text-[0.875rem] font-semibold leading-[1.5] max-[640px]:min-h-11">View the Standard <ArrowIcon direction="down" className="size-3.5" /></a>
     </div>
   </div>
   <div className={`hero-visual relative overflow-hidden bg-[#edebe3] max-[900px]:order-[-1] max-[900px]:min-h-[60vh] max-[640px]:min-h-0 max-[640px]:h-[clamp(220px,34vh,300px)] supports-[height:100svh]:max-[640px]:h-[clamp(220px,34svh,300px)]${isAnimated ? ' animate' : ''}`} id="heroVisual">

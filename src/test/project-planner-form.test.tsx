@@ -12,11 +12,11 @@ vi.mock('../fetchers/project-lead', async (original) => ({
 
 function reachContactStep() {
   fireEvent.click(screen.getByRole('button', { name: /Villa/ }));
-  fireEvent.click(screen.getByRole('button', { name: 'Continue →' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Continue' }));
   fireEvent.click(screen.getByRole('button', { name: /Turnkey Execution/ }));
-  fireEvent.click(screen.getByRole('button', { name: 'Continue →' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Continue' }));
   fireEvent.click(screen.getByRole('button', { name: '1–3 months' }));
-  fireEvent.click(screen.getByRole('button', { name: 'Continue →' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Continue' }));
 }
 
 function fillContactStep() {
@@ -37,7 +37,7 @@ describe('real project enquiry submission', () => {
     vi.stubEnv('VITE_GOOGLE_APPS_SCRIPT_URL', '');
     render(<ProjectPlannerForm />);
     reachContactStep();
-    expect(screen.getByRole<HTMLButtonElement>('button', { name: 'Submit to Discovery Team →' }).disabled).toBe(true);
+    expect(screen.getByRole<HTMLButtonElement>('button', { name: 'Submit to Discovery Team' }).disabled).toBe(true);
     expect(screen.getByRole('alert').textContent).toContain('Online enquiries are unavailable');
     expect(screen.queryByRole('status')).toBeNull();
     expect(submitProjectLead).not.toHaveBeenCalled();
@@ -46,7 +46,7 @@ describe('real project enquiry submission', () => {
   it('requires an Other description before advancing', () => {
     render(<ProjectPlannerForm />);
     fireEvent.click(screen.getByRole('button', { name: /Other/ }));
-    fireEvent.click(screen.getByRole('button', { name: 'Continue →' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Continue' }));
     expect(screen.getByLabelText("Tell us what you're building").getAttribute('aria-invalid')).toBe('true');
     expect(document.activeElement).toBe(screen.getByLabelText("Tell us what you're building"));
     expect(screen.getByText('Describe your project type (2–200 characters).')).toBeTruthy();
@@ -55,7 +55,7 @@ describe('real project enquiry submission', () => {
   it('validates contact fields without attempting delivery', () => {
     render(<ProjectPlannerForm />);
     reachContactStep();
-    fireEvent.click(screen.getByRole('button', { name: 'Submit to Discovery Team →' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Submit to Discovery Team' }));
     for (const label of ['Full Name', 'Phone', 'Email', 'Project Location (Area, City)']) {
       const field = screen.getByLabelText(label);
       expect(field.getAttribute('aria-invalid')).toBe('true');
@@ -71,7 +71,7 @@ describe('real project enquiry submission', () => {
     const { container } = render(<ProjectPlannerForm />);
     reachContactStep();
     fillContactStep();
-    fireEvent.click(screen.getByRole('button', { name: 'Submit to Discovery Team →' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Submit to Discovery Team' }));
     expect(screen.getByRole('status').textContent).toBe('Saving your enquiry…');
     expect(screen.getByRole<HTMLButtonElement>('button', { name: 'Submitting…' }).disabled).toBe(true);
     expect(container.querySelector('fieldset')?.disabled).toBe(true);
@@ -91,7 +91,7 @@ describe('real project enquiry submission', () => {
     render(<ProjectPlannerForm />);
     reachContactStep();
     fillContactStep();
-    const submit = () => fireEvent.click(screen.getByRole('button', { name: 'Submit to Discovery Team →' }));
+    const submit = () => fireEvent.click(screen.getByRole('button', { name: 'Submit to Discovery Team' }));
     submit();
     await screen.findByRole('alert');
     expect(screen.getByRole('alert').textContent).toBe(PROJECT_LEAD_TIMEOUT);
@@ -114,7 +114,7 @@ describe('real project enquiry submission', () => {
     const { unmount } = render(<ProjectPlannerForm />);
     reachContactStep();
     fillContactStep();
-    fireEvent.click(screen.getByRole('button', { name: 'Submit to Discovery Team →' }));
+    fireEvent.click(screen.getByRole('button', { name: 'Submit to Discovery Team' }));
     const signal = vi.mocked(submitProjectLead).mock.calls[0][1];
     unmount();
     expect(signal.aborted).toBe(true);

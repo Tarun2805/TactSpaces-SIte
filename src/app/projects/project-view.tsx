@@ -5,6 +5,7 @@ import type { Project, ProjectSection } from '../../types/project';
 import { BeforeAfterSlider } from './components/before-after-slider';
 import { HorizontalTimeline } from './components/horizontal-timeline';
 import { MaterialCallout } from './components/material-callout';
+import { ArrowIcon } from '../../components/shared/arrow-icon';
 
 interface ProjectSectionContentProps {
   section: ProjectSection;
@@ -55,7 +56,7 @@ export default function ProjectPage({ project }: ProjectPageProps) {
   return (
     <article className="project-page deep-dive border-t-0 px-0 pt-36 pb-24 max-[640px]:pt-[calc(var(--nav-h)+2.25rem)] max-[640px]:pb-10">
       <div className="deep-dive-head reveal mb-12 max-w-[900px] px-[5vw] max-[640px]:mb-7 max-[640px]:px-5">
-        <a className="project-back mb-8 inline-flex min-h-11 items-center text-[0.85rem] underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-[var(--forest)] focus-visible:outline-offset-4" href="/anatomy">← All projects</a>
+        <a className="project-back mb-8 inline-flex min-h-11 items-center gap-2 text-[0.85rem] underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-[var(--forest)] focus-visible:outline-offset-4" href="/anatomy"><ArrowIcon direction="left" />All projects</a>
         <h1 className="mt-4 break-words text-[clamp(2rem,3.5vw,3.2rem)] max-[640px]:text-[clamp(1.8rem,8vw,2.2rem)]">{project.name}</h1>
         <p className="mt-[1.2rem] text-[0.9rem] leading-[1.6] text-[#454E4A]">{project.location} · {project.scope}</p>
       </div>
