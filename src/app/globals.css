@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+/* Keep the original reset: Tailwind Preflight would change the existing design. */
+@layer theme, base, components, refinements, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@import '../styles/typography-spacing.css' layer(refinements);
+@source '..';
+
+@layer base {
+  :root {
+    --forest: #1f2d28;
+    --forest-hover: #16211d;
+    --alabaster: #f9f9f7;
+    --alabaster-deep: #f1efea;
+    --ink: #22282a;
+    --line: #dad7ce;
+    --accent: #273939;
+    --accent-soft: #273939;
+    --nav-h: 64px;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--alabaster);
+    color: var(--ink);
+    font-family: 'Inter', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--forest);
+    outline-offset: 4px;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font-family: inherit;
+  }
+
+  a,
+  button,
+  .tile,
+  .toggle-card,
+  .doc-card,
+  .case-card,
+  .filter-pill {
+    -webkit-tap-highlight-color: rgb(31 45 40 / 8%);
+  }
+
+  @media (max-width: 640px) {
+    h1,
+    h2 {
+      text-wrap: balance;
+    }
+  }
+}
+
+@layer base {
+  /* Selection cards were divs; retain their typography now they are keyboard-accessible buttons. */
+  button.tile, button.toggle-card { font: inherit; color: inherit; border-radius: 0; }
+}
+
+@layer components {
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.9s cubic-bezier(.16,.84,.44,1), transform 0.9s cubic-bezier(.16,.84,.44,1);
+  }
+
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  body.nav-locked {
+    overflow: hidden;
+  }
+
+  /* Keep the layered clip-path reveal in CSS; the rest of the page is utility-styled. */
+  .hero-visual .render-block {
+    position: absolute;
+    inset: 0;
+    background: var(--forest);
+    clip-path: polygon(0 100%, 100% 100%, 100% 40%, 0 62%);
+    transition: clip-path 1.4s cubic-bezier(.16, .84, .44, 1);
+  }
+
+  .hero-visual.animate .render-block {
+    clip-path: polygon(0 100%, 100% 100%, 100% 0%, 0 0%);
+  }
+
+  .hero-visual .logo-reveal img {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 1.7s cubic-bezier(.65, 0, .35, 1) .25s;
+  }
+
+  .hero-visual.animate .logo-reveal img {
+    clip-path: inset(0);
+  }
+
+  .work-strip::-webkit-scrollbar { height: 3px; }
+  .work-strip::-webkit-scrollbar-thumb { background: var(--line); }
+}
+
+@media (hover: none) {
+  .doc-name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .75rem;
+  }
+
+  .doc-name::after {
+    color: var(--accent);
+    content: 'Tap to reveal';
+    font-size: .66rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  .doc-card.open .doc-name::after { content: 'Tap to hide'; }
+  .doc-card:hover .doc-lockup { background: rgb(31 45 40 / 0%); opacity: 0; }
+  .doc-card.open .doc-lockup { background: rgb(31 45 40 / 78%); opacity: 1; }
+  .doc-card.open .doc-preview { filter: blur(2.5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .hero-visual .render-block { clip-path: polygon(0 100%, 100% 100%, 100% 0%, 0 0%); transition: none; }
+  .hero-visual .logo-reveal img { clip-path: inset(0); transition: none; }
+  #nav [class*="transition"] { transition: none; }
+  .project-page .h-timeline-wrap { height: auto !important; }
+  .project-page .h-timeline-sticky { position: static; height: auto; overflow-x: auto; }
+  .project-page .h-timeline-track { transform: none !important; }
+}
+
+@theme {
+  --color-forest: #1f2d28;
+  --color-forest-hover: #16211d;
+  --color-alabaster: #f9f9f7;
+  --color-alabaster-deep: #f1efea;
+  --color-ink: #22282a;
+  --color-line: #dad7ce;
+  --color-accent: #273939;
+  --font-sans: 'Inter', 'Helvetica Neue', sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+}

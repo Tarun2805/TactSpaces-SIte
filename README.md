@@ -44,17 +44,16 @@ Missing or invalid Measurement IDs leave analytics disabled. The site sends page
 
 ```text
 archive/html/          Original, byte-for-byte HTML files; open index.html here for the old site
-src/app/              Next.js App Router pages, metadata, sitemap, and original page CSS
+src/app/              Next.js App Router pages, metadata, sitemap, and global stylesheet
 src/components/       Shared navigation/footer/layout and the project planner
 src/constants/        Navigation and planner options
 src/content/projects/ One JSON file per project, including listing-only projects
 src/hooks/            Scroll and reveal effects with cleanup
 src/assets/           Original logo extracted from the embedded PNG
-src/styles/           Tailwind integration and matching theme tokens
 src/test/             DOM-based interaction and content/style regression tests
 ```
 
-The original CSS declarations, fonts, responsive breakpoints, layout, hover effects, and animation timings are retained in each page's stylesheet. They are in Tailwind's `components` layer. Shared typography and spacing refinements live in `src/styles/typography-spacing.css`, in a `refinements` layer above page styles and below utilities. Tailwind Preflight is intentionally omitted to avoid changing the original reset. Google Fonts remains an external dependency, as before.
+Page and component presentation uses Tailwind utilities colocated with JSX. `src/app/globals.css` loads Tailwind, shared theme tokens, the preserved base reset, and a few CSS-only motion/accessibility effects. Shared typography and spacing refinements remain in `src/styles/typography-spacing.css`, in a `refinements` layer below utilities. Tailwind Preflight is intentionally omitted to avoid changing the original reset. Google Fonts remains an external dependency, as before.
 
 The archive is source-only and is not bundled into production. Do not edit archived HTML when changing the React application. Routes live in `src/app/**/page.tsx`; generated HTML in `.next/` or the deployment output is a build artifact, not a route source file.
 

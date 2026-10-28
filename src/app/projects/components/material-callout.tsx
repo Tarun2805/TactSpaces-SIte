@@ -34,7 +34,7 @@ export function MaterialCallout({ top, left, children }: MaterialCalloutProps) {
   };
 
   return (
-    <div className="callout-pin" style={{ top, left }} role="button" tabIndex={0}
+    <div className="callout-pin absolute h-3 w-3 cursor-pointer rounded-full bg-[var(--alabaster)] shadow-[0_0_0_4px_rgba(31,45,40,0.35)] max-[640px]:before:absolute max-[640px]:before:inset-[-16px] max-[640px]:before:rounded-full" style={{ top, left }} role="button" tabIndex={0}
       aria-label={children} aria-expanded={isOpen}
       onMouseEnter={show} onMouseLeave={() => setIsOpen(false)} onFocus={show} onBlur={() => setIsOpen(false)}
       onKeyDown={(event) => {
@@ -50,7 +50,7 @@ export function MaterialCallout({ top, left, children }: MaterialCalloutProps) {
         show();
         timerRef.current = window.setTimeout(() => setIsOpen(false), CALLOUT_DISMISS_DELAY_MS);
       }}>
-      <span ref={tipRef} className={`callout-tip${isOpen ? ' show' : ''}`} style={position}>{children}</span>
+      <span ref={tipRef} className={`callout-tip absolute z-[5] w-max max-w-[220px] pointer-events-none rounded-[1px] bg-[var(--forest)] px-3 py-2 text-[0.72rem] text-[var(--alabaster)] opacity-0 translate-y-1 transition-[opacity,transform] duration-[250ms]${isOpen ? ' show opacity-100 translate-y-0' : ''}`} style={position}>{children}</span>
     </div>
   );
 }

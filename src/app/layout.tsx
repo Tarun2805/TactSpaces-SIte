@@ -1,11 +1,5 @@
 import type { Metadata } from 'next';
-import '../styles/tailwind.css';
-import './home/home.css';
-import './anatomy/anatomy.css';
-import './standard/standard.css';
-import './studio/studio.css';
-import './command-center/command-center.css';
-import './projects/projects.css';
+import './globals.css';
 import { SiteShell } from './site-shell';
 
 export const metadata: Metadata = {

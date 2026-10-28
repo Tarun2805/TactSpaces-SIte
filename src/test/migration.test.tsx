@@ -68,10 +68,10 @@ describe('migration preservation', () => {
     });
 
     it(`removes decorative hairlines from ${source}`, () => {
-      const styles = readFileSync(`src/app/${page}/${page}.css`, 'utf8');
-      expect(styles).not.toMatch(/\.eyebrow::before\{content:'?'[^}]*height:1px/);
-      expect(styles).not.toMatch(/\.nav-links a::after\{content:'?'[^}]*height:1px/);
-      expect(styles).not.toMatch(/nav\{[^}]*border-bottom:1px solid var\(--line\)/);
+      const styles = readFileSync('src/app/globals.css', 'utf8');
+      expect(styles).not.toMatch(/\.eyebrow::before\s*\{[^}]*height:\s*1px/);
+      expect(styles).not.toMatch(/\.nav-links a::after\s*\{[^}]*height:\s*1px/);
+      expect(styles).not.toMatch(/nav\s*\{[^}]*border-bottom:\s*1px solid var\(--line\)/);
     });
   }
 
@@ -95,34 +95,33 @@ describe('migration preservation', () => {
 
 describe('studio anchor layout', () => {
   it('offsets anchored sections by the measured header height without changing section spacing', () => {
-    const styles = readFileSync('src/app/studio/studio.css', 'utf8');
-    expect(styles).toContain('section[id]{scroll-margin-top:var(--nav-h);}');
-    expect(styles).toContain('section{padding:5rem 5vw;}');
-    expect(styles).toContain('section{padding:3.5rem 20px;}');
+    const view = readFileSync('src/app/studio/studio-view.tsx', 'utf8');
+    expect(view.match(/scroll-mt-\[var\(--nav-h\)\]/g)).toHaveLength(2);
+    expect(view).toContain('px-[5vw] py-20');
+    expect(view).toContain('max-[640px]:px-5 max-[640px]:py-14');
   });
 });
 
 describe('portfolio grid layout', () => {
-  const styles = readFileSync('src/app/anatomy/anatomy.css', 'utf8');
+  const view = readFileSync('src/app/anatomy/anatomy-view.tsx', 'utf8');
 
   it('sticks the filter bar below the measured navigation at every breakpoint', () => {
-    const offsets = Array.from(styles.matchAll(/\.filter-bar\{[^}]*?top:([^;]+);/g), (match) => match[1]);
-    expect(offsets).toEqual(['var(--nav-h)', 'var(--nav-h)']);
+    expect(view).toContain('sticky top-[var(--nav-h)]');
+    expect(view).toContain('max-[640px]:overflow-x-auto');
   });
 
   it('keeps column counts fixed at desktop, tablet, and mobile breakpoints', () => {
-    expect(styles).not.toContain('repeat(auto-fit, minmax(320px,1fr))');
-    expect(styles).toMatch(/\.case-grid\{display:grid; grid-template-columns:repeat\(3, minmax\(0,1fr\)\)/);
-    expect(styles).toMatch(/@media \(max-width:1099px\)\{\s*\.case-grid\{grid-template-columns:repeat\(2, minmax\(0,1fr\)\)/);
-    expect(styles).toMatch(/@media \(max-width:640px\)\{[^}]*\}[\s\S]*?\.case-grid\{grid-template-columns:minmax\(0,1fr\)/);
+    expect(view).toContain('grid-cols-3');
+    expect(view).toContain('max-[1099px]:grid-cols-2');
+    expect(view).toContain('max-[640px]:grid-cols-1');
   });
 
   it('borders populated cards without filling unused grid cells', () => {
-    const grid = styles.match(/\.case-grid\{([^}]*)\}/)?.[1];
-    const card = styles.match(/\.case-card\{([^}]*)\}/)?.[1];
-    expect(grid).toContain('background:var(--alabaster)');
-    expect(grid).not.toContain('border:');
-    expect(card).toContain('outline:1px solid var(--line)');
-    expect(styles).toContain('.case-card:focus-visible{outline:2px solid var(--forest)');
+    const card = readFileSync('src/components/shared/project-card.tsx', 'utf8');
+    expect(view).toContain('gap-px bg-[var(--alabaster)]');
+    const gridClass = view.match(/className="([^"]+)" id="caseGrid"/)?.[1] ?? '';
+    expect(gridClass).not.toContain('border border-');
+    expect(card).toContain('outline-1 outline-[#dad7ce]');
+    expect(card).toContain('focus-visible:outline-2');
   });
 });

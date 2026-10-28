@@ -7,18 +7,18 @@ import { HomeProjectCard, PortfolioProjectCard } from '../components/shared/proj
 import { PROJECTS } from '../constants/projects';
 
 describe('shared typography and spacing', () => {
-  const integration = readFileSync('src/styles/tailwind.css', 'utf8');
+  const integration = readFileSync('src/app/globals.css', 'utf8');
   const refinements = readFileSync('src/styles/typography-spacing.css', 'utf8');
 
-  it('applies shared refinements above page styles and below utilities', () => {
+  it('loads shared tokens and refinements from the single global stylesheet', () => {
     expect(integration).toContain('@layer theme, base, components, refinements, utilities;');
-    expect(integration).toContain("@import './typography-spacing.css' layer(refinements);");
+    expect(integration).toContain("@import '../styles/typography-spacing.css' layer(refinements);");
     const rootLayout = readFileSync('src/app/layout.tsx', 'utf8');
+    expect(rootLayout).toContain("import './globals.css';");
+    expect(rootLayout.match(/import '\.\/[^']+\.css';/g)).toEqual(["import './globals.css';"]);
     for (const page of ['home', 'anatomy', 'standard', 'studio', 'command-center', 'projects']) {
-      expect(rootLayout).toContain(`import './${page}/${page}.css';`);
-      expect(readFileSync(`src/app/${page}/${page}.css`, 'utf8')).toMatch(/^@layer components/);
+      expect(() => readFileSync(`src/app/${page}/${page}.css`, 'utf8')).toThrow();
     }
-    expect(rootLayout).toContain("import '../styles/tailwind.css';");
   });
 
   it('restricts shared refinements to text, spacing, and wrapping', () => {

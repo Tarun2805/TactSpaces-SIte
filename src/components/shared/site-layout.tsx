@@ -22,7 +22,7 @@ export function SiteLayout({ page, children }: SiteLayoutProps) {
 
   return (
     <>
-      <a className="skip-link" href="#main-content">Skip to main content</a>
+      <a className="fixed left-2 top-2 z-[100] -translate-y-[150%] bg-[#1f2d28] px-4 py-3 text-[#f9f9f7] focus-visible:translate-y-0" href="#main-content">Skip to main content</a>
       <SiteNavigation page={page} />
       <main ref={contentRef} id="main-content" className={`page-${page}`} tabIndex={-1}>{children}</main>
       <SiteFooter />
