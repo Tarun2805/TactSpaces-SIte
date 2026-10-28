@@ -3,7 +3,7 @@ import { ArrowIcon } from '../../components/shared/arrow-icon';
 export default function StudioPage() {
   return (
     <>
-<header className="page-header has-aside reveal max-[640px]:!px-5 max-[640px]:!pt-[calc(var(--nav-h)+2.25rem)] max-[640px]:!pb-8 max-[640px]:[&>div>h1]:!my-4 max-[640px]:[&>div>h1]:!text-[clamp(2.1rem,9.5vw,2.6rem)] max-[640px]:[&>div>p]:!text-base max-[640px]:[&>div>p]:!leading-[1.6] min-[901px]:max-w-none min-[901px]:grid min-[901px]:grid-cols-[minmax(0,1.3fr)_minmax(280px,.7fr)] min-[901px]:items-end min-[901px]:gap-24">
+<header className="page-header has-aside reveal px-[5vw] pt-[calc(var(--nav-h)+2.25rem)] max-[640px]:!px-5 max-[640px]:!pt-[calc(var(--nav-h)+2.25rem)] max-[640px]:!pb-8 max-[640px]:[&>div>h1]:!my-4 max-[640px]:[&>div>h1]:!text-[clamp(2.1rem,9.5vw,2.6rem)] max-[640px]:[&>div>p]:!text-base max-[640px]:[&>div>p]:!leading-[1.6] min-[901px]:max-w-none min-[901px]:grid min-[901px]:grid-cols-[minmax(0,1.3fr)_minmax(280px,.7fr)] min-[901px]:items-end min-[901px]:gap-24">
   <div className="ph-copy min-[901px]:max-w-[820px]">
    <h1 className="my-[1.2rem] text-[clamp(2.6rem,5vw,4.2rem)] max-[640px]:my-4 max-[640px]:text-[clamp(2.1rem,9.5vw,2.6rem)]">Two Architects. One Standard.</h1>
    <p className="text-[1.05rem] leading-[1.7] text-[#454e4a] max-[640px]:text-base max-[640px]:leading-[1.6]">Founded in 2025, TactSpaces is the result of two architects coming together with a shared vision to create spaces that are thoughtful, functional, and timeless. What began as a shared passion has grown into a partnership dedicated to transforming ideas into spaces that truly reflect the people who inhabit them.</p>

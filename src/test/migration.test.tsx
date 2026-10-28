@@ -94,6 +94,12 @@ describe('migration preservation', () => {
 });
 
 describe('studio anchor layout', () => {
+  it('keeps the studio heading clear of the fixed navigation on desktop and mobile', () => {
+    const view = readFileSync('src/app/studio/studio-view.tsx', 'utf8');
+    expect(view).toContain('pt-[calc(var(--nav-h)+2.25rem)]');
+    expect(view).toContain('px-[5vw]');
+  });
+
   it('offsets anchored sections by the measured header height without changing section spacing', () => {
     const view = readFileSync('src/app/studio/studio-view.tsx', 'utf8');
     expect(view.match(/scroll-mt-\[var\(--nav-h\)\]/g)).toHaveLength(2);

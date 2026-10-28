@@ -48,9 +48,6 @@ footer { padding-inline: var(--page-gutter); }
 }
 .footer-bottom { gap: 0.5rem 1.5rem; flex-wrap: wrap; line-height: 1.5; }
 
-.hero-copy { padding-inline: var(--page-gutter); }
-.hero-ctas { flex-wrap: wrap; gap: 1rem 1.5rem; }
-.hero-ctas .ghost { font-size: var(--text-supporting); line-height: 1.5; }
 .trust-card p, .mv-card p, .why-list p, .process-step p {
   font-size: var(--text-body);
   line-height: var(--leading-body);

@@ -16,16 +16,16 @@ export default function HomePage() {
 
   return (
     <>
-<section className="hero grid min-h-screen grid-cols-2 p-0 pt-0 max-[900px]:grid-cols-1 max-[640px]:min-h-0 max-[640px]:!pt-[var(--nav-h)]">
-  <div className="hero-copy flex max-w-[560px] flex-col justify-center px-[5vw] max-[900px]:px-[6vw] max-[900px]:py-16 max-[640px]:max-w-none max-[640px]:px-5 max-[640px]:pt-8 max-[640px]:pb-[3.25rem]">
-    <h1 className="mt-[1.2rem] mb-[1.4rem] text-[clamp(2.6rem,4.6vw,4.6rem)] max-[640px]:mt-4 max-[640px]:mb-[1.1rem] max-[640px]:text-[clamp(2.1rem,9.6vw,2.5rem)] max-[640px]:leading-[1.08]">Architecture &amp; Interiors.<br />Governed by Precision.</h1>
-    <p className="mb-[2.2rem] max-w-[440px] text-[1.05rem] leading-[1.65] text-[#454e4a] max-[640px]:mb-7 max-[640px]:text-base">Turnkey design and execution across Bengaluru, where every material, timeline, and rupee is documented before it's promised.</p>
-    <div className="hero-ctas flex flex-wrap items-center gap-x-[1.5rem] gap-y-4">
-      <a className="inline-flex items-center justify-center gap-2 rounded-[2px] border-0 bg-forest px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-alabaster transition-[background,transform] duration-300 hover:-translate-y-px hover:bg-forest-hover max-[640px]:min-h-12" href="/command-center">Start Your Project <ArrowIcon /></a>
-      <a href="/standard" className="ghost inline-flex items-center gap-1 text-[0.875rem] font-semibold leading-[1.5] max-[640px]:min-h-11">View the Standard <ArrowIcon direction="down" className="size-3.5" /></a>
+<section className="hero">
+  <div className="hero-copy">
+    <h1>Architecture &amp; Interiors. Governed by Precision.</h1>
+    <p>Turnkey design and execution across Bengaluru, where every material, timeline, and rupee is documented before it's promised.</p>
+    <div className="hero-ctas">
+      <a className="hero-primary-cta" href="/command-center">Start Your Project <ArrowIcon /></a>
+      <a href="/standard" className="hero-secondary-cta">View the Standard <ArrowIcon direction="down" className="size-3.5" /></a>
     </div>
   </div>
-  <div className={`hero-visual relative overflow-hidden bg-[#edebe3] max-[900px]:order-[-1] max-[900px]:min-h-[60vh] max-[640px]:min-h-0 max-[640px]:h-[clamp(220px,34vh,300px)] supports-[height:100svh]:max-[640px]:h-[clamp(220px,34svh,300px)]${isAnimated ? ' animate' : ''}`} id="heroVisual">
+  <div className={`hero-visual relative overflow-hidden bg-[#edebe3]${isAnimated ? ' animate' : ''}`} id="heroVisual">
     <div className="render-block"></div>
 
     <div className="logo-reveal absolute left-1/2 top-1/2 w-1/2 max-w-[380px] -translate-x-1/2 -translate-y-1/2 max-[640px]:w-[58%]">
