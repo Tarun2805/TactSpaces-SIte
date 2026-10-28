@@ -10,13 +10,15 @@ describe('shared typography and spacing', () => {
   const integration = readFileSync('src/styles/tailwind.css', 'utf8');
   const refinements = readFileSync('src/styles/typography-spacing.css', 'utf8');
 
-  it('applies shared refinements to every entry above page styles and below utilities', () => {
+  it('applies shared refinements above page styles and below utilities', () => {
     expect(integration).toContain('@layer theme, base, components, refinements, utilities;');
     expect(integration).toContain("@import './typography-spacing.css' layer(refinements);");
+    const rootLayout = readFileSync('src/app/layout.tsx', 'utf8');
     for (const page of ['home', 'anatomy', 'standard', 'studio', 'command-center', 'projects']) {
-      expect(readFileSync(`src/app/${page}/entry.tsx`, 'utf8')).toContain("import '../../styles/tailwind.css';");
+      expect(rootLayout).toContain(`import './${page}/${page}.css';`);
       expect(readFileSync(`src/app/${page}/${page}.css`, 'utf8')).toMatch(/^@layer components/);
     }
+    expect(rootLayout).toContain("import '../styles/tailwind.css';");
   });
 
   it('restricts shared refinements to text, spacing, and wrapping', () => {
