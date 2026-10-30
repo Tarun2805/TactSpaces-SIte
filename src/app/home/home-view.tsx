@@ -7,6 +7,15 @@ import { PROJECTS } from '../../constants/projects';
 import { HomeProjectCard } from '../../components/shared/project-card';
 import { ArrowIcon } from '../../components/shared/arrow-icon';
 
+const FEATURED_ORDER = ['manikantan-residence', 'pinaki-residence', 'd-hoofers'];
+const featuredProjects = PROJECTS.filter((project) => project.featured).sort((a, b) => {
+  const rank = (slug: string) => {
+    const index = FEATURED_ORDER.indexOf(slug);
+    return index === -1 ? FEATURED_ORDER.length : index;
+  };
+  return rank(a.slug) - rank(b.slug);
+});
+
 export default function HomePage() {
   const [isAnimated, setIsAnimated] = useState(false);
   useEffect(() => {
@@ -19,10 +28,10 @@ export default function HomePage() {
 <section className="hero">
   <div className="hero-copy">
     <h1>Architecture &amp; Interiors. Governed by Precision.</h1>
-    <p>Turnkey design and execution across Bengaluru, where every material, timeline, and rupee is documented before it's promised.</p>
+    <p>Turnkey design and execution, where every material, timeline, and rupee is documented before it's promised.</p>
     <div className="hero-ctas">
       <a className="hero-primary-cta" href="/command-center">Start Your Project <ArrowIcon /></a>
-      <a href="/standard" className="hero-secondary-cta">View the Standard <ArrowIcon direction="down" className="size-3.5" /></a>
+      <a href="/standard" className="hero-secondary-cta">View the Standard</a>
     </div>
   </div>
   <div className={`hero-visual relative overflow-hidden bg-[#edebe3]${isAnimated ? ' animate' : ''}`} id="heroVisual">
@@ -38,8 +47,8 @@ export default function HomePage() {
   <div className="section-head reveal mb-14 max-w-[640px] max-[640px]:mb-8">
     <h2 className="mt-4 text-[clamp(1.9rem,3vw,2.8rem)] max-[640px]:text-[clamp(1.7rem,7.5vw,2.1rem)]">Evidence of execution.</h2>
   </div>
-  <div className="work-strip reveal grid auto-cols-[minmax(320px,30vw)] grid-flow-col gap-[1.6rem] overflow-x-auto pb-4 [scroll-snap-type:x_mandatory] max-[640px]:mx-[-20px] max-[640px]:auto-cols-[minmax(250px,76vw)] max-[640px]:px-5 max-[640px]:pb-4 max-[640px]:[scroll-padding-left:20px]">
-    {PROJECTS.filter((project) => project.featured).map((project) => (
+  <div className="work-strip reveal grid auto-cols-[minmax(320px,30vw)] grid-flow-col gap-[1.6rem] overflow-x-auto pb-4 [scroll-snap-type:x_mandatory] max-[640px]:mx-[-20px] max-[640px]:auto-cols-[320px] max-[640px]:px-5 max-[640px]:pb-4 max-[640px]:[scroll-padding-left:20px]">
+    {featuredProjects.map((project) => (
       <HomeProjectCard key={project.slug} project={project} />
     ))}
   </div>

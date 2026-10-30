@@ -22,12 +22,12 @@ export default function StudioPage() {
    <div className="section-head reveal mb-8 max-w-[640px] [&>h2]:mt-0 [&>h2]:text-[clamp(1.9rem,3vw,2.6rem)] max-[640px]:mb-8 max-[640px]:[&>h2]:text-[clamp(1.7rem,7.5vw,2.1rem)]">
     <h2 id="studio-gallery-title">Our Studio Space</h2>
   </div>
-   <div className="studio-gallery reveal grid grid-cols-[repeat(3,minmax(0,1fr))] auto-rows-[clamp(160px,17vw,230px)] gap-5 max-[800px]:grid-cols-[repeat(2,minmax(0,1fr))] max-[800px]:auto-rows-[clamp(140px,28vw,220px)] max-[800px]:gap-4 max-[640px]:grid-cols-1 max-[640px]:auto-rows-auto max-[640px]:gap-3">
-     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#E7E4DA] first:row-span-2 max-[640px]:row-span-1 max-[640px]:aspect-[4/3]" role="img" aria-label="Office photo placeholder 1" />
-     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#D7D2C4] max-[640px]:aspect-[4/3]" role="img" aria-label="Office photo placeholder 2" />
-     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#DCD9D0] max-[640px]:aspect-[4/3]" role="img" aria-label="Office photo placeholder 3" />
-     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#E7E4DA] max-[640px]:aspect-[4/3]" role="img" aria-label="Office photo placeholder 4" />
-     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#E7E4DA] max-[640px]:aspect-[4/3]" role="img" aria-label="Office photo placeholder 5" />
+   <div tabIndex={0} aria-label="Studio gallery, scroll horizontally to see more" className="studio-gallery work-strip reveal grid grid-cols-[repeat(3,minmax(0,1fr))] auto-rows-[clamp(160px,17vw,230px)] gap-5 max-[800px]:grid-cols-[repeat(2,minmax(0,1fr))] max-[800px]:auto-rows-[clamp(140px,28vw,220px)] max-[800px]:gap-4 max-[640px]:mx-[-20px] max-[640px]:grid-flow-col max-[640px]:grid-cols-none max-[640px]:auto-cols-[85%] max-[640px]:auto-rows-auto max-[640px]:gap-3 max-[640px]:overflow-x-auto max-[640px]:px-5 max-[640px]:pb-4 max-[640px]:[scroll-padding-left:20px] max-[640px]:[scroll-snap-type:x_mandatory]">
+     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#E7E4DA] first:row-span-2 max-[640px]:first:row-span-1 max-[640px]:aspect-[4/3] max-[640px]:[scroll-snap-align:start]" role="img" aria-label="Office photo placeholder 1" />
+     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#D7D2C4] max-[640px]:aspect-[4/3] max-[640px]:[scroll-snap-align:start]" role="img" aria-label="Office photo placeholder 2" />
+     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#DCD9D0] max-[640px]:aspect-[4/3] max-[640px]:[scroll-snap-align:start]" role="img" aria-label="Office photo placeholder 3" />
+     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#E7E4DA] max-[640px]:aspect-[4/3] max-[640px]:[scroll-snap-align:start]" role="img" aria-label="Office photo placeholder 4" />
+     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#E7E4DA] max-[640px]:aspect-[4/3] max-[640px]:[scroll-snap-align:start]" role="img" aria-label="Office photo placeholder 5" />
   </div>
 </section>
 

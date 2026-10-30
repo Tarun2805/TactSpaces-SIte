@@ -1,5 +1,6 @@
 'use client';
 
+import { createPortal } from 'react-dom';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { PortfolioProjectCard } from '../../components/shared/project-card';
 import { PROJECTS } from '../../constants/projects';
@@ -18,25 +19,37 @@ function FilterDropdown({ label, value, options, onChange, open, onToggle }: {
 }) {
   const rootRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0, width: 0 });
   const selected = options.find((option) => option.value === value) ?? options[0];
 
   useEffect(() => {
     if (!open) return;
+    const positionMenu = () => {
+      const rect = triggerRef.current?.getBoundingClientRect();
+      if (rect) setMenuPosition({ top: rect.bottom + 4, left: Math.max(0, Math.min(rect.left, window.innerWidth - Math.max(rect.width, 200) - 8)), width: rect.width });
+    };
+    positionMenu();
+    window.addEventListener('scroll', positionMenu, true);
+    window.addEventListener('resize', positionMenu);
     const closeOnOutsideClick = (event: PointerEvent) => {
-      if (event.target instanceof Node && !rootRef.current?.contains(event.target)) onToggle();
+      if (event.target instanceof Node && !rootRef.current?.contains(event.target) && !(event.target instanceof Element && event.target.closest('[data-filter-menu]'))) onToggle();
     };
     document.addEventListener('pointerdown', closeOnOutsideClick);
-    return () => document.removeEventListener('pointerdown', closeOnOutsideClick);
+    return () => {
+      document.removeEventListener('pointerdown', closeOnOutsideClick);
+      window.removeEventListener('scroll', positionMenu, true);
+      window.removeEventListener('resize', positionMenu);
+    };
   }, [open, onToggle]);
 
   const focusOption = (index: number) => {
-    const items = rootRef.current?.querySelectorAll<HTMLButtonElement>('[role="option"]');
+    const items = document.querySelectorAll<HTMLButtonElement>('[data-filter-menu] [role="option"]');
     if (!items?.length) return;
     items[Math.max(0, Math.min(index, items.length - 1))].focus();
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    const items = Array.from(rootRef.current?.querySelectorAll<HTMLButtonElement>('[role="option"]') ?? []);
+    const items = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-filter-menu] [role="option"]') ?? []);
     const currentIndex = items.indexOf(document.activeElement as HTMLButtonElement);
     if (event.key === 'Escape') {
       event.preventDefault();
@@ -58,7 +71,7 @@ function FilterDropdown({ label, value, options, onChange, open, onToggle }: {
   };
 
   return (
-    <div ref={rootRef} className="relative" onKeyDown={handleKeyDown}>
+    <div ref={rootRef} className="relative shrink-0">
       <button ref={triggerRef} type="button" aria-haspopup="listbox" aria-expanded={open} aria-label={`${label}: ${selected.label}`} onKeyDown={(event) => {
         if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
           event.preventDefault();
@@ -69,15 +82,15 @@ function FilterDropdown({ label, value, options, onChange, open, onToggle }: {
           onToggle();
         }
       }} onClick={onToggle}
-        className={`filter-pill inline-flex min-h-10 items-center gap-3 rounded-[20px] border px-4 py-2 text-[0.8rem] font-semibold transition-[background,color,border-color] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--forest)] ${open || value ? 'border-[var(--forest)] bg-[var(--forest)] text-[var(--alabaster)]' : 'border-[var(--line)] bg-[var(--alabaster)] text-[var(--ink)] hover:border-[var(--forest)]'}`}>
+        className={`filter-pill inline-flex whitespace-nowrap min-h-10 items-center gap-3 rounded-[20px] border px-4 py-2 text-[0.8rem] font-semibold transition-[background,color,border-color] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--forest)] ${open || value ? 'border-[var(--forest)] bg-[var(--forest)] text-[var(--alabaster)]' : 'border-[var(--line)] bg-[var(--alabaster)] text-[var(--ink)] hover:border-[var(--forest)]'}`}>
         <span className="text-[0.66rem] uppercase tracking-[0.1em] opacity-70">{label}</span><span>{selected.label}</span>
         <svg aria-hidden="true" className={`ml-0.5 h-3 w-3 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} viewBox="0 0 12 12" fill="none"><path d="m2.25 4.5 3.75 3 3.75-3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" /></svg>
       </button>
-      {open && <div role="listbox" aria-label={label} className="absolute left-0 top-[calc(100%+0.25rem)] z-40 min-w-full overflow-hidden border border-[var(--line)] bg-[var(--alabaster)] py-0 shadow-[0_10px_28px_rgba(31,45,40,0.14)]">
+      {open && createPortal(<div data-filter-menu onKeyDown={handleKeyDown} role="listbox" aria-label={label} style={{ top: menuPosition.top, left: menuPosition.left, minWidth: menuPosition.width }} className="fixed z-40 overflow-hidden border border-[var(--line)] bg-[var(--alabaster)] py-0 shadow-[0_10px_28px_rgba(31,45,40,0.14)]">
         {options.map((option) => <button key={option.value || 'all'} type="button" role="option" aria-selected={value === option.value} onClick={() => onChange(option.value)} className={`flex w-full appearance-none items-center justify-between gap-6 rounded-none border-0 bg-[var(--alabaster)] px-4 py-2 text-left text-sm shadow-none transition-colors hover:bg-[var(--alabaster-deep)] focus-visible:relative focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--forest)] ${value === option.value ? 'bg-[var(--alabaster-deep)] font-semibold text-[var(--forest)]' : 'text-[var(--ink)]'}`}>
           {option.label}{value === option.value && <svg aria-hidden="true" className="h-3.5 w-3.5" viewBox="0 0 14 14" fill="none"><path d="m3 7 2.5 2.5L11 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>}
         </button>)}
-      </div>}
+      </div>, document.body)}
     </div>
   );
 }
@@ -124,7 +137,7 @@ export default function AnatomyPage() {
         <p className="max-w-[620px] text-[1.05rem] leading-[1.65] text-[#454E4A] max-[640px]:text-base max-[640px]:leading-[1.6]">A curated selection of completed mandates: proof of spatial maximization, material transparency, and operational control.</p>
       </header>
       <div className="portfolio-index">
-        <div className="filter-bar sticky top-[var(--nav-h)] z-30 flex flex-wrap items-center gap-3 border-y border-[var(--line)] bg-[var(--alabaster)] px-[5vw] py-3 max-[640px]:gap-2 max-[640px]:px-5 max-[640px]:py-2.5">
+        <div className="filter-bar sticky top-[var(--nav-h)] z-30 flex flex-wrap items-center gap-3 border-y border-[var(--line)] bg-[var(--alabaster)] px-[5vw] py-3 max-[640px]:flex-nowrap max-[640px]:overflow-x-auto max-[640px]:gap-2 max-[640px]:px-5 max-[640px]:py-2.5">
           <FilterDropdown label="Scope" value={scope} options={SCOPE_OPTIONS} open={openFilter === 'scope'} onToggle={() => setOpenFilter(openFilter === 'scope' ? null : 'scope')} onChange={(value) => { updateFilter('scope', value); setOpenFilter(null); }} />
           <FilterDropdown label="Type" value={type} options={TYPE_OPTIONS} open={openFilter === 'type'} onToggle={() => setOpenFilter(openFilter === 'type' ? null : 'type')} onChange={(value) => { updateFilter('type', value); setOpenFilter(null); }} />
         </div>

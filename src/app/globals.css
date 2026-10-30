@@ -152,12 +152,23 @@
 
   .hero-secondary-cta {
     display: inline-flex;
-    min-height: 2.75rem;
+    min-height: 3.25rem;
     align-items: center;
-    gap: 0.25rem;
+    justify-content: center;
+    border: 1px solid var(--forest);
+    border-radius: 2px;
+    padding: 0.75rem 1.5rem;
+    color: var(--forest);
     font-size: 0.875rem;
     font-weight: 600;
-    line-height: 1.5;
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+    transition: background 300ms ease, transform 300ms ease;
+  }
+
+  .hero-secondary-cta:hover {
+    transform: translateY(-1px);
+    background: var(--alabaster-deep);
   }
 
   @media (max-width: 1023px) {
@@ -216,7 +227,8 @@
       gap: 0.5rem 1rem;
     }
 
-    .hero-primary-cta {
+    .hero-primary-cta,
+    .hero-secondary-cta {
       min-height: 3rem;
     }
   }
