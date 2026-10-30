@@ -50,7 +50,7 @@ export function MaterialCallout({ top, left, children }: MaterialCalloutProps) {
         show();
         timerRef.current = window.setTimeout(() => setIsOpen(false), CALLOUT_DISMISS_DELAY_MS);
       }}>
-      <span ref={tipRef} className={`callout-tip absolute z-[5] w-max max-w-[220px] pointer-events-none rounded-[1px] bg-[var(--forest)] px-3 py-2 text-[0.72rem] text-[var(--alabaster)] opacity-0 translate-y-1 transition-[opacity,transform] duration-[250ms]${isOpen ? ' show opacity-100 translate-y-0' : ''}`} style={position}>{children}</span>
+      <span ref={tipRef} className={`callout-tip absolute z-[5] w-max max-w-[220px] pointer-events-none rounded-[1px] bg-[var(--forest)] px-3 py-2 text-[0.72rem] text-[var(--alabaster)] opacity-0 transition-opacity duration-[250ms]${isOpen ? ' show opacity-100' : ''}`} style={position}>{children}</span>
     </div>
   );
 }

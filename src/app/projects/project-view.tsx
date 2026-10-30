@@ -62,7 +62,7 @@ export default function ProjectPage({ project }: ProjectPageProps) {
       </div>
       <div className="deep-dive-stats reveal mt-8 mb-4 flex flex-wrap gap-10 px-[5vw] max-[640px]:grid max-[640px]:grid-cols-[repeat(auto-fit,minmax(100px,1fr))] max-[640px]:gap-x-4 max-[640px]:gap-y-5 max-[640px]:px-5">
         {project.details.stats.map((stat, index) => (
-          <div className="border-l-2 border-[var(--forest)] pl-[0.9rem]" key={index}><span className="num block text-[1.8rem] max-[640px]:text-[1.55rem]">{stat.value}</span><span className="lbl text-[0.72rem] uppercase tracking-[0.08em] text-[#6B726D] max-[640px]:block max-[640px]:text-[0.64rem]">{stat.label}</span></div>
+          <div className="border-l-2 border-[var(--forest)] pl-[0.9rem] first:border-l-0 first:pl-0" key={index}><span className="num block text-[1.8rem] max-[640px]:text-[1.55rem]">{stat.value}</span><span className="lbl text-[0.72rem] uppercase tracking-[0.08em] text-[#6B726D] max-[640px]:block max-[640px]:text-[0.64rem]">{stat.label}</span></div>
         ))}
       </div>
       <p className="mandate-copy reveal mt-6 max-w-[760px] px-[5vw] text-base leading-[1.7] text-[#3A413D] max-[640px]:px-5 max-[640px]:text-[0.98rem]">{project.details.summary}</p>

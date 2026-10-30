@@ -73,7 +73,7 @@ export function SiteNavigation({ page }: SiteNavigationProps) {
           <a className="mt-7 flex min-h-[50px] w-full items-center justify-center gap-2 bg-[#1f2d28] px-6 py-4 text-[.95rem] font-semibold text-[#f9f9f7] no-underline min-[901px]:hidden" href="/command-center" onClick={close}>Start Your Project <ArrowIcon /></a>
         </div>
         <div className="flex shrink-0 items-center gap-[.75rem] min-[901px]:gap-[.9rem]">
-          <a className="inline-flex items-center gap-2 rounded-[2px] border-0 bg-[#1f2d28] px-4 py-[.65rem] text-[.72rem] font-semibold tracking-[.01em] text-[#f9f9f7] no-underline transition-[background,transform] duration-300 hover:-translate-y-px hover:bg-[#16211d] min-[901px]:px-6 min-[901px]:py-3 min-[901px]:text-[.82rem]" href="/command-center">
+          <a className="inline-flex items-center gap-2 rounded-[2px] border-0 bg-[#1f2d28] px-4 py-[.65rem] text-[.72rem] font-semibold tracking-[.01em] text-[#f9f9f7] no-underline transition-[background] duration-300 hover:bg-[#16211d] min-[901px]:px-6 min-[901px]:py-3 min-[901px]:text-[.82rem]" href="/command-center">
             <span className="max-[520px]:hidden min-[901px]:inline">Start Your Project</span>
             <span className="hidden max-[520px]:inline min-[901px]:hidden">Start Project</span><ArrowIcon />
           </a>

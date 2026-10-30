@@ -142,11 +142,10 @@
     font-weight: 600;
     letter-spacing: 0.01em;
     line-height: 1.4;
-    transition: background 300ms ease, transform 300ms ease;
+    transition: background 300ms ease;
   }
 
   .hero-primary-cta:hover {
-    transform: translateY(-1px);
     background: var(--forest-hover);
   }
 
@@ -163,11 +162,10 @@
     font-weight: 600;
     letter-spacing: 0.01em;
     line-height: 1.4;
-    transition: background 300ms ease, transform 300ms ease;
+    transition: background 300ms ease;
   }
 
   .hero-secondary-cta:hover {
-    transform: translateY(-1px);
     background: var(--alabaster-deep);
   }
 

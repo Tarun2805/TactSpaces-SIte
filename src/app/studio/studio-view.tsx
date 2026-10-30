@@ -92,7 +92,7 @@ export default function StudioPage() {
       <h3 className="mb-[.4rem] text-[1.3rem]">Want the full studio profile?</h3>
       <p className="text-[.92rem] text-[#4B534F]">Services, process, team, and the complete project list in one document.</p>
     </div>
-     <a className="inline-flex items-center justify-center gap-2 rounded-[2px] border-0 bg-forest px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-alabaster transition-[background,transform] duration-300 hover:-translate-y-px hover:bg-forest-hover max-[640px]:min-h-[50px]" href="mailto:tactspaces@gmail.com?subject=Request%20for%20TactSpaces%20Studio%20Profile">Request Studio Profile <ArrowIcon /></a>
+     <a className="inline-flex items-center justify-center gap-2 rounded-[2px] border-0 bg-forest px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-alabaster transition-[background] duration-300 hover:bg-forest-hover max-[640px]:min-h-[50px]" href="mailto:tactspaces@gmail.com?subject=Request%20for%20TactSpaces%20Studio%20Profile">Request Studio Profile <ArrowIcon /></a>
   </div>
 </section>
     </>
