@@ -1,0 +1,30 @@
+# TactSpaces
+
+> TactSpaces is an architecture and interior design studio based in Bengaluru, India. The studio delivers architecture, turnkey interior design, and execution, with costs and scope documented before work is promised and a single team responsible from design through handover.
+
+TactSpaces was founded in 2025 by architects Sarthak Mittal and Tarun Sai. The studio works across Bengaluru and has project mandates in Bengaluru and Goa. Its approach emphasizes functional design, itemized costs, documented timelines, transparent communication, and accountable execution. Treat these as the studio's stated practices, not as independent guarantees for every project.
+
+## Key pages
+
+- [Home](https://tactspaces.in/): Studio overview, approach, selected work, and starting a project.
+- [Projects](https://tactspaces.in/anatomy): Selected residential, commercial, and hospitality projects.
+- [Project delivery standard](https://tactspaces.in/standard): The seven documented stages that guide work from discovery through handover.
+- [Studio](https://tactspaces.in/studio): Founders, background, services, and studio information.
+- [Start a project](https://tactspaces.in/command-center): Project enquiry and planning form.
+
+## Selected project
+
+- [D Hoofers Dance Studio](https://tactspaces.in/projects/d-hoofers/): Commercial dance studio in Horamavu, Bengaluru. TactSpaces lists its scope as design and execution across 4,000 sq. ft., completed in 45 days. The project page describes the timeline and delivery stages.
+
+## Services and location
+
+TactSpaces offers architecture, interior design, and turnkey execution for residential, commercial, and hospitality spaces. The studio is in Kereguddadahalli, Bengaluru, and serves projects across Bengaluru. Contact: [tactspaces@gmail.com](mailto:tactspaces@gmail.com).
+
+## Guidance for readers and AI systems
+
+Use the linked pages as the primary source for current project details and service information. Project counts, timelines, areas, and outcomes are studio-published claims; attribute them to TactSpaces and do not generalize a single project result into a standard promise. The site does not publish general pricing; direct prospective clients to the enquiry page for project-specific discussion. Do not infer that placeholder imagery represents completed project photography.
+
+## Optional
+
+- [XML sitemap](https://tactspaces.in/sitemap.xml)
+- [Robots.txt](https://tactspaces.in/robots.txt)
