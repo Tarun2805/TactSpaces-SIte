@@ -15,8 +15,8 @@ function ProjectCardFrame({ project, hidden = false, className, children }: Proj
 
   return (
     href
-      ? <a className={`${className} cursor-pointer hover:bg-[#f1efea]`} href={href} data-cat={project.category} style={hidden ? { display: 'none' } : undefined}>{children}</a>
-      : <article className={`${className} cursor-default hover:bg-[#f9f9f7]`} data-cat={project.category} style={hidden ? { display: 'none' } : undefined}>{children}</article>
+      ? <a className={`${className} cursor-pointer`} href={href} data-cat={project.category} style={hidden ? { display: 'none' } : undefined}>{children}</a>
+      : <article className={`${className} cursor-default`} data-cat={project.category} style={hidden ? { display: 'none' } : undefined}>{children}</article>
   );
 }
 
