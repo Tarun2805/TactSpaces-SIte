@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360">
+  <rect width="360" height="360" fill="#1d2f2c"/>
+  <path transform="translate(-3.5 -17)" fill="#fff" d="M30 52h195c66 0 112 44 112 113v173q0 4-4 4h-36q-4 0-4-4V193q0-4-5-3c-47 10-74 48-79 108l-1 39q0 5-5 5H34q-4 0-4-4V56q0-4 4-4Zm48 44q-4 0-4 4v198q0 4 4 4h91q4 0 4-4c5-84 47-139 116-158q4-1 2-5c-12-25-36-39-69-39H78Z"/>
+</svg>

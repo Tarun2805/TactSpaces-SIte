@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Architecture & Interiors in Bengaluru | TactSpaces',
   description: 'TactSpaces delivers architecture and turnkey interior design across Bengaluru, with documented costs, clear timelines, and accountable execution.',
   applicationName: 'TactSpaces',
+  icons: { icon: '/favicon.svg', shortcut: '/favicon.svg' },
   openGraph: { type: 'website', siteName: 'TactSpaces', locale: 'en_IN' },
   twitter: { card: 'summary' },
 };
