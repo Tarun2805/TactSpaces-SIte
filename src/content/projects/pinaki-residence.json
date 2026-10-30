@@ -3,18 +3,19 @@
   "order": 2,
   "name": "Pinaki Residence",
   "category": "residential",
-  "location": "Shettyhalli, Bengaluru",
-  "duration": "3 months",
-  "area": "1,430 sq. ft.",
-  "scope": "Turnkey Execution",
+  "location": "Princetown Apartments, Jalahalli",
+  "duration": "90 days",
+  "area": "1,400 sq. ft. · 3 BHK",
+  "scope": "Renovation · Turnkey",
   "cover": { "kind": "placeholder", "preset": "residence" },
   "featured": true,
   "legacyAnchor": "dd-pinaki",
   "details": {
     "summary": "A comprehensive turnkey transformation demanding meticulous spatial planning. Through single-point responsibility, we navigated complex site modifications to deliver a seamless, stress-free interior defined by an exacting attention to detail.",
     "stats": [
-      { "value": "1,430", "label": "Sq. Ft. · 3 BHK Renovation" },
-      { "value": "3", "label": "Months, Design to Handover" }
+      { "value": "1,400", "label": "Sq. Ft. · 3 BHK Renovation" },
+      { "value": "90", "label": "Days" },
+      { "value": "1", "label": "Schedule Overrun" }
     ],
     "sections": [
       {

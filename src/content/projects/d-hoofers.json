@@ -3,19 +3,20 @@
   "order": 1,
   "name": "D Hoofers Dance Studio",
   "category": "commercial",
-  "location": "Horamavu, Bengaluru",
-  "duration": "45 days",
-  "area": "4,000 sq. ft.",
-  "scope": "Design & Execution",
+  "location": "Hennur, Bengaluru",
+  "duration": "40 days",
+  "area": "4,500 sq. ft.",
+  "scope": "Dance Studio Renovation · Turnkey",
   "cover": { "kind": "placeholder", "preset": "studio" },
   "featured": true,
+  "status": "Completed",
   "legacyAnchor": "dd-hoofers",
   "details": {
-    "summary": "Executed with absolute operational precision on a highly aggressive timeline, proving our capacity to manage multiple vendor overlaps and deliver a high-impact commercial environment without schedule overruns.",
+    "summary": "A turnkey renovation of a 4,500 sq. ft. dance studio in Hennur, completed in 40 days with one schedule overrun.",
     "stats": [
-      { "value": "4,000", "label": "Sq. Ft." },
-      { "value": "45", "label": "Days, Start to Handover" },
-      { "value": "0", "label": "Schedule Overruns" }
+      { "value": "4,500", "label": "Sq. Ft." },
+      { "value": "40", "label": "Days" },
+      { "value": "1", "label": "Schedule Overrun" }
     ],
     "sections": [
       {

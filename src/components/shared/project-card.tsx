@@ -40,7 +40,7 @@ function ProjectCardContent({ project, media, mediaClass, metaClass, titleClass,
       <div className={mediaClass}>{media}</div>
       <div className={metaClass}>
         <span>{project.location}</span>
-        <span>{project.status ? <span className="inline-block rounded-[10px] bg-[#273939] px-[.6rem] py-1 text-[.68rem] font-bold uppercase tracking-[.06em] text-[#f9f9f7]">{project.status}</span> : project.duration.replaceAll(' ', '\u00a0')}</span>
+        <span>{project.status && project.status !== 'Completed' ? <span className="inline-block rounded-[10px] bg-[#273939] px-[.6rem] py-1 text-[.68rem] font-bold uppercase tracking-[.06em] text-[#f9f9f7]">{project.status}</span> : project.duration.replaceAll(' ', '\u00a0')}</span>
       </div>
       <h3 className={titleClass}>{project.name}</h3>
       <span className={`stat ${statClass}`}>{project.area.replaceAll(' ', '\u00a0')} · {project.scope}</span>

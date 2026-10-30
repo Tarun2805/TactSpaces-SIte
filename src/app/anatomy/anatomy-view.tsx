@@ -115,7 +115,7 @@ export default function AnatomyPage() {
       : /execution|turnkey|complete/i.test(project.scope));
     const projectType = project.category === 'residential' ? 'residential' : project.category === 'commercial' ? 'commercial' : 'others';
     return matchesScope && (!type || projectType === type);
-  }), [scope, type]);
+  }).sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)) || a.order - b.order || a.slug.localeCompare(b.slug)), [scope, type]);
 
   return (
     <>

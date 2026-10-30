@@ -3,10 +3,10 @@
   "order": 7,
   "name": "Manikantan Residence",
   "category": "residential",
-  "location": "Hebbal, Bengaluru",
-  "duration": "Ongoing",
-  "status": "Ongoing",
-  "area": "2,400 sq. ft.",
-  "scope": "Interiors, Design & Execution",
-  "cover": { "kind": "placeholder", "preset": "manikantan" }
+  "location": "L & T Raintree Boulevard, Yelahanka",
+  "duration": "60 days",
+  "area": "1,800 sq. ft. · 4 BHK",
+  "scope": "Turnkey",
+  "cover": { "kind": "placeholder", "preset": "manikantan" },
+  "featured": true
 }
