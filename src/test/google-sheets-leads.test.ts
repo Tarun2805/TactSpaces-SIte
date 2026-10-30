@@ -145,7 +145,7 @@ describe('client Google Sheets Apps Script', () => {
       { website: 'bot' }, { name: ' ' }, { phone: '123' }, { phone: '1'.repeat(16) },
       { email: 'invalid' }, { location: '' }, { budget: '25' }, { budget: 26 }, { budget: 200 },
       { typology: 'Unknown' }, { scope: 'Unknown' }, { timeline: 'Unknown' },
-      { typology: 'Other', typologyOther: '' }, { name: 'first\nlast' }, { requestId: 'bad-id' },
+      { typology: 'Others', typologyOther: '' }, { name: 'first\nlast' }, { requestId: 'bad-id' },
     ]) expect(post(override).result?.ok).not.toBe(true);
     expect(() => api.validateLead_({ ...PROJECT_LEAD_FIXTURE, startedAt: NaN })).toThrow('invalid');
     expect(rows).toHaveLength(1);
@@ -154,7 +154,7 @@ describe('client Google Sheets Apps Script', () => {
   it('keeps server options and field limits aligned with the planner', () => {
     const { api } = createScript();
     for (const { value: typology } of PROJECT_TYPOLOGIES) {
-      expect(() => api.validateLead_({ ...PROJECT_LEAD_FIXTURE, typology, typologyOther: typology === 'Other' ? 'Clinic' : '' })).not.toThrow();
+      expect(() => api.validateLead_({ ...PROJECT_LEAD_FIXTURE, typology, typologyOther: typology === 'Others' ? 'Clinic' : '' })).not.toThrow();
     }
     for (const { value: scope } of PROJECT_SCOPES) expect(() => api.validateLead_({ ...PROJECT_LEAD_FIXTURE, scope })).not.toThrow();
     for (const timeline of PROJECT_TIMELINES) expect(() => api.validateLead_({ ...PROJECT_LEAD_FIXTURE, timeline })).not.toThrow();
@@ -169,7 +169,7 @@ describe('client Google Sheets Apps Script', () => {
 
   it('escapes formula-like contact text and custom project descriptions', () => {
     const { post, rows, setNumberFormat } = createScript();
-    expect(post({ name: '=1+1', location: '@SUM(A1)', typology: 'Other', typologyOther: '-42' }).result?.ok).toBe(true);
+    expect(post({ name: '=1+1', location: '@SUM(A1)', typology: 'Others', typologyOther: '-42' }).result?.ok).toBe(true);
     expect(rows[1][3]).toBe("'=1+1");
     expect(rows[1][6]).toBe("'@SUM(A1)");
     expect(rows[1][8]).toBe("'-42");

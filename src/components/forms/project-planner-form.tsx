@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import type { FormEvent } from 'react';
+import { IconBuildingBank, IconBuildingSkyscraper, IconCategory, IconHome, IconHome2 } from '@tabler/icons-react';
 import {
   DEFAULT_PROJECT_BUDGET, MAX_PROJECT_BUDGET, MIN_PROJECT_BUDGET, PLANNER_STEPS,
   PROJECT_BUDGET_STEP, PROJECT_SCOPES, PROJECT_TIMELINES, PROJECT_TYPOLOGIES,
@@ -19,6 +20,14 @@ interface PlannerFieldErrorProps {
 function PlannerFieldError({ field, errors }: PlannerFieldErrorProps) {
   return errors[field] ? <span id={`${PROJECT_LEAD_FIELD_IDS[field]}Error`} className="block mt-2 text-sm font-semibold">{errors[field]}</span> : null;
 }
+
+const TYPOLOGY_ICONS = {
+  residential: IconHome,
+  commercial: IconBuildingSkyscraper,
+  institutional: IconBuildingBank,
+  villa: IconHome2,
+  others: IconCategory,
+};
 
 export function ProjectPlannerForm() {
   const [step, setStep] = useState(1);
@@ -52,7 +61,7 @@ export function ProjectPlannerForm() {
 
   const panelClass = (panel: number) => `step-panel${step === panel ? ' active' : ''}`;
   const details: ProjectLeadDetails = {
-    ...contact, typology: typology ?? '', typologyOther: typology === 'Other' ? typologyOther : '',
+    ...contact, typology: typology ?? '', typologyOther: typology === 'Others' ? typologyOther : '',
     scope: scope ?? '', timeline: timeline ?? '', budget,
   };
   const fieldAccessibility = (field: keyof ProjectLeadDetails) => ({
@@ -125,22 +134,27 @@ export function ProjectPlannerForm() {
           <span className="step-label mb-[0.6rem] block text-[0.72rem] font-bold uppercase tracking-[0.15em] text-[#273939]">Step 1 of 4</span>
           <h2 className="mb-8 text-[1.6rem] max-[640px]:mb-5 max-[640px]:text-[1.4rem]">What are we building?</h2>
           <div className="flex flex-wrap gap-4 max-[560px]:grid max-[560px]:grid-cols-2 max-[560px]:gap-3" data-group="typology">
-            {PROJECT_TYPOLOGIES.map((option) => (
-              <button type="button" className={`min-w-0 flex-[1_1_140px] cursor-pointer border border-[#DAD7CE] bg-[#F9F9F7] px-5 py-[1.8rem] text-center transition-[border-color,background-color] duration-[250ms] hover:border-[#1F2D28] max-[560px]:flex-none max-[560px]:px-2 max-[560px]:py-[1.1rem] max-[560px]:min-h-[92px] max-[560px]:flex max-[560px]:flex-col max-[560px]:items-center max-[560px]:justify-center max-[560px]:[&:last-child:nth-child(odd)]:col-span-2${typology === option.value ? ' selected border-[#1F2D28] bg-[#1F2D28] text-[#F9F9F7]' : ''}`}
-                key={option.value} data-value={option.value} aria-pressed={typology === option.value}
-                onClick={() => setTypology(option.value)}>
-                <span className="mb-[0.7rem] block text-[1.6rem] max-[640px]:mb-[0.4rem] max-[640px]:text-[1.3rem]">{option.icon}</span><span className="tile-label text-[0.95rem] font-semibold">{option.value}</span>
-              </button>
-            ))}
+            {PROJECT_TYPOLOGIES.map((option) => {
+              const Icon = TYPOLOGY_ICONS[option.icon];
+              return (
+                <button type="button" className={`min-w-0 flex-[1_1_140px] cursor-pointer border border-[#DAD7CE] bg-[#F9F9F7] px-5 py-[1.8rem] text-center transition-[border-color,background-color] duration-[250ms] hover:border-[#1F2D28] max-[560px]:flex-none max-[560px]:px-2 max-[560px]:py-[1.1rem] max-[560px]:min-h-[92px] max-[560px]:flex max-[560px]:flex-col max-[560px]:items-center max-[560px]:justify-center max-[560px]:[&:last-child:nth-child(odd)]:col-span-2${typology === option.value ? ' selected' : ''}`}
+                  style={typology === option.value ? { borderColor: '#1F2D28' } : undefined}
+                  key={option.value} data-value={option.value} aria-pressed={typology === option.value}
+                  onClick={() => setTypology(option.value)}>
+                  <Icon aria-hidden="true" stroke={1.6} className="mx-auto mb-[0.7rem] block h-8 w-8 max-[640px]:mb-[0.4rem] max-[640px]:h-7 max-[640px]:w-7" />
+                  <span className="tile-label text-[0.95rem] font-semibold">{option.value}</span>
+                </button>
+              );
+            })}
           </div>
-          <div className="mb-[1.3rem] mt-[1.2rem] [&>label]:mb-2 [&>label]:block [&>label]:text-[0.8rem] [&>label]:font-semibold [&_input]:w-full [&_input]:border [&_input]:border-[#DAD7CE] [&_input]:bg-[#F9F9F7] [&_input]:px-4 [&_input]:py-[0.85rem] [&_input]:text-[0.92rem] [&_input]:text-[#22282A] [&_input]:focus:border-[#1F2D28] [&_input]:focus:outline-none" id="typologyOtherField" style={{ display: typology === 'Other' ? 'block' : 'none' }}>
+          <div className="mb-[1.3rem] mt-[1.2rem] [&>label]:mb-2 [&>label]:block [&>label]:text-[0.8rem] [&>label]:font-semibold [&_input]:w-full [&_input]:border [&_input]:border-[#DAD7CE] [&_input]:bg-[#F9F9F7] [&_input]:px-4 [&_input]:py-[0.85rem] [&_input]:text-[0.92rem] [&_input]:text-[#22282A] [&_input]:focus:border-[#1F2D28] [&_input]:focus:outline-none" id="typologyOtherField" style={{ display: typology === 'Others' ? 'block' : 'none' }}>
             <label htmlFor="typologyOther">Tell us what you're building</label>
             <input type="text" id="typologyOther" name="typologyOther" placeholder="e.g. clinic, warehouse, co-working space"
               value={typologyOther} onChange={(event) => setTypologyOther(event.target.value)} maxLength={PROJECT_LEAD_LIMITS.typologyOther}
-              required={typology === 'Other'} {...fieldAccessibility('typologyOther')} />
+              required={typology === 'Others'} {...fieldAccessibility('typologyOther')} />
             <PlannerFieldError field="typologyOther" errors={errors} />
           </div>
-          <div className="mt-[2.6rem] flex justify-between max-[640px]:mt-7 max-[640px]:flex-col-reverse max-[640px]:gap-3 [&>span:empty]:max-[640px]:hidden"><span /><button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-transparent bg-[#1f2d28] px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#f9f9f7] transition-[background,transform] duration-300 hover:-translate-y-px hover:bg-[#16211d] disabled:cursor-not-allowed disabled:opacity-[.35] disabled:transform-none max-[640px]:min-h-[50px] max-[640px]:w-full" id="next1" disabled={!typology} onClick={continueFromTypology}>Continue <ArrowIcon /></button></div>
+          <div className="mt-[2.6rem] flex justify-between max-[640px]:mt-7 max-[640px]:flex-col-reverse max-[640px]:gap-3 [&>span:empty]:max-[640px]:hidden"><span /><button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-transparent bg-[#1f2d28] px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#f9f9f7] transition-colors duration-300 hover:bg-[#16211d] disabled:cursor-not-allowed disabled:opacity-[.35] disabled:transform-none max-[640px]:min-h-[50px] max-[640px]:w-full" id="next1" disabled={!typology} onClick={continueFromTypology}>Continue <ArrowIcon /></button></div>
         </div>
 
         <div className={`${panelClass(2)} ${step === 2 ? 'block' : 'hidden'}`} data-panel="2" hidden={step !== 2}>
@@ -148,7 +162,8 @@ export function ProjectPlannerForm() {
           <h2 className="mb-8 text-[1.6rem] max-[640px]:mb-5 max-[640px]:text-[1.4rem]">How far should we take it?</h2>
           <div className="grid grid-cols-2 gap-4 max-[560px]:grid-cols-1" data-group="scope">
             {PROJECT_SCOPES.map((option) => (
-              <button type="button" className={`relative cursor-pointer border border-[#DAD7CE] bg-[#F9F9F7] p-[1.8rem] text-left transition-[border-color,background-color] duration-[250ms] hover:border-[#1F2D28] max-[640px]:p-5${scope === option.value ? ' selected border-[#1F2D28] bg-[#1F2D28] text-[#F9F9F7]' : ''}`}
+              <button type="button" className={`relative cursor-pointer border border-[#DAD7CE] bg-[#F9F9F7] p-[1.8rem] text-left transition-[border-color,background-color] duration-[250ms] hover:border-[#1F2D28] max-[640px]:p-5${scope === option.value ? ' selected' : ''}`}
+                style={scope === option.value ? { borderColor: '#1F2D28' } : undefined}
                 key={option.value} data-value={option.value} aria-pressed={scope === option.value}
                 onClick={() => setScope(option.value)}>
                 {option.recommended ? <span className="absolute -top-[10px] right-5 bg-[#273939] px-[0.6rem] py-1 text-[0.65rem] font-bold uppercase tracking-[0.06em] text-[#F9F9F7]">Recommended</span> : null}
@@ -156,9 +171,9 @@ export function ProjectPlannerForm() {
               </button>
             ))}
           </div>
-          <div className="mt-[2.6rem] flex justify-between max-[640px]:mt-7 max-[640px]:flex-col-reverse max-[640px]:gap-3 [&>span:empty]:max-[640px]:hidden">
-            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-[#dad7ce] bg-transparent px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#22282a] transition-colors duration-300 hover:bg-[#f1efea] max-[640px]:min-h-[50px] max-[640px]:w-full" data-back="1" onClick={() => setStep(1)}><ArrowIcon direction="left" />Back</button>
-            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-transparent bg-[#1f2d28] px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#f9f9f7] transition-[background,transform] duration-300 hover:-translate-y-px hover:bg-[#16211d] disabled:cursor-not-allowed disabled:opacity-[.35] disabled:transform-none max-[640px]:min-h-[50px] max-[640px]:w-full" id="next2" disabled={!scope} onClick={() => setStep(3)}>Continue <ArrowIcon /></button>
+          <div className="mt-[2.6rem] flex justify-between gap-3 max-[640px]:mt-7 [&>span:empty]:max-[640px]:hidden">
+            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-[#dad7ce] bg-transparent px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#22282a] transition-[background-color,border-color] duration-200 hover:border-[#1F2D28] hover:bg-[#E7E4DC] max-[640px]:min-h-[50px] max-[640px]:flex-1" data-back="1" onClick={() => setStep(1)}><ArrowIcon direction="left" />Back</button>
+            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-transparent bg-[#1f2d28] px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#f9f9f7] transition-colors duration-300 hover:bg-[#16211d] disabled:cursor-not-allowed disabled:opacity-[.35] disabled:transform-none max-[640px]:min-h-[50px] max-[640px]:flex-1" id="next2" disabled={!scope} onClick={() => setStep(3)}>Continue <ArrowIcon /></button>
           </div>
         </div>
 
@@ -169,7 +184,8 @@ export function ProjectPlannerForm() {
             <div className="block text-[0.85rem] font-semibold mb-[0.7rem]" id="timelineLabel">Timeline</div>
             <div className="mb-[2.4rem] flex overflow-hidden border border-[#DAD7CE] max-[640px]:grid max-[640px]:grid-cols-2 max-[640px]:gap-px max-[640px]:bg-[#DAD7CE]" data-group="timeline" aria-labelledby="timelineLabel">
               {PROJECT_TIMELINES.map((value) => (
-                <button type="button" key={value} data-value={value} className={`min-w-0 flex-1 border-0 border-r border-[#DAD7CE] bg-[#F9F9F7] px-2 py-[0.9rem] text-[0.82rem] font-semibold text-[#22282A] last:border-r-0 max-[640px]:min-h-[50px] max-[640px]:border-0${timeline === value ? ' selected bg-[#1F2D28] text-[#F9F9F7]' : ''}`}
+                <button type="button" key={value} data-value={value} className={`min-w-0 flex-1 border-0 border-r border-[#DAD7CE] bg-[#F9F9F7] px-2 py-[0.9rem] text-[0.82rem] font-semibold text-[#22282A] last:border-r-0 max-[640px]:min-h-[50px] max-[640px]:border-0${timeline === value ? ' selected' : ''}`}
+                  style={timeline === value ? { outline: '1px solid #1F2D28', outlineOffset: '-1px', position: 'relative', zIndex: 1 } : undefined}
                   aria-pressed={timeline === value} onClick={() => setTimeline(value)}>{value}</button>
               ))}
             </div>
@@ -181,25 +197,25 @@ export function ProjectPlannerForm() {
               value={budget} step={PROJECT_BUDGET_STEP} aria-valuetext={`₹${budget} lakh`}
               onChange={(event) => setBudget(Number(event.target.value))} />
           </div>
-          <div className="mt-8 flex justify-between max-[640px]:mt-7 max-[640px]:flex-col-reverse max-[640px]:gap-3 [&>span:empty]:max-[640px]:hidden">
-            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-[#dad7ce] bg-transparent px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#22282a] transition-colors duration-300 hover:bg-[#f1efea] max-[640px]:min-h-[50px] max-[640px]:w-full" data-back="2" onClick={() => setStep(2)}><ArrowIcon direction="left" />Back</button>
-            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-transparent bg-[#1f2d28] px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#f9f9f7] transition-[background,transform] duration-300 hover:-translate-y-px hover:bg-[#16211d] disabled:cursor-not-allowed disabled:opacity-[.35] disabled:transform-none max-[640px]:min-h-[50px] max-[640px]:w-full" id="next3" disabled={!timeline} onClick={() => setStep(4)}>Continue <ArrowIcon /></button>
+          <div className="mt-8 flex justify-between gap-3 max-[640px]:mt-7 [&>span:empty]:max-[640px]:hidden">
+            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-[#dad7ce] bg-transparent px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#22282a] transition-[background-color,border-color] duration-200 hover:border-[#1F2D28] hover:bg-[#E7E4DC] max-[640px]:min-h-[50px] max-[640px]:flex-1" data-back="2" onClick={() => setStep(2)}><ArrowIcon direction="left" />Back</button>
+            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-transparent bg-[#1f2d28] px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#f9f9f7] transition-colors duration-300 hover:bg-[#16211d] disabled:cursor-not-allowed disabled:opacity-[.35] disabled:transform-none max-[640px]:min-h-[50px] max-[640px]:flex-1" id="next3" disabled={!timeline} onClick={() => setStep(4)}>Continue <ArrowIcon /></button>
           </div>
         </div>
 
         <div className={`${panelClass(4)} ${step === 4 ? 'block' : 'hidden'}`} data-panel="4" hidden={step !== 4}>
           <span className="step-label mb-[0.6rem] block text-[0.72rem] font-bold uppercase tracking-[0.15em] text-[#273939]">Step 4 of 4</span>
           <h2 className="mb-8 text-[1.6rem] max-[640px]:mb-5 max-[640px]:text-[1.4rem]">A little about you.</h2>
-          <div className="mb-[1.3rem] [&>label]:mb-2 [&>label]:block [&>label]:text-[0.8rem] [&>label]:font-semibold [&_input]:w-full [&_input]:border [&_input]:border-[#DAD7CE] [&_input]:bg-[#F9F9F7] [&_input]:px-4 [&_input]:py-[0.85rem] [&_input]:text-[0.92rem] [&_input]:text-[#22282A] [&_input]:focus:border-[#1F2D28] [&_input]:focus:outline-none max-[640px]:[&_input]:min-h-12 max-[640px]:[&_input]:px-4 max-[640px]:[&_input]:py-[0.85rem] max-[640px]:[&_input]:text-base"><label htmlFor="fName">Full Name</label><input type="text" id="fName" name="name" autoComplete="name" placeholder="Your name"
+          <div className="mb-[1.3rem] [&>label]:mb-2 [&>label]:block [&>label]:text-[0.8rem] [&>label]:font-semibold [&_input]:w-full [&_input]:border [&_input]:border-[#DAD7CE] [&_input]:bg-[#F9F9F7] [&_input]:px-4 [&_input]:py-[0.85rem] [&_input]:text-[0.92rem] [&_input]:text-[#22282A] [&_input]:focus:border-[#1F2D28] [&_input]:focus:outline-none max-[640px]:[&_input]:min-h-12 max-[640px]:[&_input]:px-4 max-[640px]:[&_input]:py-[0.85rem] max-[640px]:[&_input]:text-base"><label htmlFor="fName">Full Name <span aria-hidden="true" className="text-[#9B2C2C]">*</span></label><input type="text" id="fName" name="name" autoComplete="name" placeholder="Your name"
             required maxLength={PROJECT_LEAD_LIMITS.name} value={contact.name} onChange={(event) => setContact({ ...contact, name: event.target.value })} {...fieldAccessibility('name')} />
             <PlannerFieldError field="name" errors={errors} /></div>
-          <div className="mb-[1.3rem] [&>label]:mb-2 [&>label]:block [&>label]:text-[0.8rem] [&>label]:font-semibold [&_input]:w-full [&_input]:border [&_input]:border-[#DAD7CE] [&_input]:bg-[#F9F9F7] [&_input]:px-4 [&_input]:py-[0.85rem] [&_input]:text-[0.92rem] [&_input]:text-[#22282A] [&_input]:focus:border-[#1F2D28] [&_input]:focus:outline-none max-[640px]:[&_input]:min-h-12 max-[640px]:[&_input]:text-base"><label htmlFor="fPhone">Phone</label><input type="tel" id="fPhone" name="phone" autoComplete="tel" placeholder="+91"
+          <div className="mb-[1.3rem] [&>label]:mb-2 [&>label]:block [&>label]:text-[0.8rem] [&>label]:font-semibold [&_input]:w-full [&_input]:border [&_input]:border-[#DAD7CE] [&_input]:bg-[#F9F9F7] [&_input]:px-4 [&_input]:py-[0.85rem] [&_input]:text-[0.92rem] [&_input]:text-[#22282A] [&_input]:focus:border-[#1F2D28] [&_input]:focus:outline-none max-[640px]:[&_input]:min-h-12 max-[640px]:[&_input]:text-base"><label htmlFor="fPhone">Phone <span aria-hidden="true" className="text-[#9B2C2C]">*</span></label><input type="tel" id="fPhone" name="phone" autoComplete="tel" placeholder="+91"
             required maxLength={PROJECT_LEAD_LIMITS.phone} value={contact.phone} onChange={(event) => setContact({ ...contact, phone: event.target.value })} {...fieldAccessibility('phone')} />
             <PlannerFieldError field="phone" errors={errors} /></div>
-          <div className="mb-[1.3rem] [&>label]:mb-2 [&>label]:block [&>label]:text-[0.8rem] [&>label]:font-semibold [&_input]:w-full [&_input]:border [&_input]:border-[#DAD7CE] [&_input]:bg-[#F9F9F7] [&_input]:px-4 [&_input]:py-[0.85rem] [&_input]:text-[0.92rem] [&_input]:text-[#22282A] [&_input]:focus:border-[#1F2D28] [&_input]:focus:outline-none max-[640px]:[&_input]:min-h-12 max-[640px]:[&_input]:text-base"><label htmlFor="fEmail">Email</label><input type="email" id="fEmail" name="email" autoComplete="email" placeholder="you@email.com"
+          <div className="mb-[1.3rem] [&>label]:mb-2 [&>label]:block [&>label]:text-[0.8rem] [&>label]:font-semibold [&_input]:w-full [&_input]:border [&_input]:border-[#DAD7CE] [&_input]:bg-[#F9F9F7] [&_input]:px-4 [&_input]:py-[0.85rem] [&_input]:text-[0.92rem] [&_input]:text-[#22282A] [&_input]:focus:border-[#1F2D28] [&_input]:focus:outline-none max-[640px]:[&_input]:min-h-12 max-[640px]:[&_input]:text-base"><label htmlFor="fEmail">Email <span aria-hidden="true" className="text-[#9B2C2C]">*</span></label><input type="email" id="fEmail" name="email" autoComplete="email" placeholder="you@email.com"
             required maxLength={PROJECT_LEAD_LIMITS.email} value={contact.email} onChange={(event) => setContact({ ...contact, email: event.target.value })} {...fieldAccessibility('email')} />
             <PlannerFieldError field="email" errors={errors} /></div>
-          <div className="mb-[1.3rem] [&>label]:mb-2 [&>label]:block [&>label]:text-[0.8rem] [&>label]:font-semibold [&_input]:w-full [&_input]:border [&_input]:border-[#DAD7CE] [&_input]:bg-[#F9F9F7] [&_input]:px-4 [&_input]:py-[0.85rem] [&_input]:text-[0.92rem] [&_input]:text-[#22282A] [&_input]:focus:border-[#1F2D28] [&_input]:focus:outline-none max-[640px]:[&_input]:min-h-12 max-[640px]:[&_input]:text-base"><label htmlFor="fLoc">Project Location (Area, City)</label><input type="text" id="fLoc" name="location" placeholder="e.g. Indiranagar, Bengaluru"
+          <div className="mb-[1.3rem] [&>label]:mb-2 [&>label]:block [&>label]:text-[0.8rem] [&>label]:font-semibold [&_input]:w-full [&_input]:border [&_input]:border-[#DAD7CE] [&_input]:bg-[#F9F9F7] [&_input]:px-4 [&_input]:py-[0.85rem] [&_input]:text-[0.92rem] [&_input]:text-[#22282A] [&_input]:focus:border-[#1F2D28] [&_input]:focus:outline-none max-[640px]:[&_input]:min-h-12 max-[640px]:[&_input]:text-base"><label htmlFor="fLoc">Project Location (Area, City) <span aria-hidden="true" className="text-[#9B2C2C]">*</span></label><input type="text" id="fLoc" name="location" placeholder="e.g. Indiranagar, Bengaluru"
             required maxLength={PROJECT_LEAD_LIMITS.location} value={contact.location} onChange={(event) => setContact({ ...contact, location: event.target.value })} {...fieldAccessibility('location')} />
             <PlannerFieldError field="location" errors={errors} /></div>
           <div className="sr-only" aria-hidden="true">
@@ -209,9 +225,11 @@ export function ProjectPlannerForm() {
           <div className="text-sm leading-relaxed">All fields are required. We’ll use your details to respond to this project enquiry.</div>
           {submissionError || !isConfigured ? <div role="alert" className="mt-4 text-sm font-semibold leading-relaxed">{submissionError || PROJECT_LEAD_UNAVAILABLE}</div> : null}
           {isSubmitting ? <div role="status" className="mt-4 text-sm">Saving your enquiry…</div> : null}
-          <div className="planner-nav mt-[2.6rem] flex justify-between max-[640px]:mt-7 max-[640px]:flex-col-reverse max-[640px]:gap-3 [&>span:empty]:max-[640px]:hidden">
-            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-[#dad7ce] bg-transparent px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#22282a] transition-colors duration-300 hover:bg-[#f1efea] max-[640px]:min-h-[50px] max-[640px]:w-full" data-back="3" onClick={() => setStep(3)}><ArrowIcon direction="left" />Back</button>
-            <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-transparent bg-[#1f2d28] px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#f9f9f7] transition-[background,transform] duration-300 hover:-translate-y-px hover:bg-[#16211d] disabled:cursor-not-allowed disabled:opacity-[.35] disabled:transform-none max-[640px]:min-h-[50px] max-[640px]:w-full" id="submitBtn" disabled={isSubmitting || !isConfigured}>{isSubmitting ? 'Submitting…' : <>Submit to Discovery Team <ArrowIcon /></>}</button>
+          <div className="planner-nav mt-[2.6rem] flex justify-between gap-3 max-[640px]:mt-7 [&>span:empty]:max-[640px]:hidden">
+            <button type="button" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-[#dad7ce] bg-transparent px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#22282a] transition-[background-color,border-color] duration-200 hover:border-[#1F2D28] hover:bg-[#E7E4DC] max-[640px]:min-h-[50px] max-[640px]:flex-1" data-back="3" onClick={() => setStep(3)}><ArrowIcon direction="left" />Back</button>
+            <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-[2px] border border-transparent bg-[#1f2d28] px-6 py-3 text-[.875rem] leading-[1.4] font-semibold tracking-[.01em] text-[#f9f9f7] transition-colors duration-300 hover:bg-[#16211d] disabled:cursor-not-allowed disabled:opacity-[.35] disabled:transform-none max-[640px]:min-h-[50px] max-[640px]:flex-1" id="submitBtn" disabled={isSubmitting || !isConfigured}>
+              {isSubmitting ? 'Submitting…' : <><span className="max-[640px]:hidden">Submit to Discovery Team</span><span className="hidden max-[640px]:inline">Submit</span><ArrowIcon /></>}
+            </button>
           </div>
         </div>
         </fieldset>

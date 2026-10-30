@@ -18,8 +18,8 @@ describe('project lead validation', () => {
   });
 
   it('requires custom project text only for Other', () => {
-    expect(validateProjectLead({ ...PROJECT_LEAD_FIXTURE, typology: 'Other' })).toHaveProperty('typologyOther');
-    expect(validateProjectLead({ ...PROJECT_LEAD_FIXTURE, typology: 'Other', typologyOther: 'Clinic' })).toEqual({});
+    expect(validateProjectLead({ ...PROJECT_LEAD_FIXTURE, typology: 'Others' })).toHaveProperty('typologyOther');
+    expect(validateProjectLead({ ...PROJECT_LEAD_FIXTURE, typology: 'Others', typologyOther: 'Clinic' })).toEqual({});
   });
 });
 

@@ -1,10 +1,10 @@
 export const PROJECT_TYPOLOGIES = [
-  { value: 'Villa', icon: '⌂' },
-  { value: 'Flat', icon: '▤' },
-  { value: 'Commercial', icon: '▣' },
-  { value: 'Institutional', icon: '▦' },
-  { value: 'Other', icon: '✳' },
-];
+  { value: 'Residential', icon: 'residential' },
+  { value: 'Commercial', icon: 'commercial' },
+  { value: 'Institutional', icon: 'institutional' },
+  { value: 'Villa', icon: 'villa' },
+  { value: 'Others', icon: 'others' },
+] as const;
 
 export const PROJECT_SCOPES = [
   { value: 'Design Only', description: 'You execute, we design and document.', recommended: false },

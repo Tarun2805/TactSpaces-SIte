@@ -92,9 +92,9 @@ function validateLead_(payload) {
   const digits = details.phone.replace(/\D/g, '');
   if (!/^\+?[\d\s().-]+$/.test(details.phone) || digits.length < 7 || digits.length > 15) throw new Error('invalid');
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(details.email)) throw new Error('invalid');
-  if (['Villa', 'Flat', 'Commercial', 'Institutional', 'Other'].indexOf(details.typology) === -1) throw new Error('invalid');
-  if (details.typology === 'Other' && details.typologyOther.length < 2) throw new Error('invalid');
-  if (details.typology !== 'Other') details.typologyOther = '';
+  if (['Residential', 'Commercial', 'Institutional', 'Villa', 'Others'].indexOf(details.typology) === -1) throw new Error('invalid');
+  if (details.typology === 'Others' && details.typologyOther.length < 2) throw new Error('invalid');
+  if (details.typology !== 'Others') details.typologyOther = '';
   if (['Design Only', 'Turnkey Execution'].indexOf(details.scope) === -1) throw new Error('invalid');
   if (['< 1 month', '1–3 months', '3–6 months', 'Flexible'].indexOf(details.timeline) === -1) throw new Error('invalid');
   if (!Number.isFinite(details.budget) || details.budget < 5 || details.budget > 150 || details.budget % 5 !== 0) throw new Error('invalid');

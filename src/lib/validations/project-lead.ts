@@ -22,7 +22,7 @@ export function validateProjectLead(details: ProjectLeadDetails): ProjectLeadErr
     errors.email = 'Enter a valid email address.';
   }
   if (!PROJECT_TYPOLOGIES.some((option) => option.value === details.typology)) errors.typology = 'Choose a project type.';
-  if (details.typology === 'Other' && (details.typologyOther.trim().length < 2 || details.typologyOther.trim().length > PROJECT_LEAD_LIMITS.typologyOther)) {
+  if (details.typology === 'Others' && (details.typologyOther.trim().length < 2 || details.typologyOther.trim().length > PROJECT_LEAD_LIMITS.typologyOther)) {
     errors.typologyOther = 'Describe your project type (2–200 characters).';
   }
   if (!PROJECT_SCOPES.some((option) => option.value === details.scope)) errors.scope = 'Choose a project scope.';
