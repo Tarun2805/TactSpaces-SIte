@@ -18,6 +18,7 @@ export function SiteFooter() {
       <h4 className="mb-[1.1rem] text-[.72rem] font-semibold uppercase tracking-[.15em] opacity-60">Studio</h4>
       <a href="/studio">About</a>
       <a href="/studio#team">Our Team</a>
+      <a href="/studio#gallery">Gallery</a>
       <a href="/studio#profile">Download Profile</a>
     </div>
     <div>

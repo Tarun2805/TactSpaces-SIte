@@ -18,30 +18,30 @@ export default function StudioPage() {
   </aside>
 </header>
 
-<section className="studio-gallery-section px-[5vw] py-20 max-[640px]:px-5 max-[640px]:py-14" aria-labelledby="studio-gallery-title">
+<section id="gallery" className="studio-gallery-section scroll-mt-[var(--nav-h)] px-[5vw] py-20 max-[640px]:px-5 max-[640px]:py-14" aria-labelledby="studio-gallery-title">
    <div className="section-head reveal mb-8 max-w-[640px] [&>h2]:mt-0 [&>h2]:text-[clamp(1.9rem,3vw,2.6rem)] max-[640px]:mb-8 max-[640px]:[&>h2]:text-[clamp(1.7rem,7.5vw,2.1rem)]">
     <h2 id="studio-gallery-title">Our Studio Space</h2>
   </div>
-   <div className="studio-gallery reveal grid grid-cols-[repeat(3,minmax(0,1fr))] auto-rows-[clamp(160px,17vw,230px)] gap-5 max-[800px]:grid-cols-[repeat(2,minmax(0,1fr))] max-[800px]:auto-rows-[clamp(140px,28vw,220px)] max-[800px]:gap-4 max-[640px]:auto-rows-[clamp(130px,38vw,170px)] max-[640px]:gap-3">
-     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#E7E4DA] first:row-span-2 max-[640px]:aspect-[5/3]" role="img" aria-label="Office photo placeholder 1" />
-     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#D7D2C4] max-[640px]:aspect-[5/3]" role="img" aria-label="Office photo placeholder 2" />
-     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#DCD9D0] max-[640px]:aspect-[5/3]" role="img" aria-label="Office photo placeholder 3" />
-     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#E7E4DA] max-[640px]:aspect-[5/3]" role="img" aria-label="Office photo placeholder 4" />
-     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#E7E4DA] max-[640px]:aspect-[5/3]" role="img" aria-label="Office photo placeholder 5" />
+   <div className="studio-gallery reveal grid grid-cols-[repeat(3,minmax(0,1fr))] auto-rows-[clamp(160px,17vw,230px)] gap-5 max-[800px]:grid-cols-[repeat(2,minmax(0,1fr))] max-[800px]:auto-rows-[clamp(140px,28vw,220px)] max-[800px]:gap-4 max-[640px]:grid-cols-1 max-[640px]:auto-rows-auto max-[640px]:gap-3">
+     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#E7E4DA] first:row-span-2 max-[640px]:row-span-1 max-[640px]:aspect-[4/3]" role="img" aria-label="Office photo placeholder 1" />
+     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#D7D2C4] max-[640px]:aspect-[4/3]" role="img" aria-label="Office photo placeholder 2" />
+     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#DCD9D0] max-[640px]:aspect-[4/3]" role="img" aria-label="Office photo placeholder 3" />
+     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#E7E4DA] max-[640px]:aspect-[4/3]" role="img" aria-label="Office photo placeholder 4" />
+     <div className="studio-gallery__placeholder row-span-1 min-w-0 bg-[#E7E4DA] max-[640px]:aspect-[4/3]" role="img" aria-label="Office photo placeholder 5" />
   </div>
 </section>
 
 <section id="team" className="team-split scroll-mt-[var(--nav-h)] px-[5vw] py-20 max-[640px]:px-5 max-[640px]:py-14 min-[901px]:grid min-[901px]:grid-cols-[minmax(0,1.3fr)_minmax(280px,.7fr)] min-[901px]:items-end min-[901px]:gap-24">
   <div className="team-main">
     <div className="section-head reveal mb-12 max-w-[640px] [&>h2]:mt-4 [&>h2]:text-[clamp(1.9rem,3vw,2.6rem)] max-[640px]:mb-8 max-[640px]:[&>h2]:text-[clamp(1.7rem,7.5vw,2.1rem)]"><h2>Driving the vision…</h2></div>
-    <div className="team-grid reveal grid max-w-[760px] grid-cols-2 gap-12 max-[640px]:max-w-none max-[640px]:gap-4 max-[600px]:grid-cols-1">
+    <div className="team-grid reveal grid max-w-[760px] grid-cols-2 gap-12 max-[640px]:max-w-none max-[640px]:gap-4">
       <div className="team-card min-w-0">
-       <div className="photo relative mb-[1.2rem] aspect-square overflow-hidden bg-[linear-gradient(160deg,#E7E4DA,#D7D2C4)] max-[640px]:mb-[.9rem] max-[640px]:aspect-[4/5]"><div className="blk absolute left-[15%] top-[10%] h-[80%] w-[70%] bg-[var(--forest)] opacity-75" /></div>
+       <div className="photo relative mb-[1.2rem] aspect-square overflow-hidden bg-[linear-gradient(160deg,#E7E4DA,#D7D2C4)] max-[640px]:mb-[.9rem]"><div className="blk absolute left-[15%] top-[10%] h-[80%] w-[70%] bg-[var(--forest)] opacity-75" /></div>
        <h3 className="mb-[.2rem] text-[1.3rem] max-[640px]:text-[1.05rem]">Sarthak Mittal</h3>
        <span className="role text-[.85rem] font-semibold text-[var(--accent)] max-[640px]:block max-[640px]:text-[.74rem] max-[640px]:leading-[1.4]">Architect · Co-Founder</span>
     </div>
       <div className="team-card min-w-0">
-       <div className="photo relative mb-[1.2rem] aspect-square overflow-hidden bg-[linear-gradient(160deg,#E7E4DA,#D7D2C4)] max-[640px]:mb-[.9rem] max-[640px]:aspect-[4/5]"><div className="blk absolute left-[15%] top-[10%] h-[80%] w-[70%] bg-[var(--forest)] opacity-75" /></div>
+       <div className="photo relative mb-[1.2rem] aspect-square overflow-hidden bg-[linear-gradient(160deg,#E7E4DA,#D7D2C4)] max-[640px]:mb-[.9rem]"><div className="blk absolute left-[15%] top-[10%] h-[80%] w-[70%] bg-[var(--forest)] opacity-75" /></div>
        <h3 className="mb-[.2rem] text-[1.3rem] max-[640px]:text-[1.05rem]">Tarun Sai</h3>
        <span className="role text-[.85rem] font-semibold text-[var(--accent)] max-[640px]:block max-[640px]:text-[.74rem] max-[640px]:leading-[1.4]">Architect · Co-Founder</span>
     </div>
