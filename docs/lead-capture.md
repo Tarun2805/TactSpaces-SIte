@@ -5,6 +5,7 @@
 1. Sign in to the account that should own the leads, create a Google Sheet, then open **Extensions → Apps Script**.
 2. Replace the editor contents with [`scripts/google-sheets-leads.gs`](../scripts/google-sheets-leads.gs).
 3. Check `LEAD_CONFIG.allowedOrigins` includes each live website origin, with no path or trailing slash.
+   The configured limit is five new leads per minute across all visitors. This is a lightweight burst guard, not authentication or robust bot protection; the endpoint remains public because the website submits directly to Apps Script.
 4. Save, select `setupLeadSheet`, click **Run**, and approve the requested permissions.
 5. Keep the Sheet private; share it only with the people who handle enquiries.
 

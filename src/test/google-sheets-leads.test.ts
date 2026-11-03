@@ -86,7 +86,7 @@ function createScript() {
   api.setupLeadSheet();
   lock.releaseLock.mockClear();
 
-  const post = (overrides = {}, origin = 'https://tactspaces.in') => {
+  const post = (overrides = {}, origin = 'https://tactspaces.com') => {
     const output = api.doPost({ parameter: { payload: JSON.stringify({ ...PROJECT_LEAD_FIXTURE, ...overrides }), websiteOrigin: origin } });
     const json = output.html.match(/window\.top\.postMessage\((\{.*\}), /)?.[1];
     return { output, result: json ? JSON.parse(json) as { type: string; requestId: string; ok: boolean; code: string } : null };
@@ -118,7 +118,7 @@ describe('client Google Sheets Apps Script', () => {
     ]);
     expect(services.SpreadsheetApp.flush).toHaveBeenCalledOnce();
     expect(lock.releaseLock).toHaveBeenCalledOnce();
-    expect(output.html).toContain(', "https://tactspaces.in");');
+    expect(output.html).toContain(', "https://tactspaces.com");');
     expect(output.html).not.toContain('client@example.com');
     expect(services.MailApp.sendEmail).not.toHaveBeenCalled();
   });
@@ -191,6 +191,7 @@ describe('client Google Sheets Apps Script', () => {
 
   it('applies the shared burst limit but allows retries of existing leads', () => {
     const { api, post, rows } = createScript();
+    expect(api.LEAD_CONFIG.maxNewLeadsPerMinute).toBe(5);
     api.LEAD_CONFIG.maxNewLeadsPerMinute = 1;
     expect(post().result?.ok).toBe(true);
     expect(post({ requestId: 'd94152fd-d807-4203-989a-9a1b6bc115ef' }).result).toMatchObject({ ok: false, code: 'busy' });

@@ -5,11 +5,11 @@
  * Full instructions: docs/lead-capture.md. No paid services or libraries needed.
  */
 const LEAD_CONFIG = {
-  allowedOrigins: ['https://tactspaces.in', 'https://www.tactspaces.in', 'https://tactspaces.vercel.app'],
+  allowedOrigins: ['https://tactspaces.com', 'https://www.tactspaces.com', 'https://tactspaces.vercel.app'],
   sheetName: 'Website Leads',
   // Optional team notification. Leave blank to only save leads to the Sheet.
   notificationEmail: '',
-  maxNewLeadsPerMinute: 20,
+  maxNewLeadsPerMinute: 5,
 };
 
 const LEAD_HEADERS = [

@@ -317,3 +317,107 @@
   --font-sans: 'Inter', 'Helvetica Neue', sans-serif;
   --font-display: 'Playfair Display', Georgia, serif;
 }
+
+/* A shared type scale keeps pages scannable without changing the established faces. */
+:root {
+  --type-page-title: clamp(2.25rem, 4.4vw, 4.25rem);
+  --type-section-title: clamp(1.8rem, 2.8vw, 2.7rem);
+  --type-card-title: clamp(1.125rem, 1.45vw, 1.4rem);
+  --type-supporting: 0.9375rem;
+  --type-meta: 0.8125rem;
+}
+
+body {
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+h1,
+.hero-copy h1,
+.page-header h1,
+.deep-dive-head h1 {
+  font-size: var(--type-page-title);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.hero-copy h1 {
+  max-width: 13ch;
+}
+
+.section-head > h2,
+h2,
+.commit-head h2 {
+  font-size: var(--type-section-title);
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.process-step h3,
+.team-card h3,
+.mv-card h3,
+.trust-card h3,
+.commit-card h3,
+.h-panel h3,
+.profile-cta h3,
+.case-card h3,
+.work-card h3 {
+  font-size: var(--type-card-title);
+  line-height: 1.28;
+  text-wrap: balance;
+}
+
+.page-header > p,
+.ph-copy > p,
+.mandate-copy,
+.process-step > p,
+.h-panel > p,
+.mv-card > p,
+.trust-card > p,
+.commit-card > p,
+.profile-cta p {
+  max-width: 68ch;
+  font-size: 1rem;
+  line-height: 1.68;
+  text-wrap: pretty;
+}
+
+.case-card .meta-row,
+.work-meta,
+.studio-facts dt,
+.team-card .role,
+.deep-dive-stats .lbl,
+.aside-stats .lbl,
+.callout-tip {
+  font-size: var(--type-meta);
+  line-height: 1.5;
+}
+
+.planner h2 {
+  font-size: clamp(1.4rem, 2vw, 1.65rem);
+  line-height: 1.2;
+}
+
+.planner h4 {
+  font-size: 1rem;
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --type-page-title: clamp(2rem, 8vw, 2.6rem);
+    --type-section-title: clamp(1.65rem, 7vw, 2.1rem);
+    --type-card-title: clamp(1.125rem, 5vw, 1.25rem);
+  }
+
+  .deep-dive-head h1 {
+    font-size: clamp(1.8rem, 8vw, 2.2rem);
+  }
+
+  .hero-copy h1 {
+    max-width: none;
+  }
+}

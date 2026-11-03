@@ -12,9 +12,13 @@ TactSpaces was founded in 2025 by architects Sarthak Mittal and Tarun Sai. The s
 - [Studio](https://tactspaces.in/studio): Founders, background, services, and studio information.
 - [Start a project](https://tactspaces.in/command-center): Project enquiry and planning form.
 
-## Selected project
+## Featured projects
 
-- [D Hoofers Dance Studio](https://tactspaces.in/projects/d-hoofers/): Commercial dance studio in Horamavu, Bengaluru. TactSpaces lists its scope as design and execution across 4,000 sq. ft., completed in 45 days. The project page describes the timeline and delivery stages.
+These are the projects featured on the home page:
+
+- Manikantan Residence: Turnkey 4 BHK residence at L & T Raintree Boulevard, Yelahanka (1,800 sq. ft.). It is featured on the home page; no project detail page is currently available.
+- [Pinaki Residence](https://tactspaces.in/projects/pinaki-residence/): Turnkey renovation of a 3 BHK residence at Princetown Apartments, Jalahalli (1,400 sq. ft.).
+- [D Hoofers Dance Studio](https://tactspaces.in/projects/d-hoofers/): Turnkey dance studio renovation in Hennur, Bengaluru (4,500 sq. ft.).
 
 ## Services and location
 
